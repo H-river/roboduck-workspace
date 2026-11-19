@@ -228,7 +228,7 @@ cd data_collect_sim
 10. **r3 从零训练学得很慢**：到第 1250 次迭代还不会走（mjlab 和验收环境里都 ≈ 0 m/s，带探索噪声也只有 0.01 m/s），r2 同一阶段已经会走。低电压和长延迟本身不是原因（r2 it2750 在验收环境里 6 V + 40 ms 照样走），剩下的嫌疑是**坡道一开始就随机 0–6°、没有地形课程**，加上 `stand_still` / `no_stepping` 让"站着不动"成了容易陷进去的局部最优（没做消融，是推测）。建议：下一轮开 mjlab 的地形课程（`TerrainGeneratorCfg(curriculum=True)` + `mdp.terrain_levels_vel` 课程项；`walk_v2.py` 现在会把 `cfg.curriculum` 清空，要加接线），或者像今晚这样从 r2 热启动（`--agent.resume True --agent.load-run <run> --agent.load-checkpoint model_2750.pt`；walk v2 没有课程，恢复迭代计数没有副作用）。**训练日志里的跟踪奖励 / 转向增益会误导**（零命令的环境站着就拿满分，而且是带噪声的），要以 `train.sh` 每 500 次迭代的验收为准。
 11. **坡道上偶尔物理发散成 NaN**：rsl_rl 一遇到 NaN 观测就整个训练退出（今晚热启动那一轮第 ~3032 次迭代就这样）。`walk_v2_r3.yaml` 已加 `terminations.nan_state: true`（mjlab 的 `nan_detection`，把发散的环境重置掉）。新配置也要加。
 12. **seed 之间差别很大**：r2 的 seed 1 有两个 checkpoint 全过，seed 2 一个都没过（停住、5° 上坡）。每个配置至少 2 个 seed。
-13. **停住在门槛边缘**：相邻 checkpoint 之间停住时间在 0.4–1.3 s 之间跳（走着突然归零正好在迈步中间，要多走半步）。定版要看多个 checkpoint + 10 seed 扩展测试。
+13. **停住在门槛边缘**：相邻 checkpoint 之间停住时间在 0.4–1.3 s 之间跳（走着突然归零正好在迈步中间，要多走半步）。定版要看多个 checkpoint + 10 seed 扩展测试。**停住还对执行器条件很敏感**（2026-11-20 实测，13 命令 × 3 seed）：r2 it2750 在验收环境标称条件（7.5 V、3–6 步延迟）下 39/39，换成 6.75 V + 2–8 步就 35/39（最长 1.28 s）；r3 热启动候选在这两种条件下是 31/39 / 35/39。所以真机电压低、延迟长的话，停住很可能不达标——先量真机的电压和延迟（第 7 节），把 `data_collect_sim/configs/sim.yaml` 的标称值改成实测值再验收。
 14. **5° 上坡是全有或全无**（0/10 或 10/10）：平地策略到坡上会稳定卡住，r3 的坡道训练就是针对它。
 15. 头部在关节限位内最多再低头 28.6°（neck 0.10、head 0.60 rad），所以头部接管训练和测试用 15–28°。
 16. 镜像对称增强在 r1 起都开着（`symmetry:`）。镜像算子在 `rl_tasks/mdp_v2.py`，验证 `rl_train/tests/check_mirror.py`；改观测或关节顺序时要同步改。
