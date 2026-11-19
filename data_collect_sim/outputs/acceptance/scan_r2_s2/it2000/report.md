@@ -2,7 +2,7 @@
 
 > **--quick 模式**：规模缩小（configs/acceptance.yaml 的 `quick:`），门槛不变。只用于训练中挑 checkpoint，不能作为定版依据。
 
-- 名称：`model_2000_quick`；时间：2026-11-20T01:40:55+08:00；总耗时 14 s（4 个进程）
+- 名称：`r2_s2_it2000_quick`；时间：2026-11-20T02:02:08+08:00；总耗时 5 s（5 个进程）
 - walk：card `outputs/acceptance/scan_r2_s2/it2000/cards/2026-10-25_00-32-49_walk_v2_r2_s2_it2000.yaml`，ONNX `outputs/acceptance/scan_r2_s2/it2000/policies/2026-10-25_00-32-49_walk_v2_r2_s2_it2000.onnx`（sha256 650db56c87c58d30…）
 - 门槛：`configs/acceptance.yaml`（sha256 b64beff45b650767…）
 

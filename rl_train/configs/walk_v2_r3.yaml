@@ -26,6 +26,10 @@ sim:
 # trunk (4 rays on a 3 cm ring, averaged). Identical to upstream on flat ground.
 terminations:
   fell_over: {type: trunk_clearance, minimum_height: 0.10, body: trunk_base, ray_radius_m: 0.03, rays: 4, max_distance_m: 1.0}
+  # 2026-11-20: the run warm-started from r2 died at iteration ~3032 with NaN actor observations
+  # (physics state went NaN in some env on the slopes). Reset such envs instead (mjlab nan_detection;
+  # rewards are already nan_to_num'ed by mjlab's reward manager).
+  nan_state: true
 
 head_override:
   pitch_down_deg_range: [15.0, 28.0]   # task asked 15-35; 28.6 is the joint-limit maximum (NOTES §0.3)

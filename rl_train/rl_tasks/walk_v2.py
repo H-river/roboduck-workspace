@@ -19,6 +19,7 @@ from mjlab.managers.metrics_manager import MetricsTermCfg
 from mjlab.managers.observation_manager import ObservationTermCfg
 from mjlab.managers.reward_manager import RewardTermCfg
 from mjlab.managers.termination_manager import TerminationTermCfg
+from mjlab.envs.mdp.terminations import nan_detection
 from mjlab.rl import RslRlPpoAlgorithmCfg
 from mjlab.sensor import ObjRef, RingPatternCfg, TerrainHeightSensorCfg
 from mjlab.terrains import TerrainGeneratorCfg
@@ -148,6 +149,10 @@ def make_env_cfg(c: dict, play: bool = False):
         cfg.terminations["fell_over"] = TerminationTermCfg(
             func=mdp_v2.trunk_clearance_below_minimum,
             params={"minimum_height": fo["minimum_height"], "sensor_name": "trunk_height_scan"})
+
+    # reset envs whose physics state went NaN / Inf (otherwise rsl_rl stops the whole run on NaN observations)
+    if (c.get("terminations") or {}).get("nan_state"):
+        cfg.terminations["nan_state"] = TerminationTermCfg(func=nan_detection)
 
     # head takeover while standing
     h = c.get("head_override")

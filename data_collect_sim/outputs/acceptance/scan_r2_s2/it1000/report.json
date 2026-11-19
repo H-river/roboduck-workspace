@@ -1,6 +1,6 @@
 {
-  "name": "model_1000_quick",
-  "created": "2026-11-20T01:40:26+08:00",
+  "name": "r2_s2_it1000_quick",
+  "created": "2026-11-20T02:01:58+08:00",
   "quick": true,
   "verdict": {
     "pass": false,
@@ -137,17 +137,17 @@
     }
   },
   "acceptance_sha256": "b64beff45b6507675599921f4bb926e70be92a78969790c59324b0090294ac31",
-  "elapsed_s": 13.238751411437988,
-  "workers": 4,
+  "elapsed_s": 4.5725462436676025,
+  "workers": 5,
   "job_seconds": {
-    "symmetry": 2.0,
-    "stop": 2.2,
-    "random": 2.4,
-    "tracking": 2.8,
+    "symmetry": 2.2,
+    "stop": 2.4,
+    "random": 2.5,
+    "tracking": 2.9,
     "camera": 0.9,
-    "head_override": 1.9,
-    "switch": 1.4,
-    "ramp@5": 3.0
+    "ramp@5": 3.6,
+    "switch": 1.5,
+    "head_override": 1.8
   },
   "videos": [],
   "notes": [],
@@ -742,72 +742,29 @@
       },
       "pass": true
     },
-    "head_override": {
-      "baseline_vx": 0.1435517826533587,
-      "trials": [
-        {
-          "seed": 0,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 1.0620653622966176,
-          "max_disp_m": 0.0012815762453923588,
-          "cam_pitch_during_deg": 28.06235631875877,
-          "walk_after_vx": 0.14695621854582563,
-          "ratio": 1.023715733998844,
-          "start_ok": true,
-          "pass": true
+    "ramp": {
+      "results": {
+        "5_up": {
+          "angle": 5,
+          "direction": "up",
+          "success": 3,
+          "n": 3,
+          "falls": 0,
+          "time_mean_s": 22.89333333333306,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
         },
-        {
-          "seed": 1,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 1.060690665273265,
-          "max_disp_m": 0.00121618173535101,
-          "cam_pitch_during_deg": 28.060844312331525,
-          "walk_after_vx": 0.1448360192559753,
-          "ratio": 1.0089461557277748,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 2,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 1.0690350693269604,
-          "max_disp_m": 0.0012219288978028023,
-          "cam_pitch_during_deg": 28.066644387726665,
-          "walk_after_vx": 0.14713707404835694,
-          "ratio": 1.024975596462329,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 3,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 1.0758484665888843,
-          "max_disp_m": 0.0012144210653712987,
-          "cam_pitch_during_deg": 28.061860394680867,
-          "walk_after_vx": 0.14866185397591541,
-          "ratio": 1.035597407626043,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 4,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 1.0801214146623523,
-          "max_disp_m": 0.0012461909539271108,
-          "cam_pitch_during_deg": 28.061772691864437,
-          "walk_after_vx": 0.1464148472740423,
-          "ratio": 1.0199444727732654,
-          "start_ok": true,
-          "pass": true
+        "5_down": {
+          "angle": 5,
+          "direction": "down",
+          "success": 3,
+          "n": 3,
+          "falls": 0,
+          "time_mean_s": 10.560000000000251,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
         }
-      ],
-      "n_pass": 5,
-      "n": 5,
+      },
       "pass": true
     },
     "switch": {
@@ -969,29 +926,72 @@
       "n": 8,
       "pass": true
     },
-    "ramp": {
-      "results": {
-        "5_up": {
-          "angle": 5,
-          "direction": "up",
-          "success": 3,
-          "n": 3,
-          "falls": 0,
-          "time_mean_s": 22.89333333333306,
-          "current_limited_max_pct": 0.0,
-          "failed_runs": []
+    "head_override": {
+      "baseline_vx": 0.1435517826533587,
+      "trials": [
+        {
+          "seed": 0,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 1.0620653622966176,
+          "max_disp_m": 0.0012815762453923588,
+          "cam_pitch_during_deg": 28.06235631875877,
+          "walk_after_vx": 0.14695621854582563,
+          "ratio": 1.023715733998844,
+          "start_ok": true,
+          "pass": true
         },
-        "5_down": {
-          "angle": 5,
-          "direction": "down",
-          "success": 3,
-          "n": 3,
-          "falls": 0,
-          "time_mean_s": 10.560000000000251,
-          "current_limited_max_pct": 0.0,
-          "failed_runs": []
+        {
+          "seed": 1,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 1.060690665273265,
+          "max_disp_m": 0.00121618173535101,
+          "cam_pitch_during_deg": 28.060844312331525,
+          "walk_after_vx": 0.1448360192559753,
+          "ratio": 1.0089461557277748,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 2,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 1.0690350693269604,
+          "max_disp_m": 0.0012219288978028023,
+          "cam_pitch_during_deg": 28.066644387726665,
+          "walk_after_vx": 0.14713707404835694,
+          "ratio": 1.024975596462329,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 3,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 1.0758484665888843,
+          "max_disp_m": 0.0012144210653712987,
+          "cam_pitch_during_deg": 28.061860394680867,
+          "walk_after_vx": 0.14866185397591541,
+          "ratio": 1.035597407626043,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 4,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 1.0801214146623523,
+          "max_disp_m": 0.0012461909539271108,
+          "cam_pitch_during_deg": 28.061772691864437,
+          "walk_after_vx": 0.1464148472740423,
+          "ratio": 1.0199444727732654,
+          "start_ok": true,
+          "pass": true
         }
-      },
+      ],
+      "n_pass": 5,
+      "n": 5,
       "pass": true
     }
   }

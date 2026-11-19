@@ -1,6 +1,6 @@
 {
-  "name": "model_2750_quick",
-  "created": "2026-11-20T01:41:24+08:00",
+  "name": "r2_s2_it2750_quick",
+  "created": "2026-11-20T02:02:20+08:00",
   "quick": true,
   "verdict": {
     "pass": false,
@@ -138,17 +138,17 @@
     }
   },
   "acceptance_sha256": "b64beff45b6507675599921f4bb926e70be92a78969790c59324b0090294ac31",
-  "elapsed_s": 14.345739364624023,
-  "workers": 4,
+  "elapsed_s": 5.357850074768066,
+  "workers": 5,
   "job_seconds": {
-    "symmetry": 2.1,
-    "stop": 2.3,
-    "random": 2.4,
-    "tracking": 2.9,
+    "symmetry": 2.3,
+    "stop": 2.4,
+    "random": 2.6,
+    "tracking": 3.0,
     "camera": 0.9,
-    "head_override": 1.9,
     "switch": 1.5,
-    "ramp@5": 4.0
+    "head_override": 1.9,
+    "ramp@5": 4.8
   },
   "videos": [],
   "notes": [],
@@ -743,74 +743,6 @@
       },
       "pass": true
     },
-    "head_override": {
-      "baseline_vx": 0.13320336759927617,
-      "trials": [
-        {
-          "seed": 0,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 2.021176695930708,
-          "max_disp_m": 0.0012154065462810662,
-          "cam_pitch_during_deg": 29.78385253048504,
-          "walk_after_vx": 0.13659447992379636,
-          "ratio": 1.0254581575949482,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 1,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 2.0445455625906748,
-          "max_disp_m": 0.0012453055994923238,
-          "cam_pitch_during_deg": 29.784862782231976,
-          "walk_after_vx": 0.1317885349276858,
-          "ratio": 0.9893784016343589,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 2,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 2.020895875731512,
-          "max_disp_m": 0.0012604829693367659,
-          "cam_pitch_during_deg": 29.785077001573573,
-          "walk_after_vx": 0.1344951325504969,
-          "ratio": 1.009697689889544,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 3,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 2.0382486816240957,
-          "max_disp_m": 0.0012188271340298265,
-          "cam_pitch_during_deg": 29.78346982497572,
-          "walk_after_vx": 0.13631637551280584,
-          "ratio": 1.023370339426363,
-          "start_ok": true,
-          "pass": true
-        },
-        {
-          "seed": 4,
-          "stable": true,
-          "fell": false,
-          "max_tilt_deg": 2.040003715680584,
-          "max_disp_m": 0.0012516230027648802,
-          "cam_pitch_during_deg": 29.78169226677775,
-          "walk_after_vx": 0.13285359417248188,
-          "ratio": 0.9973741397601408,
-          "start_ok": true,
-          "pass": true
-        }
-      ],
-      "n_pass": 5,
-      "n": 5,
-      "pass": true
-    },
     "switch": {
       "trials": [
         {
@@ -968,6 +900,74 @@
       ],
       "n_pass": 8,
       "n": 8,
+      "pass": true
+    },
+    "head_override": {
+      "baseline_vx": 0.13320336759927617,
+      "trials": [
+        {
+          "seed": 0,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.021176695930708,
+          "max_disp_m": 0.0012154065462810662,
+          "cam_pitch_during_deg": 29.78385253048504,
+          "walk_after_vx": 0.13659447992379636,
+          "ratio": 1.0254581575949482,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 1,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.0445455625906748,
+          "max_disp_m": 0.0012453055994923238,
+          "cam_pitch_during_deg": 29.784862782231976,
+          "walk_after_vx": 0.1317885349276858,
+          "ratio": 0.9893784016343589,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 2,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.020895875731512,
+          "max_disp_m": 0.0012604829693367659,
+          "cam_pitch_during_deg": 29.785077001573573,
+          "walk_after_vx": 0.1344951325504969,
+          "ratio": 1.009697689889544,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 3,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.0382486816240957,
+          "max_disp_m": 0.0012188271340298265,
+          "cam_pitch_during_deg": 29.78346982497572,
+          "walk_after_vx": 0.13631637551280584,
+          "ratio": 1.023370339426363,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 4,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.040003715680584,
+          "max_disp_m": 0.0012516230027648802,
+          "cam_pitch_during_deg": 29.78169226677775,
+          "walk_after_vx": 0.13285359417248188,
+          "ratio": 0.9973741397601408,
+          "start_ok": true,
+          "pass": true
+        }
+      ],
+      "n_pass": 5,
+      "n": 5,
       "pass": true
     },
     "ramp": {
