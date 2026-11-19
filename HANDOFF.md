@@ -80,7 +80,7 @@ NUM_ENVS=256 ITERATIONS=2 RUN_NAME=smoke ACCEPT_FINAL=quick rl_train/train.sh wa
 ONNX 在 `rl_train/runs/logs/rsl_rl/walk_v2/<日期>_smoke/onnx/model_1.onnx`。
 
 <!-- VERIFY:BEGIN -->
-从 GitHub 重新 clone 到 `/tmp/roboduck_verify`，完全按上面四步执行（只是把命令逐条跑一遍并计时；shell 里带着 ROS 的 `PYTHONPATH`）。最近一次是 **2026-11-20 04:27，commit `b952075`**：
+从 GitHub 重新 clone 到 `/tmp/roboduck_verify`，完全按上面四步执行（只是把命令逐条跑一遍并计时；shell 里带着 ROS 的 `PYTHONPATH`）。表里是 **2026-11-20 04:27，commit `b952075`** 那一次：
 
 | 步骤 | 结果 | 耗时 |
 |---|---|---|
@@ -89,7 +89,7 @@ ONNX 在 `rl_train/runs/logs/rsl_rl/walk_v2/<日期>_smoke/onnx/model_1.onnx`。
 | `accept.py … --quick` | 第一行 `不合格（14 项门槛中 5 项不通过…）`，表格和仓库里的 `baseline_quick/report.md` **逐行相同** | 9 s |
 | 冒烟训练 2 次迭代 + 导出 + 验收 | `training exited with code 0`，导出 `model_1.onnx`，快速验收出报告（不合格，属于预期） | 83 s |
 
-一共验证了三次：第一次 `setup_workspace.sh` 在 git 里没有执行权限（exit 126），修好后第二次（`88e5d71`）通过；r3 配置改过之后又在 `b952075` 上验证了第三次，也通过。
+一共验证了四次：第一次 `setup_workspace.sh` 在 git 里没有执行权限（exit 126），修好后第二次（`88e5d71`）通过；r3 配置改过之后又在 `b952075` 上验证了第三次，也通过；最后在 `44c66f5`（06:59，之后只改了文档和策略文件）上跑了第四次，四步结果相同（5 s / 14 s / 9 s，快速验收逐行相同 / 82 s，这次 shell 里没有 `PYTHONPATH`、GPU 上同时在训 kick）。
 <!-- VERIFY:END -->
 
 ## 3. 怎么训练
