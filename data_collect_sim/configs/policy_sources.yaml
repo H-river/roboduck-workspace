@@ -54,3 +54,14 @@ walk_v2_r2_s1_it2750:
   robot_constants_py: ../mjlab_microduck/src/mjlab_microduck/robot/microduck_constants.py
   mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_walk.xml
   mjlab_velocity_command_py: ../mjlab_microduck/.venv/lib/python3.13/site-packages/mjlab/tasks/velocity/mdp/velocity_command.py
+
+kick_v2_r1_stand2750_s1_it3999:
+  kind: kick_v2
+  # kick v2, round 1 with the walk v2 r2 s1 it2750 standing pose as start offsets
+  # (rl_train/configs/kick_v2_r1_stand2750.yaml), seed 1, last checkpoint. Trained 2026-11-20 03:13-04:22.
+  # Passes every kick gate with walk_v2_r2_s1_it2750 (outputs/acceptance/recommended/); so do it3000-it3750.
+  onnx: outputs/policies/kick_v2_r1_stand2750_s1_it3999.onnx
+  checkpoint: ../rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/model_3999.pt
+  agent_yaml: ../rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/params/agent.yaml
+  env_yaml: ../rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/params/env.yaml
+  kick_config_yaml: ../rl_train/configs/kick_v2_r1_stand2750.yaml

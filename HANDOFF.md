@@ -6,25 +6,35 @@
 ## 1. 一句话现状
 
 <!-- STATUS:BEGIN -->
-**walk 有一个全部门槛通过的候选（walk v2 r2 s1 it2750），但还没有定版；kick 没有能用的。**
+**有一个通过全部门槛的组合了：walk v2 r2 s1 it2750 + kick v2（今晚训的）it3999，14 项门槛全过**（`data_collect_sim/outputs/acceptance/recommended/`）。还没在真机上试过，也还没覆盖坡道训练（walk 是平地训练的）。
 
-| 策略 | 文件 | 验收（完整模式） | 问题 |
+| 策略 | ONNX / card（`data_collect_sim/outputs/policies/`、`configs/policies/`） | 验收（完整模式） | 问题 |
 |---|---|---|---|
-| walk v1（在用，第一阶段） | `walk_flat_model1300.onnx`（走）+ `walk_flat_model2600.onnx`（站） | 不合格：停住 0/39、直走偏航 0.129 rad/s | 1300 走起来停不下来，只能靠 2600 零命令站住；直走向左偏（vx 0.2 时 +0.13 rad/s）；右转弱于左转 |
-| **walk v2 r2 s1 it2750**（第二阶段最好的候选） | `walk_v2_r2_s1_it2750.onnx` | **walk 门槛全部通过**（停住 39/39 最长 0.50 s、偏航 ≤ 0.02、±ωz 比 0.98 / 0.96、5° 坡 10/10、头部接管 20/20、热切换 25/25） | 只在平地训练过；没见过坡道 / 头部接管 / 6–7.5 V 电压 / 40 ms 延迟（这些是 r3 的内容） |
-| kick stage 1（AI-FanGe，在用） | `kick_af_stage1_model3999.onnx` | 和 walk v1 的站姿（2600）配：踢球窗口 0/50；**和 walk v2 r2 it2750 配：窗口 52%（26/50）、偏差 +0.6°、交接 20/20** | 盲踢（观测里没有球）；只有站姿接近 HOME 时才出脚；窗口窄 |
+| **walk v2 r2 s1 it2750**（推荐，第二阶段） | `walk_v2_r2_s1_it2750` | **walk 门槛全过**：停住 39/39（最长 0.50 s）、直走偏航 0.018 rad/s、±ωz 比 0.98 / 0.96、5° 坡 10/10 × 2、头部接管 20/20、热切换 25/25 | 平地训练，没见过坡道 / 头部接管 / 6–7.5 V / 40 ms（但验收环境里 6 V + 40 ms 照样能走）；6° 上坡 0/10（只记录，旧 walk 是 10/10） |
+| **kick v2 r1 s1 it3999**（推荐，今晚） | `kick_v2_r1_stand2750_s1_it3999` | **kick 门槛全过**（配 r2 it2750）：窗口 50/50、平均偏差 −1.0°、低头测球后 100%、walk→stand→kick→stand→walk 20/20（20 次都踢中）；it3000–3750 也全过 | **观测 53 维**（多了球的位置），部署端还不支持（见"已知的坑"）；球的参数（15 g、半径 3.5 cm、摩擦）是假设值 |
+| walk v1（第一阶段在用） | `walk_flat`（1300 走）+ `walk_flat_2600`（站） | 不合格：停住 0/39、直走偏航 0.129 rad/s | 1300 停不下来；直走向左偏；右转弱 |
+| kick stage 1（AI-FanGe，第一阶段在用） | `kick` | 和 2600 站：窗口 0/50；和 r2 it2750 站：52%、偏差 +0.6° | 盲踢（51 维，观测里没有球）；只有站姿接近 HOME 才出脚 |
 
-下一步要训练（第二阶段的目标）：
-- **walk v2**：修停不下来、直走偏航、右转弱，覆盖 5° 坡，容忍站立时的头部接管。r2（平地）已经解决前三项；**r3 = r2 + 坡道 + 头部接管 + 电压 / 延迟随机化**，是定版轮。
-- **kick v2**：扩大踢球窗口（x 0.06–0.12、y 脚线 ±0.03 m）、修右偏（横向球速惩罚）、加球位置观测、起始姿态覆盖 walk v2 的站姿。
-
-今晚额外训了 r3 和 kick v2（用户要求"留些能直接用的 ONNX"），结果见下面"今晚的训练"。
+下一步：
+- **walk v2 定版轮（r3：坡道 + 头部接管 + 电压 / 延迟随机化）还没成功**。从零训练学得很慢（第 1250 次迭代还不会走），热启动见"今晚的训练"。建议下一轮给坡道加地形课程（"已知的坑"第 10 条）。
+- kick v2：部署端支持 53 维观测；真机球的参数；再跑一个 seed 确认。
+- 真机验证（第 7 节的参数）。
 <!-- STATUS:END -->
 
 ### 今晚的训练
 
 <!-- TRAINING:BEGIN -->
-（训练进行中，结果待补）
+用户追加了"时间多就多跑几个动作、留些能直接用的 ONNX"，所以今晚在 GPU 上排了训练（`rl_train/runs/queue_20261120*.sh`，过程见 `HANDOFF_NOTES.md`）：
+
+| run | 结果 |
+|---|---|
+| **kick v2 r1 s1**（`kick_v2_r1_stand2750`，2048 env × 4000 次迭代，69 min） | **成功**。it3000 / 3250 / 3500 / 3750 / 3999 的完整 kick 验收全部合格（窗口 96–100%、偏差 −0.4° 到 −1.3°、交接 20/20），中间 it1000–2000 只有偏差不过（−4° 到 −5°）。导出 `kick_v2_r1_stand2750_s1_it3999.onnx`。报告 `outputs/acceptance/scan_kick_v2_s1/`、`recommended/` |
+| walk v2 r3 s1，从零（4096 env） | 第一次（00:46）摔倒判据 bug，作废；第二次（01:58）到第 1250 次迭代**还不会走**（mjlab 里和验收环境里都 ≈ 0 m/s），停在 `model_1250`，排在最后续训 |
+| walk v2 r3，从 r2 s1 it2750 热启动 | 第一次第 ~3032 次迭代 NaN 中断（已加 NaN 终止项）；第 3000 次迭代比起点差（停住、5° 坡、头部接管不过）。重跑中 |
+
+<!-- WALKRESULT:BEGIN -->
+（walk r3 的最终结果待补）
+<!-- WALKRESULT:END -->
 <!-- TRAINING:END -->
 
 ## 2. 10 分钟上手
@@ -87,6 +97,7 @@ ONNX 在 `rl_train/runs/logs/rsl_rl/walk_v2/<日期>_smoke/onnx/model_1.onnx`。
 - 改训练内容 = 新建一个 YAML（例如 `walk_v2_r4.yaml`，`inherit: walk_v2_r3.yaml`），**不要改已经训过的配置**（结果就对不上了）。所有可调量都在 YAML 里，`rl_tasks/walk_v2.py`、`kick_v2.py` 只负责接线。
 - 现有配置：`walk_v2_r1`（停住 + 对称，转向被改坏，弃用）、`walk_v2_r2`（r1 + 只看偏航的跟踪项，平地）、**`walk_v2_r3`**（r2 + 坡道 + 头部接管 + 电压 6–7.5 V + 延迟 10–40 ms）、`kick_v2_r1`（站姿偏移留空）、**`kick_v2_r1_stand2750`**（站姿偏移 = walk v2 r2 s1 it2750 的实测站姿）。
 - 上游任务 `Mjlab-Velocity-Microduck` 只是 walk v2 的基础配置，一般不直接训。
+- **从已有策略热启动**（例如在 r2 it2750 上加鲁棒性）：`RUN_NAME=<名字> ITERATIONS=1500 rl_train/train.sh walk_v2_r3 --agent.resume True --agent.load-run 2026-10-24_23-32-51_walk_v2_r2_s1 --agent.load-checkpoint model_2750.pt`（run 目录要在同一个 experiment 下，即 `rl_train/runs/logs/rsl_rl/walk_v2/`；checkpoint 编号从 2750 往后接）。
 
 ### `rl_train/train.sh`
 ```bash
@@ -214,27 +225,30 @@ cd data_collect_sim
 7. 上游 `microduck_velocity_env_cfg.py` 的 lambda 让后期课程（第 3000 次迭代提高速度和转向范围）永远不生效：今晚已修（`patches/mjlab_microduck/0003`），证据 `rl_train/checks/curriculum_{fixed,buggy}.json`。walk v2 没用课程，不受影响。
 8. **坡道配置（r3）在 4096 env 下显存溢出**（2026-10-25 第一次启动 r3 就是这样失败的）：mujoco_warp 遇到 hfield 会把每个 world 的接触 / 约束缓冲放大到 128 / 1024。已在 `walk_v2_r3.yaml` 里设 `sim: {nconmax: 48, njmax: 128}`（实测坡道上每个 world 最多 8 个接触、34 行约束）。新的地形配置要重新量（`HANDOFF_NOTES.md` 第 1 步有测量脚本的做法）。
 9. **r3 的摔倒判据**（今晚发现并修好）：上游的 `fell_over` 是躯干**绝对**高度 < 0.10 m；坡道地形的倒金字塔中心在 z < 0，20% 的出生点一出生就被判摔倒（实测 103/512 个环境 25 步内全部终止），r3 第一次训练（00:46–02:00）因此作废（`rl_train/runs/discarded/`）。`walk_v2_r3.yaml` 改成离**正下方地面**的高度（`terminations.fell_over.type: trunk_clearance`，躯干上加了一个测高射线传感器），平地上和原判据等价（差 < 1 mm）。**新的地形配置先跑 `rl_train/tests/check_terrain_termination.py <任务>`**，看出生后有没有成片终止。
-10. **seed 之间差别很大**：r2 的 seed 1 有两个 checkpoint 全过，seed 2 一个都没过（停住、5° 上坡）。每个配置至少 2 个 seed。
-11. **停住在门槛边缘**：相邻 checkpoint 之间停住时间在 0.4–1.3 s 之间跳（走着突然归零正好在迈步中间，要多走半步）。定版要看多个 checkpoint + 10 seed 扩展测试。
-12. **5° 上坡是全有或全无**（0/10 或 10/10）：平地策略到坡上会稳定卡住，r3 的坡道训练就是针对它。
-13. 头部在关节限位内最多再低头 28.6°（neck 0.10、head 0.60 rad），所以头部接管训练和测试用 15–28°。
-14. 镜像对称增强在 r1 起都开着（`symmetry:`）。镜像算子在 `rl_tasks/mdp_v2.py`，验证 `rl_train/tests/check_mirror.py`；改观测或关节顺序时要同步改。
-15. kick v2 的起始站姿偏移（`kick_v2_r1_stand2750.yaml`）是从 walk v2 r2 s1 it2750 实测的；**walk v2 定版后站姿变了，要用 `data_collect_sim/scripts/stand_pose.py` 重新量、训新的一轮。**
-16. 第一阶段发现 kick stage 1 的结果偏乐观：之前的测试只站了 1 s，真实执行器要低头测球、站得更久，这时 stage 1 根本不出脚（基线 0/50）。**换成 walk v2 r2 it2750 站的话 stage 1 能踢**（窗口 52%、偏差 +0.6°、交接 20/20），说明问题在站姿离 HOME 太远。
-17. **`train.sh` 在跑的时候不要改它**：bash 是边读边执行的，改了文件长度，正在跑的那个会读错位置（今晚差点踩到）。要改就等它跑完，或者复制一份改。
+10. **r3 从零训练学得很慢**：到第 1250 次迭代还不会走（mjlab 和验收环境里都 ≈ 0 m/s，带探索噪声也只有 0.01 m/s），r2 同一阶段已经会走。低电压和长延迟本身不是原因（r2 it2750 在验收环境里 6 V + 40 ms 照样走），剩下的嫌疑是**坡道一开始就随机 0–6°、没有地形课程**，加上 `stand_still` / `no_stepping` 让"站着不动"成了容易陷进去的局部最优（没做消融，是推测）。建议：下一轮开 mjlab 的地形课程（`TerrainGeneratorCfg(curriculum=True)` + `mdp.terrain_levels_vel` 课程项；`walk_v2.py` 现在会把 `cfg.curriculum` 清空，要加接线），或者像今晚这样从 r2 热启动（`--agent.resume True --agent.load-run <run> --agent.load-checkpoint model_2750.pt`；walk v2 没有课程，恢复迭代计数没有副作用）。**训练日志里的跟踪奖励 / 转向增益会误导**（零命令的环境站着就拿满分，而且是带噪声的），要以 `train.sh` 每 500 次迭代的验收为准。
+11. **坡道上偶尔物理发散成 NaN**：rsl_rl 一遇到 NaN 观测就整个训练退出（今晚热启动那一轮第 ~3032 次迭代就这样）。`walk_v2_r3.yaml` 已加 `terminations.nan_state: true`（mjlab 的 `nan_detection`，把发散的环境重置掉）。新配置也要加。
+12. **seed 之间差别很大**：r2 的 seed 1 有两个 checkpoint 全过，seed 2 一个都没过（停住、5° 上坡）。每个配置至少 2 个 seed。
+13. **停住在门槛边缘**：相邻 checkpoint 之间停住时间在 0.4–1.3 s 之间跳（走着突然归零正好在迈步中间，要多走半步）。定版要看多个 checkpoint + 10 seed 扩展测试。
+14. **5° 上坡是全有或全无**（0/10 或 10/10）：平地策略到坡上会稳定卡住，r3 的坡道训练就是针对它。
+15. 头部在关节限位内最多再低头 28.6°（neck 0.10、head 0.60 rad），所以头部接管训练和测试用 15–28°。
+16. 镜像对称增强在 r1 起都开着（`symmetry:`）。镜像算子在 `rl_tasks/mdp_v2.py`，验证 `rl_train/tests/check_mirror.py`；改观测或关节顺序时要同步改。
+17. kick v2 的起始站姿偏移（`kick_v2_r1_stand2750.yaml`）是从 walk v2 r2 s1 it2750 实测的；**walk v2 定版后站姿变了，要用 `data_collect_sim/scripts/stand_pose.py` 重新量、训新的一轮。**
+18. 第一阶段发现 kick stage 1 的结果偏乐观：之前的测试只站了 1 s，真实执行器要低头测球、站得更久，这时 stage 1 根本不出脚（基线 0/50）。**换成 walk v2 r2 it2750 站的话 stage 1 能踢**（窗口 52%、偏差 +0.6°、交接 20/20），说明问题在站姿离 HOME 太远。
+19. **kick v2 的 ONNX 是 53 维输入**（51 维 walk 观测 + 球在机器人 yaw 坐标系下的 (x, y)，执行器在出脚前测一次，踢球过程中不变）。**部署端 `microduck/src/moves/walk.py` 会把 53 维的模型当成"带步态相位"的模型，在最后 2 维喂相位**——直接用它加载 kick v2 会把球的位置喂错且不报错。上真机前要写一个 kick 的 move（照 `data_collect_sim/duckrt/switcher.py` 的 KICK 流程：站稳 → 测球 → 播放 `duration_s` → 站稳）。
+20. **`train.sh` 在跑的时候不要改它**：bash 是边读边执行的，改了文件长度，正在跑的那个会读错位置（今晚差点踩到）。要改就等它跑完，或者复制一份改。
 
 **模型 / 部署**
-18. `robot_allcollisions.xml` 把 hip_yaw 限位放宽到 ±0.436，训练用 `robot_walk.xml` 的 ±0.175。验收环境用 allcollisions 的碰撞几何 + walk 的关节限位（`configs/sim.yaml: robot.joint_ranges_from`）。
-19. XML 里的 `imu` site 正好是传感器帧的逆；训练和部署都不读它。**不要用 XML 的 imu 传感器模拟 BNO08x**（x、z 会反号；`microduck` 里的 MuJoCoController 就是这么做的）。
-20. 部署端 `scale_velocity` 允许的速度是训练范围的 2–4 倍（vx 0.7、ωz 1.5 / 3.0 vs 训练 0.25 / 0.375 / 0.75）。验收环境的切换器按 card 的 `command_range` 裁剪；**上真机前部署端也要裁剪**。
-21. ONNX metadata 里的 `default_joint_pos` 只保留 3 位小数，部署端拿它当偏置；card 里是全精度。
-22. walk 的头部 4 个关节由策略自己输出，没有头部命令；头部接管是执行器在 STAND 模式下覆盖这 4 个目标（`sim.yaml` 的 `head_override`）。
+21. `robot_allcollisions.xml` 把 hip_yaw 限位放宽到 ±0.436，训练用 `robot_walk.xml` 的 ±0.175。验收环境用 allcollisions 的碰撞几何 + walk 的关节限位（`configs/sim.yaml: robot.joint_ranges_from`）。
+22. XML 里的 `imu` site 正好是传感器帧的逆；训练和部署都不读它。**不要用 XML 的 imu 传感器模拟 BNO08x**（x、z 会反号；`microduck` 里的 MuJoCoController 就是这么做的）。
+23. 部署端 `scale_velocity` 允许的速度是训练范围的 2–4 倍（vx 0.7、ωz 1.5 / 3.0 vs 训练 0.25 / 0.375 / 0.75）。验收环境的切换器按 card 的 `command_range` 裁剪；**上真机前部署端也要裁剪**。
+24. ONNX metadata 里的 `default_joint_pos` 只保留 3 位小数，部署端拿它当偏置；card 里是全精度。
+25. walk 的头部 4 个关节由策略自己输出，没有头部命令；头部接管是执行器在 STAND 模式下覆盖这 4 个目标（`sim.yaml` 的 `head_override`）。
 
 **验收工具**
-23. `--quick` 只用于训练中挑 checkpoint，quick 结论和完整模式可能不同（例如基线的原地转速比 quick 0.80 ✘、完整 0.81 ✔）。
-24. 每个验收进程约 1.3 GB 内存（EGL + 模型 + onnxruntime），和训练同时跑时注意内存。
-25. "低头后再踢"门槛是"成功率 ≥ 直接踢"：两个都是 0% 时也算通过，要结合踢球窗口那一项看。
-26. `eval_candidates.py` 是第二阶段的批量扫描工具（只跑 6 项 walk 测试），新工作用 `accept.py`。
+26. `--quick` 只用于训练中挑 checkpoint，quick 结论和完整模式可能不同（例如基线的原地转速比 quick 0.80 ✘、完整 0.81 ✔）。
+27. 每个验收进程约 1.3 GB 内存（EGL + 模型 + onnxruntime），和训练同时跑时注意内存。
+28. "低头后再踢"门槛是"成功率 ≥ 直接踢"：两个都是 0% 时也算通过，要结合踢球窗口那一项看。
+29. `eval_candidates.py` 是第二阶段的批量扫描工具（只跑 6 项 walk 测试），新工作用 `accept.py`。
 
 ## 7. 待真机确认的参数
 
@@ -266,6 +280,7 @@ cd data_collect_sim
 
 **`rl_train/`**
 - `walk_v2.py` 支持配置里的 `sim: {nconmax, njmax}`；`walk_v2_r3.yaml` 设了 48 / 128（修 r3 显存溢出）。
+- `walk_v2.py` 支持 `terminations.nan_state: true`（坡道上偶发的 NaN 不再让整个训练退出），`walk_v2_r3.yaml` 打开了它。
 - `walk_v2.py` / `mdp_v2.py` 支持 `terminations.fell_over.type: trunk_clearance`（离正下方地面的高度），`walk_v2_r3.yaml` 用它（修 r3 的倒金字塔一出生就"摔倒"）；`tests/check_terrain_termination.py`。
 - 新增 `configs/kick_v2_r1_stand2750.yaml`（kick v2 的起始站姿用 r2 s1 it2750 实测值；原配置没动）。
 - 新增 `train.sh`、`tests/check_curriculum.py`、`checks/`、`reference/ai_fange_kick_stage1/`。
@@ -276,6 +291,7 @@ cd data_collect_sim
 - `configs/acceptance.yaml`：只**增加**了上面这些参数、`quick:` 段、`videos:`、`runner:`；**已有门槛一个没改**。
 - `configs/policy_sources.yaml`：kick 的配置路径指向仓库里的副本；登记 `walk_v2_r2_s1_it2750`。
 - `outputs/policies/walk_v2_r2_s1_it2750.onnx` + `configs/policies/walk_v2_r2_s1_it2750.yaml`（从候选里提出来，作为 kick 验收和自检用的 walk）。
+- `outputs/policies/kick_v2_r1_stand2750_s1_it3999.onnx` + card（今晚训的 kick v2）；验收报告 `outputs/acceptance/recommended/`（推荐组合）、`baseline/`、`baseline_quick/`、`r2_s1_it*/`、`scan_r2_s2/`、`scan_kick_v2_s1/`，对比表 `compare_*.md`。
 - 加 `.python-version`；`.gitignore` 改成只提交报告和命名的 ONNX。
 
 **workspace**
@@ -302,6 +318,7 @@ cd data_collect_sim
 | `rl_train/runs/logs/rsl_rl/walk_v2/2026-10-24_23-32-51_walk_v2_r2_s1/model_2750.pt` | 4 695 797 | `bb288bba9a364c9f03f84c82a7a40d822c0b85ea56e6cbc5214446f369f822b2` | walk v2 候选 |
 | `rl_train/runs/logs/rsl_rl/walk_v2/2026-10-24_23-32-51_walk_v2_r2_s1/model_1500.pt` | 4 695 797 | `e80b643a3a4925f25a3ccaef1e5713d1101f2e0deb41c3dda7403ee1a472dc2d` | walk v2 候选 |
 | `~/microduck_ws/runs/ai_fange_kick/models/2026-10-06_13-14-13_af_kick_stage1/model_3999.pt` | 4 745 141 | `4c43bcc5b32d0c23a1fda3f7401052d85e1e555cbb1475eae173782b611422a4` | kick stage 1 |
+| `rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/model_3999.pt` | 4 769 717 | `39d28d74c80802db5f5b39bf9384b8f97bdf012422e7e9250e4bbd943492ce56` | kick v2（推荐） |
 <!-- FILES:END -->
 
 最省事的传法：把整个 run 目录（含 `params/`）打包：`rl_train/runs/logs/rsl_rl/`（约 300 MB，所有 v2 run）、`mjlab_microduck/logs/rsl_rl/mjlab_microduck_velocity/2026-10-16_17-43-09/`、`mjlab_microduck/checkpoints/walk_stable_5s/model_1300.pt`、`~/microduck_ws/runs/ai_fange_kick/models/2026-10-06_13-14-13_af_kick_stage1/`，放回同样的相对路径。
