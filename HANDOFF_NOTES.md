@@ -177,3 +177,9 @@ prompt 里"策略和验收"那几条和 `data_collect_sim/NOTES.md`、`rl_train/
 | walk_v2_r3warm_s1_it3000_candidate | 31/39，1.18 s | 35/39，1.32 s | 24/39，1.08 s |
 
   → r2 的 39/39 依赖标称条件；真机电压 / 延迟偏一点就可能不达标。写进 HANDOFF 已知坑。
+
+### 第 1 步补记：r3 从零续训的结果（05:33–06:55）
+- `walk_v2_r3_s1_cont`：从 `model_1250` 续训 1750 次迭代到 2999（80 min）。`train.sh` 的验收：it1500 / 2000 三项不过（停住 / 5° 坡 × 2），it2500 四项（+ 原地转比），it2999 五项（+ 头部接管 0/20）。所有速度命令下实际速度 ≈ 0，"不摔"只是因为不动。
+- mjlab 里复查（`mjlab_walkcheck.py`，固定 vx = 0.2，16 env，平面 / 坡道）：it2999 都是 0.000 m/s → 不是 sim2sim，是训练本身陷进了"站着不动"。
+- 训练曲线：`Episode_Reward/track_linear_velocity` 最后 1.12，会走的热启动 run 是 1.10，r2 s1 是 1.34；平均 episode 长度 786 / 798 / 916。只看这条曲线分不出"会走"和"站着"。
+- 结论写进 HANDOFF（WALKRESULT），这个 run 的 ONNX 不放进 `outputs/policies/`。
