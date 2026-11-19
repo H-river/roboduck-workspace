@@ -1,0 +1,3 @@
+# Obstacles: solid boxes, >= 15 cm tall (taller than the robot's camera can step over / ignore).
+box_20cm: {type: obstacle, size_m: [0.20, 0.20, 0.20]}
+box_wall: {type: obstacle, size_m: [0.40, 0.10, 0.15]}

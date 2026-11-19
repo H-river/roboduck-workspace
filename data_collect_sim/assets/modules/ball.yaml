@@ -1,0 +1,2 @@
+# Balls: radius / mass / friction default to the kick training ball (configs/policies/kick.yaml task.ball).
+ball_kick: {type: ball}

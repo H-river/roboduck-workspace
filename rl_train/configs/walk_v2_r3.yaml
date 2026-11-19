@@ -1,0 +1,30 @@
+# walk v2, round 3: round 2 + robustness group: gentle planar slopes, head takeover while
+# standing, wider actuator randomization (battery voltage, command latency).
+inherit: walk_v2_r2.yaml
+
+terrain:
+  type: slopes
+  max_slope_deg: 6.0              # field limit 5 deg + margin; up and down (pyramid + inverted pyramid)
+  patch_size_m: [8.0, 8.0]
+  platform_width_m: 1.0
+  border_width_m: 5.0
+  num_rows: 10
+  num_cols: 20
+  proportions: {flat: 0.6, pyramid: 0.2, pyramid_inv: 0.2}
+
+# mujoco_warp buffers per world. Its default for a model with a height field (nconmax 128,
+# njmax 1024) ran out of GPU memory at 4096 envs on the 12 GB 4080 (the first r3 launch,
+# 2026-10-25). Measured on these slopes (512 envs x 1500 steps, random actions): at most 8
+# contacts and 34 constraint rows per world -> 48 / 128 keeps a 4-6x margin.
+sim:
+  nconmax: 48
+  njmax: 128
+
+head_override:
+  pitch_down_deg_range: [15.0, 28.0]   # task asked 15-35; 28.6 is the joint-limit maximum (NOTES §0.3)
+  duration_s_range: [2.0, 4.0]
+  start_rate_per_s: 0.25
+
+actuator:
+  vin_range: [6.0, 7.5]           # was 7-8 V; real pack unknown (README says 6 V)
+  delay_steps: [2, 8]             # was 3-6 physics steps (15-30 ms) -> 10-40 ms

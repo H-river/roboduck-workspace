@@ -1,0 +1,99 @@
+# Test parameters (scripts/*_test.py, camera_check.py). Velocities m/s, rad/s; times s.
+
+walk_test:
+  policy: walk_flat
+  random:
+    seeds: 20
+    duration_s: 60.0
+    segment_s: [2.0, 5.0]       # each command held for U(2, 5) s
+    # commands uniform in the card's command_range box
+  fall:
+    trunk_z_min: 0.08           # privileged check in addition to the IMU fall_flag
+  tracking:
+    hold_s: 8.0
+    measure_last_s: 5.0
+    seeds: 3
+    commands:                   # [vx, vy, wz]
+      - [0.10, 0.0, 0.0]
+      - [0.15, 0.0, 0.0]
+      - [0.20, 0.0, 0.0]
+      - [0.25, 0.0, 0.0]
+      - [-0.15, 0.0, 0.0]
+      - [-0.25, 0.0, 0.0]
+      - [0.0, 0.15, 0.0]
+      - [0.0, -0.15, 0.0]
+      - [0.0, 0.0, 0.375]
+      - [0.0, 0.0, -0.375]
+      - [0.0, 0.0, 0.6]         # turn in place (card rule: up to 0.75 when vx = vy = 0)
+      - [0.0, 0.0, -0.6]
+      - [0.2, 0.0, 0.3]         # walking while turning
+      - [0.2, 0.0, -0.3]
+      - [0.15, 0.1, 0.0]
+  zero_command:
+    duration_s: 10.0
+    lift_threshold_m: 0.003     # foot rising more than this above its standing height = a step
+  settle:                       # walk -> zero command: time until standing still
+    seeds: 10
+    walk_cmd: [0.2, 0.0, 0.1]
+    walk_s: 4.0
+    speed_max: 0.02             # m/s, base horizontal speed
+    yaw_rate_max: 0.1           # rad/s
+    hold_s: 0.2                 # condition must hold this long
+    timeout_s: 3.0
+  videos:
+    fps: 25
+    turn_in_place: {cmd: [0.0, 0.0, 0.6], duration_s: 8.0}
+    walk_turn: {cmd: [0.2, 0.0, 0.3], duration_s: 8.0}
+    fall_pre_s: 8.0
+    fall_post_s: 2.0
+  realtime:
+    duration_s: 20.0
+    cmd: [0.2, 0.0, 0.1]
+    cpu: 2                      # pin the process to this core
+
+camera_check:
+  settle_s: 1.5                 # stand before measuring
+  projection:
+    marker_radius_m: 0.01
+    tolerance_m: 0.01           # acceptance: pixel_to_ground error < 1 cm
+    verify_scale: 4             # acceptance render at 4x the camera resolution (K scaled)
+    # (pitch_down_deg override, marker grid x list, y list) -- default camera sees ground >= ~0.58 m
+    variants:
+      - {pitch_down_deg: null, xs: [0.7, 1.0, 1.5, 2.0, 2.5], ys: [-0.4, 0.0, 0.4]}
+      - {pitch_down_deg: 35.0, xs: [0.25, 0.35, 0.5, 0.7, 1.0], ys: [-0.15, 0.0, 0.15]}
+    walking_frame: {cmd: [0.2, 0.0, 0.0], at_s: 3.0}
+  visibility:
+    flag_mat_m: 0.40
+    flag_distances_m: [0.5, 1.0, 2.0, 3.0]
+    ball_extra_distances_m: [0.15, 0.3, 0.5, 1.0]   # ball at x = d, y = +0.3 (left of the mats)
+    sweep_pitch_down_deg: [0, 20, 30, 40, 50, 60]
+    sweep_fovy_deg: [45, 60, 75, 90]
+  jitter:
+    speeds: [0.1, 0.2, 0.25]
+    duration_s: 20.0
+    warmup_s: 2.0
+
+kick_test:
+  layout: kick_test
+  offsets_m: [-0.03, -0.015, 0.0, 0.015, 0.03]   # ball offset from the window centre, per axis (training noise +-0.015)
+  seeds: 4
+  walk_before: {cmd: [0.15, 0.0, 0.0], walk_s: 3.0, seeds: 10}   # kick right after walking (hot handoff)
+  success: {min_ball_speed: 0.3, max_dir_err_deg: 30.0}            # ball speed after the kick, direction vs robot heading
+  settle_joint_speed: 0.5      # rad/s, max joint speed below this = kick motion finished
+  record_s: 5.0                # play time used for measuring (training episode length)
+  verify_seeds: 10             # re-run at the shortened duration_s, standing start and after walking
+  video_fps: 25
+
+ramp_test:
+  angles_deg: [0, 3, 5, 7]
+  runs: 10                      # per angle and direction
+  speed_fraction: 0.6           # of the card's vx upper limit (0.6 x 0.25 = 0.15 m/s)
+  extra_full_speed_run: true    # one more run per angle/direction at the vx upper limit
+  start_noise: {xy_m: 0.02, yaw_deg: 3.0}
+  timeout_s: 40.0
+  fall_trunk_height_m: 0.07     # trunk height above the ground below it
+  # variant B: executor-like 10 Hz heading + centre-line hold (privileged pose), vx unchanged
+  steer: {k_heading: 2.0, k_lateral_rad_per_m: 3.0, max_heading_corr_deg: 30.0}
+  up:   {layout: ramp_test,      success: "reach the top platform centre"}
+  down: {layout: ramp_test_down, success: "reach the floor 0.25 m past the ramp foot"}
+  video_fps: 25

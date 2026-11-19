@@ -1,0 +1,79 @@
+# Simulation / runtime settings. Paths are relative to data_collect_sim/.
+# Every value that comes from the training config cites it (see NOTES.md §0.2).
+
+robot:
+  # Collision geometry: allcollisions variant (trunk / hips / legs / jaw collide with the floor).
+  mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_allcollisions.xml
+  # The walk policy was trained with robot_walk.xml, whose hip_yaw inner limits are
+  # +-0.1745 rad instead of +-0.4363 (NOTES §0.1-3b). Joint ranges are copied from this
+  # file at load time; set to null to keep the allcollisions ranges.
+  joint_ranges_from: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_walk.xml
+  # STAND keyframe (= training HOME_FRAME) is read from this scene file by joint name.
+  keyframes_from: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/scene.xml
+  init_keyframe: STAND
+  trunk_body: trunk_base
+  # Training CollisionCfg FULL_COLLISION (robot/microduck_constants.py:41-46).
+  foot_geoms: [left_foot_collision, right_foot_collision]
+  foot_contact: {condim: 3, priority: 1, friction_slide: 1.0}
+  # BNO080_MOUNT_QUAT (microduck_velocity_env_cfg.py:82, constants.py IMU_MOUNT_QUAT), wxyz.
+  # Physical sensor frame = body (x) conj(mount); the XML `imu` site is NOT used.
+  imu_mount_quat: [0.7071068, 0.0, 0.7071068, 0.0]
+  head_joints: [neck_pitch, head_pitch, head_yaw, head_roll]
+
+physics:
+  # microduck_velocity_env_cfg.py:107-116 + env.yaml:1253-1270
+  timestep: 0.005
+  integrator: implicitfast
+  cone: pyramidal
+  solver: newton
+  iterations: 10
+  ls_iterations: 20
+  ccd_iterations: 100
+  tolerance: 1.0e-8
+  ls_tolerance: 0.01
+  impratio: 1.0
+  gravity: [0.0, 0.0, -9.81]
+
+actuator:
+  # robot/microduck_constants.py:50-61 (BamActuatorCfg); randomized fields at nominal values.
+  motor_name: xl330
+  model: m6
+  kp_fw: 125            # firmware P gain while a policy runs (= deploy KP_RL)
+  vin: 7.5              # training U(7, 8); deploy BAM_VIN 7.5
+  vin_drop_gain: 0.1    # training U(0, 0.2); midpoint
+  vin_min: 6.0
+  max_current: 1.75
+  vin_max_for_forcerange: 8.0   # bam/mjlab.py:200 uses max(vin_range)
+  # Command delay in physics steps. Training: uniform {3..6}, resampled every physics step.
+  # mode: uniform -> same distribution (seeded RNG); fixed -> always `steps`.
+  delay: {mode: uniform, min_steps: 3, max_steps: 6, steps: 4}
+  # Delay-line content right after reset: hold (current pose, physical) or zeros (what
+  # mjlab training does: all joints commanded to 0 rad for the first `lag` physics steps).
+  reset_target: hold
+
+observation:
+  # Training: IMU 0-1 policy steps (resampled every 64), joint_vel 0-1. Nominal 0 here.
+  delay_steps: {imu: 0, joint_vel: 0}
+
+runtime:
+  # Which policy card plays which role in the switcher (configs/policies/<card>.yaml).
+  # stand: null -> STAND = walk_flat with zero command. walk_flat (model_1300) never stops
+  # once it walks (NOTES §1.4), so STAND uses the same run's last checkpoint (model_2600)
+  # with zero command; the hot switch was tested 25/25 (settle 0.40-0.60 s).
+  policies: {walk_flat: walk_flat, stand: walk_flat_2600, kick: kick}
+  upper_hz: 10            # CommandMsg rate from the executor layer
+  watchdog_s: 0.2         # no CommandMsg for this long -> velocity command zeroed, mode kept
+  # Fall detection from the IMU only (works on the real robot): body up-vector z below
+  # `up_z_min` for `hold_s`. 0.5 = 60 deg tilt, same as the deploy tilt guard (walk.py:59).
+  fall: {up_z_min: 0.5, hold_s: 0.3}
+  # Deploy tilt guard: when tilted past this, skip the policy and hold default_q (walk.py:101-107).
+  tilt_guard_up_z: 0.5
+  # Turn-in-place: when |vx| and |vy| are below this, the card's turn_in_place wz limit applies.
+  turn_in_place_eps: 1.0e-3
+  # Head takeover (CommandMsg.head_pitch_down_deg, STAND only): camera tilt = -d(neck_pitch) + d(head_pitch)
+  # (rl_train/NOTES §0.3). The tilt is split evenly; whatever one joint cannot take (limits
+  # [0.10, 0.60] rad) goes to the other. Max reachable from the default pose: 28.6 deg.
+  head_override: {joints: [neck_pitch, head_pitch], signs: [-1.0, 1.0], max_deg: 28.6}
+
+render:
+  gl: egl

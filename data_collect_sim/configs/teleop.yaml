@@ -1,0 +1,23 @@
+# Teleop viewer (scripts/teleop.py).
+window:
+  head_scale: 3            # head camera image (320x240) shown at this scale
+  inset_width: 300         # top_cam inset, top-right corner (height from the camera aspect)
+  hud_height: 132
+  font_size: 18
+  inset_fps: 15            # top_cam render rate
+command:
+  ramp_time_s: 0.3         # 0 -> full speed (rate limit)
+  gears: [0.5, 1.0]        # Shift toggles: fraction of the card's command_range
+realtime:
+  warn_behind_s: 0.1       # print a warning when the sim falls this far behind the wall clock
+  max_catchup_ticks: 10    # control ticks per display iteration at most
+autopilot:                 # --autopilot: presses the same virtual keys a person would (for headless checks)
+  target: flag_A
+  gear: low                # low = 50 % (vx 0.125); in high gear the left heading drift (~+0.2 rad/s)
+                           # is about as strong as the right steering the policy delivers
+  arrive_m: 0.15           # distance from the flag centre to the trunk
+  turn_deadband_deg: 5
+  walk_max_bearing_deg: 90     # keep W held (steer while walking) unless the target is behind;
+                               # this policy's right turn-in-place is weak and fails on slopes
+  timeout_s: 120
+  screenshot_every_s: 10

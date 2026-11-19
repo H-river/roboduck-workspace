@@ -1,0 +1,2220 @@
+{
+  "grid": [
+    {
+      "offset": [
+        -0.03,
+        -0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1952646857872253,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.323763681066833,
+      "dir_err_deg": -25.6523009310856,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1458789053700045,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2816619669289664,
+      "dir_err_deg": -26.88522513265066,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0011042664888757658
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1645049405257075,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3006361954374137,
+      "dir_err_deg": -25.12357226396003,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006997857346116021
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1775758422497935,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2646891792273247,
+      "dir_err_deg": -25.72776098651523,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005231105649660395
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.203769925747891,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.289234760303377,
+      "dir_err_deg": -6.033869725376189,
+      "motion_end_s": 0.679999999999986,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00048423198021893543
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1233807616491898,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.323262212430287,
+      "dir_err_deg": -7.653522643552356,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00036742596426000973
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1422394000775786,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3678724302081893,
+      "dir_err_deg": -9.039506444913906,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00033342995088572747
+    },
+    {
+      "offset": [
+        -0.03,
+        -0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1388307657133327,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3114719490838533,
+      "dir_err_deg": -9.298744579655233,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 2.7089389565887467e-05
+    },
+    {
+      "offset": [
+        -0.03,
+        0.0
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2160689480581526,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.279692564113262,
+      "dir_err_deg": -4.646987833584931,
+      "motion_end_s": 0.6599999999999864,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005744550092788014
+    },
+    {
+      "offset": [
+        -0.03,
+        0.0
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.157636902669074,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2965054678834584,
+      "dir_err_deg": -6.971669004392053,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0007631240740473277
+    },
+    {
+      "offset": [
+        -0.03,
+        0.0
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1648907421959043,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.330607624950871,
+      "dir_err_deg": -7.919457983680653,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0004960464395367958
+    },
+    {
+      "offset": [
+        -0.03,
+        0.0
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.179788007424879,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3169814145586285,
+      "dir_err_deg": -8.095289326729144,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00029196474551160256
+    },
+    {
+      "offset": [
+        -0.03,
+        0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.164498390000576,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.403406175233206,
+      "dir_err_deg": 3.214956096377297,
+      "motion_end_s": 0.6999999999999855,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005784523812236986
+    },
+    {
+      "offset": [
+        -0.03,
+        0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1007148716059074,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.346785556967997,
+      "dir_err_deg": 0.704321615484058,
+      "motion_end_s": 0.95999999999998,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008214820447498272
+    },
+    {
+      "offset": [
+        -0.03,
+        0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.06709860030794,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.393534955038146,
+      "dir_err_deg": 0.9635878217644118,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.000710104308763948
+    },
+    {
+      "offset": [
+        -0.03,
+        0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0915216368426301,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.371348578224711,
+      "dir_err_deg": 1.1882995429134255,
+      "motion_end_s": 0.8599999999999821,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005477471364551956
+    },
+    {
+      "offset": [
+        -0.03,
+        0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.8434707325364962,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4671911596823195,
+      "dir_err_deg": 20.863215856631932,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        -0.03,
+        0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7857323226543471,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4794734229103583,
+      "dir_err_deg": 17.580393067601612,
+      "motion_end_s": 0.9799999999999796,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00024339432269754324
+    },
+    {
+      "offset": [
+        -0.03,
+        0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7015701202567144,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.540810178802474,
+      "dir_err_deg": 16.042374082654142,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00047290440013289525
+    },
+    {
+      "offset": [
+        -0.03,
+        0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7308457191140841,
+      "t_peak_s": 0.3199999999999936,
+      "ball_travel_m": 2.497671660389188,
+      "dir_err_deg": 17.45385826006099,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.001003223097140682
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2225812520162609,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3969578732706776,
+      "dir_err_deg": -20.21596296860536,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006373189625645814
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.12759031811532,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.369337870595446,
+      "dir_err_deg": -20.5883259465934,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00047351396018111003
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1467836790978998,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3923740780527907,
+      "dir_err_deg": -17.736492243926598,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009489453469595233
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1723207793762271,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4048707060832237,
+      "dir_err_deg": -18.722553916110837,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006089051696402947
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2192020962443155,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3892806371860806,
+      "dir_err_deg": -7.601421495232799,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005229580525895061
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1711260538924917,
+      "t_peak_s": 0.21999999999999575,
+      "ball_travel_m": 2.473320679367713,
+      "dir_err_deg": -8.68156125579528,
+      "motion_end_s": 0.8599999999999821,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008485746586199827
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1993408483789443,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.471002267283986,
+      "dir_err_deg": -9.668133193578191,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005076309978838955
+    },
+    {
+      "offset": [
+        -0.015,
+        -0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1690375369703148,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.509486545466517,
+      "dir_err_deg": -10.823604024949072,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 6.641705724313995e-05
+    },
+    {
+      "offset": [
+        -0.015,
+        0.0
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2578217353916197,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.341730692842303,
+      "dir_err_deg": -6.16546517757287,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005541619160400468
+    },
+    {
+      "offset": [
+        -0.015,
+        0.0
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1750768075567612,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.376044435256283,
+      "dir_err_deg": -7.535256614812285,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009466106636895344
+    },
+    {
+      "offset": [
+        -0.015,
+        0.0
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1853896201864333,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3825917083846035,
+      "dir_err_deg": -8.692784132217142,
+      "motion_end_s": 0.8599999999999821,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00037434026342866855
+    },
+    {
+      "offset": [
+        -0.015,
+        0.0
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2198403446368582,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3756075282119657,
+      "dir_err_deg": -9.361406365852092,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 5.736136058911989e-05
+    },
+    {
+      "offset": [
+        -0.015,
+        0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1556561438658735,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3831689042563142,
+      "dir_err_deg": 5.596189462166944,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.000573385350202793
+    },
+    {
+      "offset": [
+        -0.015,
+        0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.124747356193969,
+      "t_peak_s": 0.21999999999999575,
+      "ball_travel_m": 2.4232330697744033,
+      "dir_err_deg": 4.420913137020759,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.000930436165894527
+    },
+    {
+      "offset": [
+        -0.015,
+        0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0382074446171143,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4632037299022245,
+      "dir_err_deg": 6.483929867319933,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008274501982810101
+    },
+    {
+      "offset": [
+        -0.015,
+        0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0331237688009265,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4214748765104277,
+      "dir_err_deg": 5.801082104038298,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.000287942219949211
+    },
+    {
+      "offset": [
+        -0.015,
+        0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.8457681839772565,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4193914420769893,
+      "dir_err_deg": 21.067670377436503,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        -0.015,
+        0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7892818925835297,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.399031375955099,
+      "dir_err_deg": 19.238172172902686,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0003050712937371636
+    },
+    {
+      "offset": [
+        -0.015,
+        0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.6675461850565444,
+      "t_peak_s": 0.21999999999999575,
+      "ball_travel_m": 2.5274836491472126,
+      "dir_err_deg": 22.649986130259105,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0001627223680784884
+    },
+    {
+      "offset": [
+        -0.015,
+        0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7108893908771392,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4902106118221408,
+      "dir_err_deg": 20.206220037626633,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0003694294205111026
+    },
+    {
+      "offset": [
+        0.0,
+        -0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.986623575765009,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.460890610584502,
+      "dir_err_deg": -14.85559414916322,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        0.0,
+        -0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.8239936615569263,
+      "t_peak_s": 0.7199999999999851,
+      "ball_travel_m": 2.494173863453245,
+      "dir_err_deg": -14.080632595751856,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006531361347865972
+    },
+    {
+      "offset": [
+        0.0,
+        -0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.9418579824532181,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4931899625759697,
+      "dir_err_deg": -12.706157199800383,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006695944674627308
+    },
+    {
+      "offset": [
+        0.0,
+        -0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.8953914966198038,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.454576197618996,
+      "dir_err_deg": -14.06652011636654,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005280452057563612
+    },
+    {
+      "offset": [
+        0.0,
+        -0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1177647689677304,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.489498818472478,
+      "dir_err_deg": -8.863758683611762,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        0.0,
+        -0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.966015434994726,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4660287405764745,
+      "dir_err_deg": -11.569148035277784,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005333947347613
+    },
+    {
+      "offset": [
+        0.0,
+        -0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0747291215416923,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.5539869488245035,
+      "dir_err_deg": -11.577658586259428,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008683758834449606
+    },
+    {
+      "offset": [
+        0.0,
+        -0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0663743064463989,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.561887765942173,
+      "dir_err_deg": -11.59321273379179,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0010411907704259982
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.21032622202282,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.47324836016537,
+      "dir_err_deg": -7.833434364444014,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0840533739490057,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4614288704049194,
+      "dir_err_deg": -9.329574097860414,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00025165572698146454
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1229753084704446,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3350999197567495,
+      "dir_err_deg": -7.188032889711116,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009966784427595798
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1336330702865682,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4555215833303596,
+      "dir_err_deg": -8.952446296404283,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0010690305326696847
+    },
+    {
+      "offset": [
+        0.0,
+        0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.0771546016356164,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3399247754197456,
+      "dir_err_deg": 5.22604948687314,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        0.0,
+        0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.9550293868468792,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.368839600325175,
+      "dir_err_deg": 3.390973406430762,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0002223694913796037
+    },
+    {
+      "offset": [
+        0.0,
+        0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.8983735797118875,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.42195629308885,
+      "dir_err_deg": 7.553721905826272,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006442708111852047
+    },
+    {
+      "offset": [
+        0.0,
+        0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.9335782625045423,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3635793507070373,
+      "dir_err_deg": 5.413698129023846,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.001090148789005596
+    },
+    {
+      "offset": [
+        0.0,
+        0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7602060507916065,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.36591126208694,
+      "dir_err_deg": 22.03756375963043,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006439365302589317
+    },
+    {
+      "offset": [
+        0.0,
+        0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.6220385855917521,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.53451655094994,
+      "dir_err_deg": 28.402763518015835,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0006992012941086645
+    },
+    {
+      "offset": [
+        0.0,
+        0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.3706047336171022,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.098219903961443,
+      "dir_err_deg": 31.182964438056878,
+      "motion_end_s": 0.8599999999999821,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00026521223819714335
+    },
+    {
+      "offset": [
+        0.0,
+        0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.5502039232357663,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.657648168572438,
+      "dir_err_deg": 31.062904633919427,
+      "motion_end_s": 0.7999999999999834,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0006545740293516511
+    },
+    {
+      "offset": [
+        0.015,
+        -0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.4138762567954953,
+      "t_peak_s": 1.5199999999999683,
+      "ball_travel_m": 2.567895941365182,
+      "dir_err_deg": -16.221977243897634,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00020565581809295352
+    },
+    {
+      "offset": [
+        0.015,
+        -0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.015,
+        -0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.37039626239116874,
+      "t_peak_s": 0.6199999999999872,
+      "ball_travel_m": 2.359210355075154,
+      "dir_err_deg": -15.966881039036185,
+      "motion_end_s": 0.8599999999999821,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 1.2505366384391037e-05
+    },
+    {
+      "offset": [
+        0.015,
+        -0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    },
+    {
+      "offset": [
+        0.015,
+        -0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.762278869827032,
+      "t_peak_s": 3.0199999999999365,
+      "ball_travel_m": 2.4451935294428,
+      "dir_err_deg": -12.254507348241566,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00023445359703355706
+    },
+    {
+      "offset": [
+        0.015,
+        -0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.4088415593088236,
+      "t_peak_s": 0.7999999999999834,
+      "ball_travel_m": 2.535067479337135,
+      "dir_err_deg": -13.650688684952957,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.000828574645255542
+    },
+    {
+      "offset": [
+        0.015,
+        -0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.6895893973828946,
+      "t_peak_s": 1.9399999999999593,
+      "ball_travel_m": 2.4297357910854562,
+      "dir_err_deg": -12.598864210656519,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00034188397471349163
+    },
+    {
+      "offset": [
+        0.015,
+        -0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7266652444951086,
+      "t_peak_s": 0.6999999999999855,
+      "ball_travel_m": 2.4951519082527485,
+      "dir_err_deg": -13.420820962875661,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008241116796278702
+    },
+    {
+      "offset": [
+        0.015,
+        0.0
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.8811043557618021,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.299097382967749,
+      "dir_err_deg": -7.019441970250084,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005390855286636909
+    },
+    {
+      "offset": [
+        0.015,
+        0.0
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.6912630404850553,
+      "t_peak_s": 1.3599999999999717,
+      "ball_travel_m": 2.308218331013936,
+      "dir_err_deg": -3.974090208478332,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0007450673254842111
+    },
+    {
+      "offset": [
+        0.015,
+        0.0
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7714249122831042,
+      "t_peak_s": 1.2199999999999747,
+      "ball_travel_m": 2.243537155246279,
+      "dir_err_deg": -0.1266420037328164,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0007467400422492831
+    },
+    {
+      "offset": [
+        0.015,
+        0.0
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7104328318662466,
+      "t_peak_s": 1.5599999999999674,
+      "ball_travel_m": 2.2427428309988136,
+      "dir_err_deg": -0.9453963068866791,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008145417784810038
+    },
+    {
+      "offset": [
+        0.015,
+        0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.7253954486398828,
+      "t_peak_s": 1.2199999999999747,
+      "ball_travel_m": 2.3636935235757375,
+      "dir_err_deg": 12.655309450683118,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005633695401865979
+    },
+    {
+      "offset": [
+        0.015,
+        0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.38151575001947857,
+      "t_peak_s": 0.6399999999999868,
+      "ball_travel_m": 2.4276648246523265,
+      "dir_err_deg": 16.31993792566931,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008095851187030212
+    },
+    {
+      "offset": [
+        0.015,
+        0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.3953017735267913,
+      "t_peak_s": 1.4999999999999687,
+      "ball_travel_m": 2.5193465709340255,
+      "dir_err_deg": 18.849465652199612,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00022184601311775465
+    },
+    {
+      "offset": [
+        0.015,
+        0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.5848745311777621,
+      "t_peak_s": 1.5999999999999666,
+      "ball_travel_m": 2.429337126860523,
+      "dir_err_deg": 16.445483927808464,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008179336393646652
+    },
+    {
+      "offset": [
+        0.015,
+        0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.5612340397359953,
+      "t_peak_s": 0.4799999999999902,
+      "ball_travel_m": 1.1239625707595726,
+      "dir_err_deg": -159.07930273729596,
+      "motion_end_s": 1.7999999999999623,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00019143716180303194
+    },
+    {
+      "offset": [
+        0.015,
+        0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.5572144432788373,
+      "t_peak_s": 0.43999999999999106,
+      "ball_travel_m": 0.35981750088891523,
+      "dir_err_deg": -161.68169488102296,
+      "motion_end_s": 0.95999999999998,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.015,
+        0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.6087563570779118,
+      "t_peak_s": 0.43999999999999106,
+      "ball_travel_m": 1.008503261791136,
+      "dir_err_deg": -152.84691617160436,
+      "motion_end_s": 0.95999999999998,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00011369104869399238
+    },
+    {
+      "offset": [
+        0.015,
+        0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.6154683106685621,
+      "t_peak_s": 0.43999999999999106,
+      "ball_travel_m": 1.0555905224935553,
+      "dir_err_deg": -156.33784549895825,
+      "motion_end_s": 1.0399999999999785,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    },
+    {
+      "offset": [
+        0.03,
+        -0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00019143716180303194
+    },
+    {
+      "offset": [
+        0.03,
+        -0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.03,
+        -0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00011369104869399238
+    },
+    {
+      "offset": [
+        0.03,
+        -0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    },
+    {
+      "offset": [
+        0.03,
+        -0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00019143716180303194
+    },
+    {
+      "offset": [
+        0.03,
+        -0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.03,
+        -0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.36646277337521876,
+      "t_peak_s": 0.4199999999999915,
+      "ball_travel_m": 0.06820528940508747,
+      "dir_err_deg": 148.28324375679895,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00011369104869399238
+    },
+    {
+      "offset": [
+        0.03,
+        -0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    },
+    {
+      "offset": [
+        0.03,
+        0.0
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.42453626754728924,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 0.1251131556058535,
+      "dir_err_deg": 150.23336195582198,
+      "motion_end_s": 0.8799999999999817,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00019143716180303194
+    },
+    {
+      "offset": [
+        0.03,
+        0.0
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.03,
+        0.0
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.4432784060574799,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 0.37938160574971286,
+      "dir_err_deg": 175.07136197638042,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00011369104869399238
+    },
+    {
+      "offset": [
+        0.03,
+        0.0
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.42838845001337394,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 0.23279254960019252,
+      "dir_err_deg": 166.27657391760505,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    },
+    {
+      "offset": [
+        0.03,
+        0.015
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.41943018442293745,
+      "t_peak_s": 0.4199999999999915,
+      "ball_travel_m": 0.37895591848026045,
+      "dir_err_deg": -174.54241970846243,
+      "motion_end_s": 1.1199999999999768,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00019143716180303194
+    },
+    {
+      "offset": [
+        0.03,
+        0.015
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.2539710071097303,
+      "t_peak_s": 0.43999999999999106,
+      "ball_travel_m": 0.21862072922546807,
+      "dir_err_deg": 171.39100514560752,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.03,
+        0.015
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.46338585255414544,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 0.9973804564644935,
+      "dir_err_deg": -177.52914357041317,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00011369104869399238
+    },
+    {
+      "offset": [
+        0.03,
+        0.015
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.45249155448826667,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 0.561035372887567,
+      "dir_err_deg": -179.459830551689,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    },
+    {
+      "offset": [
+        0.03,
+        0.03
+      ],
+      "seed": 0,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.45202213451199746,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 0.8123120864758949,
+      "dir_err_deg": -168.5620153630891,
+      "motion_end_s": 1.199999999999975,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00019143716180303194
+    },
+    {
+      "offset": [
+        0.03,
+        0.03
+      ],
+      "seed": 1,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.0005309172865995138
+    },
+    {
+      "offset": [
+        0.03,
+        0.03
+      ],
+      "seed": 2,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.4396222374226028,
+      "t_peak_s": 0.3999999999999919,
+      "ball_travel_m": 1.11749042283659,
+      "dir_err_deg": -178.12430726962583,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00011369104869399238
+    },
+    {
+      "offset": [
+        0.03,
+        0.03
+      ],
+      "seed": 3,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 0.0,
+      "t_peak_s": 0.020000000000000018,
+      "ball_travel_m": 0.0,
+      "dir_err_deg": NaN,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": false,
+      "hip_yaw_min_margin_rad": 0.00041393566281741623
+    }
+  ],
+  "after_walk": [
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 0,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1432237445713385,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2183386453609724,
+      "dir_err_deg": -4.847374449469961,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0018191442700924987
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1393004265953819,
+      "t_peak_s": 0.1799999999999966,
+      "ball_travel_m": 2.0919552182908694,
+      "dir_err_deg": -4.9739478035309475,
+      "motion_end_s": 0.9999999999999791,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0015661577083835865
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 2,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.229637354027885,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.1049776634230817,
+      "dir_err_deg": -6.486640957749746,
+      "motion_end_s": 0.819999999999983,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.001072044249928017
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 3,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.12518676547999,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2442579960370463,
+      "dir_err_deg": -4.932316878484888,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00017166983223618204
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 4,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1800429296071806,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.0760577318107067,
+      "dir_err_deg": -10.135861189666416,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00043447491463738386
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 5,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1628734859910652,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.0242982498211006,
+      "dir_err_deg": -2.9327067011158636,
+      "motion_end_s": 0.95999999999998,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0012089496727955007
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 6,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1299768223252529,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2060257791464988,
+      "dir_err_deg": -7.571995266159323,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0013197281111421155
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 7,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.228823699020122,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.3106274985526136,
+      "dir_err_deg": -5.100395787973317,
+      "motion_end_s": 0.6399999999999868,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.001020523729194256
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 8,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.160941788345343,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.176774875636455,
+      "dir_err_deg": -6.16361827854023,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.001113376165008756
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 9,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.187246637671916,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.275727371979997,
+      "dir_err_deg": -6.041572046122021,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005603908151045889
+    }
+  ],
+  "motion_end_p95_s": 0.8599999999999821,
+  "duration_s": 1.1,
+  "verify": [
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 100,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2019778251478153,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.483453247993146,
+      "dir_err_deg": -7.084880434738617,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0004256222780276986
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 101,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1123747287768657,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.475834666807315,
+      "dir_err_deg": -8.446856957149345,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.001306177651641538
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 102,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1812158862003468,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4843146327044163,
+      "dir_err_deg": -7.286451108627054,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009233326353144389
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 103,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1807468547314597,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4905880204604154,
+      "dir_err_deg": -7.978246686652496,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009553120301798446
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 104,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1142349545936179,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4455900350447433,
+      "dir_err_deg": -7.901687241902437,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00023107971172336983
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 105,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1469052286135186,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4972974192802075,
+      "dir_err_deg": -9.571835056199753,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00022441392603012034
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 106,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1689736715086572,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4904363920766026,
+      "dir_err_deg": -7.7446467575173825,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0003134467922061013
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 107,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1362638850658904,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4759585164959903,
+      "dir_err_deg": -8.082633317532764,
+      "motion_end_s": 0.7599999999999842,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00018155991503693292
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 108,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1260868686347238,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.4602196673312293,
+      "dir_err_deg": -8.36559797607356,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005227456580927381
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 109,
+      "after_walk": false,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1801946965702348,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.478112577181126,
+      "dir_err_deg": -6.619729202724984,
+      "motion_end_s": 0.7799999999999838,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0012466595417257031
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 200,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.223844589524985,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2213775052487326,
+      "dir_err_deg": -6.101989959827451,
+      "motion_end_s": 0.6399999999999868,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0005608443501808336
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 201,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1181467228942243,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2473976797127984,
+      "dir_err_deg": -5.061196570151407,
+      "motion_end_s": 0.7199999999999851,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008437580938222555
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 202,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1910872392265917,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.252644050676154,
+      "dir_err_deg": -9.140325880344832,
+      "motion_end_s": 0.8399999999999825,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0010356680442408228
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 203,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1055999068237188,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.308610574820871,
+      "dir_err_deg": -5.585230837171411,
+      "motion_end_s": 0.8799999999999817,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0020091704635608887
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 204,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1786520591944358,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.194039047731577,
+      "dir_err_deg": -5.50101942279997,
+      "motion_end_s": 0.6599999999999864,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0010350806964425086
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 205,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.117179795292643,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.242264363592031,
+      "dir_err_deg": -9.750504417193657,
+      "motion_end_s": 0.679999999999986,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009289941413270775
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 206,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.181341715063577,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.2715336659345082,
+      "dir_err_deg": -3.8026792460434335,
+      "motion_end_s": 0.8999999999999813,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0009322942171947346
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 207,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2363216366163126,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.166620687256587,
+      "dir_err_deg": -4.958089291497004,
+      "motion_end_s": 0.7399999999999847,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.00046164550361382783
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 208,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.1712460206769846,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.219694681767778,
+      "dir_err_deg": -2.9259701287413793,
+      "motion_end_s": 0.679999999999986,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 4.756088981239248e-05
+    },
+    {
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 209,
+      "after_walk": true,
+      "settled_before_play": true,
+      "ball_peak_speed": 1.2043228091819285,
+      "t_peak_s": 0.19999999999999618,
+      "ball_travel_m": 2.1895110391557338,
+      "dir_err_deg": -6.224828200670078,
+      "motion_end_s": 0.95999999999998,
+      "fell": false,
+      "success": true,
+      "hip_yaw_min_margin_rad": 0.0008995176190264853
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+# Where each policy's artifacts live. scripts/make_policy_cards.py reads these files and
+# writes configs/policies/<name>.yaml. Paths relative to data_collect_sim/ or absolute.
+
+walk_flat:
+  kind: walk
+  # Exported from checkpoint with mjlab_microduck/src/mjlab_microduck/scripts/export_onnx.py
+  # (NOTES §0.3).
+  onnx: outputs/policies/walk_flat_model1300.onnx
+  checkpoint: ../mjlab_microduck/checkpoints/walk_stable_5s/model_1300.pt
+  agent_yaml: ../mjlab_microduck/checkpoints/walk_stable_5s/params/agent.yaml
+  env_yaml: ../mjlab_microduck/checkpoints/walk_stable_5s/params/env.yaml
+  train_cfg_py: ../mjlab_microduck/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
+  robot_constants_py: ../mjlab_microduck/src/mjlab_microduck/robot/microduck_constants.py
+  mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_walk.xml
+  mjlab_velocity_command_py: ../mjlab_microduck/.venv/lib/python3.13/site-packages/mjlab/tasks/velocity/mdp/velocity_command.py
+
+walk_flat_2600:
+  kind: walk
+  # Same run as walk_stable_5s, last checkpoint (iteration 2600). Unlike model_1300 it stops
+  # when the command goes to zero after walking (NOTES §1). Exported the same way.
+  onnx: outputs/policies/walk_flat_model2600.onnx
+  checkpoint: ../mjlab_microduck/logs/rsl_rl/mjlab_microduck_velocity/2026-10-16_17-43-09/model_2600.pt
+  agent_yaml: ../mjlab_microduck/logs/rsl_rl/mjlab_microduck_velocity/2026-10-16_17-43-09/params/agent.yaml
+  env_yaml: ../mjlab_microduck/logs/rsl_rl/mjlab_microduck_velocity/2026-10-16_17-43-09/params/env.yaml
+  train_cfg_py: ../mjlab_microduck/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
+  robot_constants_py: ../mjlab_microduck/src/mjlab_microduck/robot/microduck_constants.py
+  mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_walk.xml
+  mjlab_velocity_command_py: ../mjlab_microduck/.venv/lib/python3.13/site-packages/mjlab/tasks/velocity/mdp/velocity_command.py
+
+kick:
+  kind: kick
+  # AI-FanGe kick, stage 1, final checkpoint (model_3999.pt; the .onnx was exported at the
+  # end of the run). Copied into outputs/policies/ by make_policy_cards.py. The checkpoint and the
+  # original ONNX live outside this repo (~/microduck_ws, see HANDOFF.md); configs are copied into
+  # rl_train/reference/ai_fange_kick_stage1/.
+  onnx_source: /home/jiamo/microduck_ws/runs/ai_fange_kick/models/2026-10-06_13-14-13_af_kick_stage1/2026-10-06_13-14-13_af_kick_stage1.onnx
+  onnx: outputs/policies/kick_af_stage1_model3999.onnx
+  checkpoint: /home/jiamo/microduck_ws/runs/ai_fange_kick/models/2026-10-06_13-14-13_af_kick_stage1/model_3999.pt
+  agent_yaml: ../rl_train/reference/ai_fange_kick_stage1/params/agent.yaml   # copy of the run's params (2026-11-20)
+  env_yaml: ../rl_train/reference/ai_fange_kick_stage1/params/env.yaml
+  train_cfg_py: ../rl_train/reference/ai_fange_kick_stage1/af_kick_cfg.py
+  ball_xml: ../rl_train/reference/ai_fange_kick_stage1/ball.xml
+  mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_allcollisions.xml
+
+walk_v2_r2_s1_it2750:
+  kind: walk
+  # Best walk v2 candidate (phase 2, round 2, seed 1, iteration 2750): passes every walk gate
+  # (rl_train/NOTES.md §2.5; outputs/acceptance/r2_s1_it2750/). Exported with rl_train/export_onnx.py.
+  onnx: outputs/policies/walk_v2_r2_s1_it2750.onnx
+  checkpoint: ../rl_train/runs/logs/rsl_rl/walk_v2/2026-10-24_23-32-51_walk_v2_r2_s1/model_2750.pt
+  agent_yaml: ../rl_train/runs/logs/rsl_rl/walk_v2/2026-10-24_23-32-51_walk_v2_r2_s1/params/agent.yaml
+  env_yaml: ../rl_train/runs/logs/rsl_rl/walk_v2/2026-10-24_23-32-51_walk_v2_r2_s1/params/env.yaml
+  train_cfg_py: ../mjlab_microduck/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
+  robot_constants_py: ../mjlab_microduck/src/mjlab_microduck/robot/microduck_constants.py
+  mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_walk.xml
+  mjlab_velocity_command_py: ../mjlab_microduck/.venv/lib/python3.13/site-packages/mjlab/tasks/velocity/mdp/velocity_command.py

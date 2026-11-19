@@ -1,0 +1,135 @@
+# HANDOFF_NOTES — 交接准备的过程记录（2026-11-20 夜，无人值守）
+
+按步骤追加：做了什么、发现了什么、为什么这样做。整理后的结论在 `HANDOFF.md`。
+路径相对 workspace 根目录 `~/Microduck-build-tutorial-main/`。
+
+开工前整个 workspace（不含 `.venv`、`__pycache__`）备份到
+`~/backups/Microduck-build-tutorial-main_20261120_pre-handoff.tar.gz`。原因：这个目录没有任何版本控制，今晚的改动要能退回。
+
+---
+
+## 第 0 步：盘点（只读）
+
+### 0.1 目录
+
+workspace 是 GitHub 上 `AI-FanGe/Microduck-build-tutorial`（main）的 **zip 解压版**，不是 git clone，**整个目录里没有任何 `.git`**。所以 prompt 假设的"嵌套仓库的 origin 指向 AI-FanGe / Pollen"在这里不存在，第 5 步的仓库方案按实际情况调整（见第 5 步）。
+
+把它和上游 clone（`~/microduck_ws/rl_fange/third_party/fange_tutorial`，HEAD `4967821`，2026-09-11）逐文件比较（`diff -rq`，排除 `.venv`、`logs`、`checkpoints`、`__pycache__`、我们自己的两个目录）：
+
+| 目录 / 文件 | 来源 | 大小 | 相对上游 `4967821` 的本地改动 |
+|---|---|---|---|
+| `mjlab_microduck/` | 上游（AI-FanGe 训练包） | 7.0 GB（`.venv` 6.8 GB、`logs/` 135 MB、`checkpoints/` 9.9 MB、`src/` 31 MB） | 新增 `README.md`（10-16，修 pyproject 引用不存在的 README）、新增 `uv.lock`（10-16）、恢复 `src/mjlab_microduck/robot/`（上游 `34656ce` 删掉了；和 `34656ce^` 逐文件比较**完全相同**） |
+| `microduck/` | 上游（Pi 部署运行时） | 9.5 MB | **无** |
+| `docs/`、`scripts/imu_mujoco_orientation_viewer.py`、`README.md`、`LICENSE`、`bno08x_calibrate_ui.py`、`microduck3D打印.3mf`、`.gitignore` | 上游根目录 | 12 MB | 无 |
+| `Repo_Structure.md` | 我们（10-01，目录说明） | 18 KB | — |
+| `data_collect_sim/` | 我们（第一阶段：裸 MuJoCo 验收环境 + 第二阶段的验收代码） | 1.1 GB（`.venv` 209 MB、`outputs/` 392 MB） | — |
+| `rl_train/` | 我们（第二阶段：walk v2 / kick v2 训练任务） | 285 MB（`runs/` 几乎全部） | — |
+
+超过 20 MB 的文件（不含 `.venv`）：只有 `data_collect_sim/outputs/parity/*.mjb` 4 个，各 80 MB（parity 测试的编译模型，可重新生成，不提交）。
+
+### 0.2 第二阶段（`rl_train/`）做到了哪一步
+
+读 `rl_train/NOTES.md`、`rl_train/runs/*.log`、`data_collect_sim/outputs/candidates/*/report.md`（`SKILLS_REPORT.md` 不存在）：
+
+- §0 调研、§1 扫描旧 checkpoint（`walk_stable_5s` 这个 run 的 15 个 checkpoint 没有一个全过验收）都做完了。
+- walk v2 第 1 轮（r1，seed 1，2037 次迭代后手动停）：停住修好了，转向被改坏（机制已查明）。
+- walk v2 第 2 轮（r2）：seed 1、seed 2 都训满 3000 次迭代。**seed 1 的 it1500 和 it2750 通过全部 walk 门槛**，NOTES 认为 it2750 最好（130 次扩展停住测试全过）。seed 2 训完了，**但没有做验收**。
+- walk v2 第 3 轮（r3：坡道 + 头部接管 + 电压 / 延迟随机化）：2026-10-25 01:34 启动，**两个 seed 都在启动时 GPU 显存分配失败退出**（`Failed to allocate 704643072 bytes`），之后没人处理。今晚已复现并修好（第 1 步）。
+- kick v2 第 1 轮：配置和任务写好了，只跑过冒烟（`runs/smoke_kick.log`），**没有正式训练**。配置里 `start.joint_offsets` 还空着（要等 walk v2 定版后填站姿）。
+- **没有定版策略**。现在在用的还是第一阶段的组合：WALK_FLAT = `walk_stable_5s/model_1300`，STAND = 同一 run 的 `model_2600` 零命令，KICK = AF stage 1（`~/microduck_ws/runs/ai_fange_kick`）。
+- IMU 朝向（`rl_train/NOTES.md` §0.1）：**训练和部署一致**。XML 里的 `imu` site 和传感器帧正好相反，但训练和部署都不读它；真机上只剩"BNO08x 实际安装方向是否满足 `imu_quat_to_body` 的假设"这一项硬件测量。
+
+### 0.3 训练入口
+
+**入口 = `rl_train/` 注册的 `RoboDuck-*` 任务**（每个 `rl_train/configs/{walk,kick}_*.yaml` 一个任务）：
+- 下一步要训的是 `RoboDuck-walk_v2_r3`（walk v2 定版轮）和 `RoboDuck-kick_v2_r1`。
+- `Mjlab-Velocity-Microduck`（上游任务）只作为 `walk_v2` 的基础配置，被 `rl_train/rl_tasks/walk_v2.py` import 后再改。
+- 运行环境：`rl_train` 没有自己的 venv，用 `mjlab_microduck/.venv`（`train.py` 先注册 `RoboDuck-*`，再调用 mjlab 自己的 `train`）。
+
+### 0.4 "已知情况"逐条核实
+
+| # | 说法 | 现状 | 证据 |
+|---|---|---|---|
+| 1 | `pyproject.toml` 声明了不存在的 README | **本地已修**（10-16 加了 `mjlab_microduck/README.md`），上游仍缺 | 和上游 diff |
+| 2 | 依赖没锁、没 `uv.lock` | **本地已有 `uv.lock`**（10-16 生成），但 pyproject 里 bam 写的是 `branch = "doc"`（会漂移），lock 锁在 `0007411`；实际版本是 Python 3.13.5、torch 2.14.1、mujoco 3.16.0、mujoco-warp 3.8.1、mjlab 1.3.0、warp-lang 1.12.0、rsl-rl-lib 5.0.1、BAM 1.0.0 @ `rhoban/bam@0007411`（doc 分支）、onnx 1.23.2。**和 prompt 说的"上游组合"（Python 3.12、torch 2.9.1、mujoco 3.10.0，是 Pollen `microduck_rl` 的 lock）不同** | `.venv` 里实际安装的版本；`uv.lock` |
+| 3 | `command.build = lambda env, _cmd=command: ...` 让后期课程不生效 | **仍存在**于上游 `microduck_velocity_env_cfg.py:330`。`rl_train` 的 walk v2 已绕开（命令换成 `UniformVelocityCommandWithRotationCfg` 实例，并且去掉了课程） | 源码 |
+| 4 | `num_envs` 默认 1 | **仍存在**（上游 `SCENE_CFG`，cfg:93）。`rl_train` 已从 YAML 读取（`train.num_envs`） | 源码 |
+| 5 | 默认 wandb，没有 key 会卡住 | 上游 `MicroduckVelocityRlCfg` 仍是 wandb；`rl_train` 已固定 tensorboard | 源码 |
+| 6 | 必须用 uv | 仍然成立（pyproject 里 protobuf 的 override 只有 uv 认） | pyproject `[tool.uv] override-dependencies` |
+| 7 | AF 训练包缺 `robot/`，是从 `34656ce^` 恢复的 | ✔ 恢复的内容和 `34656ce^` 完全相同，没有额外的本地改动 | `git archive 34656ce^` + `diff -rq` |
+
+prompt 里"策略和验收"那几条和 `data_collect_sim/NOTES.md`、`rl_train/NOTES.md` 的结论一致，具体数字以 `rl_train/NOTES.md` §1.2 为准。
+
+### 0.5 `data_collect_sim/` 已有的测试（全部复用）
+
+- 第一阶段：`walk_test.py`、`camera_check.py`、`ramp_test.py`、`kick_test.py`、`check_parity.py`、`build_scene.py`、`teleop.py`。
+- 第二阶段：`eval_candidates.py`（checkpoint → ONNX → card → 全套 walk 验收 → 对比表）、`stop_test.py`、`symmetry_test.py`、`head_override_test.py`、`handoff_test.py`、`stand_pose.py`；测试逻辑都在 `duckrt/evaluation.py`（random / stop / symmetry / ramp / head_override / camera + kick_window / kick_head_down / kick_handoff）。
+- 门槛文件已存在：`data_collect_sim/configs/acceptance.yaml`（第二阶段在看任何 v2 结果之前定的，和 prompt 的表一致，并且把 prompt 没定义的细节定死了）。**以它为准。**
+- 和 prompt 门槛表相比**缺的**：walk ↔ stand 热切换 25/25（没有实现）；失败用例的视频；`--quick` 模式；统一入口 / 报告 / 对比脚本。
+- 单元测试：`tests/test_runtime.py`、`tests/test_scene.py`（19 个）。
+
+### 0.6 密钥
+
+- 没有 `.env`、`.netrc`、wandb 配置目录（`~/.config/wandb` 也不存在）、私钥文件。
+- grep（`api_key`、`WANDB_API`、`ghp_`、`gho_`、`sk-`、`hf_`、`AKIA`、`password=`、`token=`）只命中 `bno08x_calibrate_ui.py` 的 `--password` 参数（默认从环境变量 `PASSWORD` 读，没有写死的值）。
+- 没有装 gitleaks；提交前再用 grep 扫一次暂存区。
+
+### 0.7 工具
+
+- `nvidia-smi`：RTX 4080 Laptop 12 GB，驱动 580.178.04，空闲时占用约 0.65 GB。内存 14 GiB（可用约 10 GiB），无 swap。
+- `gh auth status`：已登录 `H-river`（scopes：repo、workflow、gist、read:org）。
+- `git lfs`：**没有安装** → `.pt` 不进仓库，在 HANDOFF 里列路径、大小、sha256。
+
+### 0.8 外部依赖（fresh clone 会缺的东西）
+
+- kick stage 1 的 checkpoint、训练配置（`af_kick_cfg.py`、`ball.xml`、`params/*.yaml`）都在 `~/microduck_ws/` 里（另一个 workspace）。`data_collect_sim/configs/policy_sources.yaml` 用绝对路径引用它们；运行时只需要已经复制过来的 `outputs/policies/kick_af_stage1_model3999.onnx` 和 card。→ 把需要的文件复制进仓库（第 5 步）。
+- `data_collect_sim/README.md` 写死了 `uv sync --python /home/jiamo/miniconda3/bin/python3.13`。
+
+---
+
+## 第 1 步：训练 repo 能从零跑通（2026-11-20 00:40–01:45）
+
+### 已完成
+- **仓库化（本地，未推送）**：`mjlab_microduck/`、`microduck/` 原地 `git init`（分支 `roboduck-main`，没有任何 remote），用 `git subtree split` 把上游 AI-FanGe `4967821` 里这两个子目录的真实历史接进来（`git reset`，工作区文件没动）。`microduck/` 无本地改动、工作区干净。`mjlab_microduck/` 在上游历史上加了 3 个提交：
+  - `7dcee90` 恢复上游删掉的 `robot/`（= `6991771` = `34656ce^`，逐文件相同）和原版 `README.md`（10-16 的 3 行占位版备份在 scratchpad）。
+  - `1e0e590` 提交 `uv.lock`（上游 `.gitignore` 忽略了它，已改），以及 `checkpoints/walk_stable_5s/params/*.yaml`、`eval.json`（`.pt` 和视频不进 git）。
+  - `70d605f` 今晚的修复：① lambda 课程 bug → `UniformVelocityCommandWithRotationCfg`；② 日志默认 tensorboard；③ bam 按 rev `0007411` 钉死（lock 重新生成，没有版本变化）；④ `.python-version` = 3.13。
+- **课程修复的证据**（`rl_train/tests/check_curriculum.py`，结果在 `rl_train/checks/curriculum_{fixed,buggy}.json`）：课程切换点提前到第 100 个 env 步。修复后采样器 cfg 变成 vx ±0.35、原地转 ±1.5，实际采到的 |ωz| 从切换前的 0.749 升到 1.497；原版 lambda（负对照，按上游流程先绑定再 deepcopy）的采样器停在 ±0.25 / ±0.75，课程不生效。
+- **r3 显存溢出修好**：mujoco_warp 遇到 hfield 时把每个 world 的 `nconmax` / `njmax` 默认值放大到 128 / 1024，CCD 缓冲在 4096 env 下放不下。实测坡道上每个 world 最多 8 个接触、34 行约束，所以在 `walk_v2_r3.yaml` 里加了 `sim: {nconmax: 48, njmax: 128}`，并改 `walk_v2.py` 读取。修复后 4096 env 显存峰值 8.5 GB。
+- **吞吐**（`RoboDuck-walk_v2_r3`，20 次迭代，取后 10 次平均）：512 → 1.49 s/迭代，8.3k 步/s，显存 2.0 GB；1024 → 1.87 s，13.2k，2.9 GB；2048 → 2.14 s，22.9k，4.7 GB；4096 → 2.61 s，37.6k，8.5 GB（采样 2.34 s + 学习 0.28 s）。3000 次迭代约 2.2 h。kick v2 在 2048 env 下 1.13 s/迭代，4000 次迭代约 75 min，显存 4.3 GB。
+- **冒烟链路**：512 env 的冒烟 checkpoint（model_19）→ `rl_train/export_onnx.py`（21 s）→ `make_policy_cards.make_walk` → `data_collect_sim` 运行时加载，STAND 跑满 5 s，没有报错（只训了 20 次迭代，0.88 s 时摔倒，属于预期）。
+- **kick v2 起始站姿**：新建 `rl_train/configs/kick_v2_r1_stand2750.yaml`（继承 `kick_v2_r1`），用 `stand_pose.py` 实测的 r2 s1 it2750 站姿填进去。原来的 `kick_v2_r1.yaml` 没改。冒烟通过，偏移量已进入解析后的 env.yaml。
+- **用户追加要求"多跑几个动作、留可直接用的 ONNX"**：00:50 启动了 `rl_train/runs/queue_20261120.sh`（setsid 脱钩，内存上限 8 GB）：walk_v2_r3 s1 → kick_v2_r1_stand2750 s1 → walk_v2_r3 s2，预计 06:40 前后跑完。日志 `rl_train/runs/train_*.log`，run 目录 `rl_train/runs/logs/rsl_rl/{walk_v2,kick_v2}/`。
+
+- 01:00–01:30 因为用量上限停了半小时，训练队列没受影响。
+- **`rl_train/train.sh`**：后台训练 + 每 `EXPORT_EVERY` 次迭代导出 ONNX + quick 验收 + 结束时完整验收；没有 systemd（RunPod）时不加内存上限。walk（256 env × 10 次迭代）和 kick（256 × 6）两条路径都冒烟过。发现 `RUN_NAME` 自定义时 `accept.py` 推断不出配置 → 加了 `--rl-config`，`train.sh` 显式传。
+
+## 第 2 步：一键验收（01:30–01:45）
+
+- `duckrt/evaluation.py`：在原有测试上加 `only=`（只跑指定试验，失败视频重放用）、`stand_card`（STAND 用单独的策略，基线就是 1300 走 + 2600 站）、`recording()`（重放时用跟拍相机录像）；新增 `walk_stand_switch`（prompt 要求的热切换 25/25；每次 站 1 s → 随机命令走 1–3 s → 站 1–2 s → 换一个随机命令再走 1.5 s，切换时刻落在随机的步态相位上）和 `tracking`（命令跟踪表，只记录）。原来写在代码里的测试参数（摔倒高度 0.07、kick 前站 1 s、交接流程时长、kick 卡片缺省值、quick 时的缩小规模、头部接管基线 5 个 seed）全部搬进 `acceptance.yaml`，**数值不变**。
+- `duckrt/report.py`：按配置里的门槛从原始测量值重新判定每一项（不信任测试函数自己的 pass），渲染 md / json。
+- `scripts/accept.py`：输入可以是 card / card 名 / checkpoint / ONNX（ONNX 必须给训练配置来源，否则退出码 2 并说明怎么办）；每个测试一个进程（坡道按角度拆开），进程数按可用内存封顶；失败用例单独重放录视频（每项最多 3 个），并记录重放有没有复现失败；退出码 0 / 1 / 2。worker 的 stderr 写到 `<out>/logs/`（EGL 渲染器在进程退出时的析构报错会刷屏）。
+- `scripts/compare.py`：多个 `report.json` 并排，第一个当基线，标出退步项。
+- 门槛：`configs/acceptance.yaml` 第二阶段就有，和 prompt 的表一致，以它为准；只**加了**测试参数、`quick:`、`videos:`、`runner:`。它比 prompt 多一项"低头测球后再踢"。
+- 单元测试 `tests/test_accept.py`（6 个，加上原有 19 个共 25 个，7 s）：门槛从配置读（同样的测量值，收紧门槛后结论全部翻转）、quick 只缩规模不动门槛、`evaluation.py` / `report.py` / `accept.py` 里不出现门槛数值（AST 检查）、报告格式、已知会摔的输入（同一个策略把 card 的 `action.scale` × 20）判为不合格 + 原策略同一测试合格作对照、ONNX 没有配置来源时报清楚的错误。
+- 速度：完整模式 30 s（4 个进程，训练同时在跑），quick 10 s。CPU 仿真约 40–50 倍实时。
+
+## 第 3 步：基线报告（01:37–01:45）
+
+- **基线**（1300 走 + 2600 站 + kick stage 1，`outputs/acceptance/baseline/`）：不合格，14 项门槛 4 项不过：停住 0/39、直走偏航 0.129 rad/s、踢球窗口 0/50、方向偏差（无成功的踢球）。其余通过：随机 20/20、转速比 0.81 / 1.22、5° 坡 10/10 ×2、头部接管 20/20、旗垫、热切换 25/25、kick 交接 20/20。和 prompt 的已知情况一致（偏航约 +0.13）。kick 0/50 是第二阶段已经发现的问题：stage 1 只有从接近 HOME 出发才出脚，用 2600 站 1 s 之后就不踢了。
+- **第二阶段候选**：r2 s1 it2750 和 it1500 的 walk 门槛全部通过（it2750：停住 39/39 最长 0.50 s、偏航 0.018、转速比 0.98 / 0.96、6° 上坡 0/10 只记录）；kick 仍然不过，但**换成 walk v2 的站姿后 stage-1 kick 能踢了**：it2750 下窗口 52%（26/50）、偏差 +0.6°、交接 20/20、低头后 100% vs 直接 90%。
+- r2 s2（训完但没验收过）6 个 checkpoint 的 quick 扫描（`outputs/acceptance/scan_r2_s2/`）：没有一个全过，问题在停住和 5° 上坡。
+- `walk_v2_r2_s1_it2750` 提成命名策略（`outputs/policies/` + `configs/policies/`），当 `train.sh` 验收 kick 和自检用的 walk。
+
+## 第 5 步：仓库（01:45–）
+
+- workspace 里没有任何 git 仓库，所以 prompt 的"嵌套仓库 origin 指向上游、不能动"这条无从谈起；按它的规则处理两个上游目录：
+  - `mjlab_microduck/`：有本地改动 → 私有仓库 `H-river/roboduck-workspace-mjlab_microduck`，本地 remote 名 `roboduck`，分支 `roboduck-main`。
+  - `microduck/`：没有本地改动，但上游是 AI-FanGe 大仓库里的一个子目录，没有可以单独做 submodule 的 remote → 同样建私有仓库 `roboduck-workspace-microduck`。
+  - 两个都用 `git subtree split` 保留了上游真实的提交历史（作者 AI-FanGe），我们的改动是上面的独立提交；本地没有加任何指向上游的 remote（没有可能推到上游）。
+- `patches/`：`0001` 是脚本（恢复 `robot/` 的补丁有 13 MB 二进制，脚本直接从上游历史取文件），`0002`、`0003` 是 `git format-patch`。`patches/check_patches.sh` 从 GitHub 克隆上游 `4967821`、subtree split、重放补丁，和子仓库比较 git tree：两个都 OK（4 s）。
+- 主仓库 `roboduck-workspace`（workspace 根目录）：`data_collect_sim/`、`rl_train/`、`patches/`、`scripts/setup_workspace.sh`、`HANDOFF*.md`、`README.md`。根目录的上游文件不进仓库（`.gitignore`）；上游教程的 `README.md` 改名为 `README.upstream.md`，给我们自己的 README 腾位置。
+- `data_collect_sim/.gitignore`：`outputs/` 只放行报告（md / json，ramp_test 的 8 MB 轨迹 json 除外）和 `outputs/policies/*.onnx`。暂存区一共 5.8 MB，最大的文件是 4 个 ONNX（各 0.77 MB）。
+- 密钥扫描（没有 gitleaks，用 `git grep` 扫暂存区和两个子仓库的 HEAD：api key / token / ghp_ / gho_ / github_pat_ / sk- / hf_ / AKIA / 私钥头 / password=）：没有命中。
+- kick stage 1 的训练配置从 `~/microduck_ws` 复制到 `rl_train/reference/ai_fange_kick_stage1/`，`policy_sources.yaml` 指向副本；`.pt` 不进仓库（没有 git-lfs），HANDOFF 里列了路径、大小、sha256。
+- 同学的 GitHub 用户名 prompt 里没填 → 没加协作者。

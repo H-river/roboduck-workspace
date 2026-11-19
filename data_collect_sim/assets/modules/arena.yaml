@@ -1,0 +1,7 @@
+# Arenas. Walls 5 cm high; floor colour from configs/palette.yaml (texture: real mat photo later).
+arena_default:
+  type: arena
+  size_m: [3.6, 2.4]
+  wall_height_m: 0.05
+  floor_color: floor
+  texture: null

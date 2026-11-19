@@ -1,0 +1,108 @@
+{
+  "cycles": 20,
+  "falls": 0,
+  "kick_success": 3,
+  "log": [
+    {
+      "cycle": 0,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 1,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 2,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 3,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 4,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 5,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 6,
+      "kick_success": true,
+      "fell": false
+    },
+    {
+      "cycle": 7,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 8,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 9,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 10,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 11,
+      "kick_success": true,
+      "fell": false
+    },
+    {
+      "cycle": 12,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 13,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 14,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 15,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 16,
+      "kick_success": true,
+      "fell": false
+    },
+    {
+      "cycle": 17,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 18,
+      "kick_success": false,
+      "fell": false
+    },
+    {
+      "cycle": 19,
+      "kick_success": false,
+      "fell": false
+    }
+  ],
+  "pass": true
+}

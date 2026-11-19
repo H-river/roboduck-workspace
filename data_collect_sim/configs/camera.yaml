@@ -1,0 +1,31 @@
+# Head camera and overhead camera. Applied with MjSpec at load time; upstream XML untouched.
+#
+# The XML <camera name="head_camera"> (quat 0 0 -1 0 on jaw_soft) looks backwards into the
+# lens mesh (NOTES §0.1-1e). The pose is taken from the `head_camera` SITE instead:
+# optical axis = site +x, image up = site +z (the lens / M12 holder meshes face site +x).
+
+head_camera:
+  mount_body: jaw_soft          # from robot_walk.xml / robot_allcollisions.xml
+  mount_site: head_camera       # pose source (pos 0.0155, -9.14e-5, -0.0733 in jaw_soft)
+  pos_offset_m: [0.0, 0.0, 0.0] # extra offset in the site frame          # 占位，待真机实测
+  pitch_down_deg: 0.0           # extra downward tilt of the optical axis # 占位，待真机实测
+  fovy_deg: 45.0                # vertical FOV; XML has none (MuJoCo default 45) # 占位，待真机实测（M12 镜头）
+  width: 320
+  height: 240
+  fps: 15
+
+top_cam:
+  # Straight-down camera over the scene centre; height chosen so the whole arena fits.
+  fovy_deg: 60.0
+  margin_m: 0.15                # extra border around the arena
+  default_extent_m: [3.6, 2.4]  # used when there is no layout
+  width: 480
+  height: 320
+
+chase_cam:
+  # Free tracking camera for test videos (not part of the robot).
+  distance: 0.9
+  azimuth: 135.0
+  elevation: -20.0
+  width: 640
+  height: 480

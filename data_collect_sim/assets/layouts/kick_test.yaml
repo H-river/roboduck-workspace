@@ -1,0 +1,8 @@
+# Empty arena for kick tests: the ball is teleported into the kick window relative to the
+# robot root at the moment the kick starts (as the kick training reset does).
+name: kick_test
+grid_m: 0.6
+arena: arena_default
+robot_start: {pos: [-0.8, 0.0], yaw_deg: 0}
+modules:
+  - {id: ball, module: ball_kick, pos: [1.2, 0.8]}

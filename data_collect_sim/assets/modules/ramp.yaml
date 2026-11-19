@@ -1,0 +1,3 @@
+# Ramps: incline >= 60 cm (horizontal), top platform >= 40 cm, low side rails.
+ramp_up:       {type: ramp, angle_deg: 5.0, slope_length_m: 0.60, top_length_m: 0.40, width_m: 0.40, down_slope: false}
+ramp_up_down:  {type: ramp, angle_deg: 5.0, slope_length_m: 0.60, top_length_m: 0.40, width_m: 0.40, down_slope: true}

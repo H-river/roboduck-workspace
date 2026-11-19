@@ -1,0 +1,8 @@
+[submodule "mjlab_microduck"]
+	path = mjlab_microduck
+	url = https://github.com/H-river/roboduck-workspace-mjlab_microduck.git
+	branch = roboduck-main
+[submodule "microduck"]
+	path = microduck
+	url = https://github.com/H-river/roboduck-workspace-microduck.git
+	branch = roboduck-main

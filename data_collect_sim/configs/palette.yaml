@@ -1,0 +1,20 @@
+# Module colours (RGBA, 0-1). Modules refer to these by name; a module may also give an
+# explicit [r, g, b, a]. Flag colours double as flag ids for the VLA ("red flag").
+
+floor: [0.62, 0.60, 0.55, 1.0]          # arena floor (light grey-beige mat)
+floor_alt: [0.57, 0.55, 0.50, 1.0]      # second checker shade (subtle depth cue)
+wall: [0.92, 0.92, 0.90, 1.0]
+red: [0.85, 0.10, 0.10, 1.0]
+blue: [0.10, 0.30, 0.85, 1.0]
+green: [0.10, 0.65, 0.20, 1.0]
+yellow: [0.95, 0.80, 0.10, 1.0]
+purple: [0.55, 0.20, 0.70, 1.0]
+flag_pole: [0.95, 0.95, 0.95, 1.0]
+forbidden_zone: [0.05, 0.10, 0.35, 1.0]  # dark blue
+obstacle: [0.50, 0.33, 0.20, 1.0]        # brown
+ramp: [0.72, 0.72, 0.74, 1.0]
+ramp_rail: [0.95, 0.55, 0.10, 1.0]
+ball: [1.0, 0.55, 0.0, 1.0]              # = kick training ball rgba
+goal: [0.97, 0.97, 0.97, 1.0]
+goal_back: [0.35, 0.35, 0.38, 1.0]
+start_marker: [0.2, 0.2, 0.2, 1.0]

@@ -1,0 +1,7 @@
+# Empty arena, one red flag 1.5 m straight ahead of the robot. Minimal closed loop for phase 2.
+name: flat_single_flag
+grid_m: 0.6
+arena: arena_default
+robot_start: {pos: [-0.9, 0.0], yaw_deg: 0}
+modules:
+  - {id: flag_red, module: flag_red, pos: [0.6, 0.0], yaw_deg: 0}

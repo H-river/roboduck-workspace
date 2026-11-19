@@ -1,0 +1,677 @@
+{
+  "2026-10-24_22-45-50_walk_v2_r1_it2": {
+    "stop": {
+      "trials": [
+        {
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "seed": 0,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "seed": 1,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "seed": 2,
+          "stop_s": null,
+          "drift_m": null,
+          "fell": true,
+          "pass": false
+        }
+      ],
+      "max_stop_s": 99.0,
+      "max_drift_m": 0.0,
+      "n_pass": 0,
+      "n": 39,
+      "pass": false
+    },
+    "all_pass": false
+  }
+}

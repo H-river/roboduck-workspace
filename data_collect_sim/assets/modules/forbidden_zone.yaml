@@ -1,0 +1,3 @@
+# Forbidden zones: flat dark-blue patch, no collision.
+zone_60x60: {type: forbidden_zone, size_m: [0.6, 0.6]}
+zone_60x40: {type: forbidden_zone, size_m: [0.6, 0.4]}

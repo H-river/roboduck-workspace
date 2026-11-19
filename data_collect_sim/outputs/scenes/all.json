@@ -1,0 +1,703 @@
+[
+  {
+    "layout": "demo_v1",
+    "overrides": {},
+    "ok": true,
+    "nan": false,
+    "max_penetration_m": 0.0017215835940388698,
+    "max_dof_speed": 1.3701854483577554,
+    "fell": false,
+    "object_drift_m": {
+      "ball": 0.00036718184069885196
+    },
+    "robot_start": {
+      "pos": [
+        -1.55,
+        -0.8999999999999999,
+        0.12
+      ],
+      "yaw_deg": 0.0,
+      "ground_z": 0.0
+    },
+    "modules": [
+      {
+        "id": "arena",
+        "type": "arena",
+        "definition": "arena_default",
+        "pos": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            3.6,
+            2.4
+          ],
+          "wall_height_m": 0.05,
+          "wall_thickness_m": 0.02,
+          "checker_m": 0.3
+        },
+        "rgba": {
+          "floor": [
+            0.62,
+            0.6,
+            0.55,
+            1.0
+          ],
+          "wall": [
+            0.92,
+            0.92,
+            0.9,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "ramp",
+        "type": "ramp",
+        "definition": "ramp_up_down",
+        "pos": [
+          -1.2,
+          -0.85,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "angle_deg": 5.0,
+          "slope_length_m": 0.6,
+          "top_length_m": 0.4,
+          "width_m": 0.4,
+          "rail_height_m": 0.04,
+          "rail_thickness_m": 0.015,
+          "thickness_m": 0.02,
+          "height_m": 0.052493198115554404,
+          "total_length_m": 1.6
+        },
+        "rgba": {
+          "ramp": [
+            0.72,
+            0.72,
+            0.74,
+            1.0
+          ],
+          "rail": [
+            0.95,
+            0.55,
+            0.1,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_ramp_top_centre": [
+            -0.4,
+            -0.85,
+            0.052
+          ]
+        }
+      },
+      {
+        "id": "flag_A",
+        "type": "flag",
+        "definition": "flag_red",
+        "pos": [
+          1.05,
+          -0.8,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "pole_height_m": 0.28,
+          "pole_radius_m": 0.006,
+          "mat_size_m": [
+            0.4,
+            0.4
+          ],
+          "pole_offset_m": [
+            0.17,
+            0.0
+          ],
+          "flag_size_m": [
+            0.1,
+            0.06
+          ]
+        },
+        "rgba": {
+          "flag": [
+            0.85,
+            0.1,
+            0.1,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_flag_A_centre": [
+            1.05,
+            -0.8,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": "zone",
+        "type": "forbidden_zone",
+        "definition": "zone_60x40",
+        "pos": [
+          0.45,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            0.6,
+            0.4
+          ]
+        },
+        "rgba": {
+          "zone": [
+            0.05,
+            0.1,
+            0.35,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "obstacle",
+        "type": "obstacle",
+        "definition": "box_20cm",
+        "pos": [
+          -0.5,
+          0.05,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            0.2,
+            0.2,
+            0.2
+          ]
+        },
+        "rgba": {
+          "obstacle": [
+            0.5,
+            0.33,
+            0.2,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "flag_B",
+        "type": "flag",
+        "definition": "flag_blue",
+        "pos": [
+          -1.35,
+          0.55,
+          0.0
+        ],
+        "yaw_deg": 90.0,
+        "size": {
+          "pole_height_m": 0.28,
+          "pole_radius_m": 0.006,
+          "mat_size_m": [
+            0.4,
+            0.4
+          ],
+          "pole_offset_m": [
+            0.17,
+            0.0
+          ],
+          "flag_size_m": [
+            0.1,
+            0.06
+          ]
+        },
+        "rgba": {
+          "flag": [
+            0.1,
+            0.3,
+            0.85,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_flag_B_centre": [
+            -1.35,
+            0.55,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": "ball",
+        "type": "ball",
+        "definition": "ball_kick",
+        "pos": [
+          0.3,
+          0.6,
+          0.035
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "radius_m": 0.035
+        },
+        "rgba": {
+          "ball": [
+            1.0,
+            0.55,
+            0.0,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "goal",
+        "type": "goal",
+        "definition": "goal_small",
+        "pos": [
+          0.3,
+          0.95,
+          0.0
+        ],
+        "yaw_deg": 90.0,
+        "size": {
+          "width_m": 0.5,
+          "height_m": 0.2,
+          "depth_m": 0.2,
+          "post_size_m": 0.025
+        },
+        "rgba": {
+          "goal": [
+            0.97,
+            0.97,
+            0.97,
+            1.0
+          ],
+          "back": [
+            0.35,
+            0.35,
+            0.38,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_goal_goal_line": [
+            0.3,
+            0.95,
+            0.001
+          ]
+        }
+      }
+    ],
+    "images": [
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/demo_v1_top.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/demo_v1_head_start.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/demo_v1_head_after_stand.png"
+    ]
+  },
+  {
+    "layout": "flat_single_flag",
+    "overrides": {},
+    "ok": true,
+    "nan": false,
+    "max_penetration_m": 0.001721583594038855,
+    "max_dof_speed": 1.3701854483577498,
+    "fell": false,
+    "object_drift_m": {},
+    "robot_start": {
+      "pos": [
+        -0.9,
+        0.0,
+        0.12
+      ],
+      "yaw_deg": 0.0,
+      "ground_z": 0.0
+    },
+    "modules": [
+      {
+        "id": "arena",
+        "type": "arena",
+        "definition": "arena_default",
+        "pos": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            3.6,
+            2.4
+          ],
+          "wall_height_m": 0.05,
+          "wall_thickness_m": 0.02,
+          "checker_m": 0.3
+        },
+        "rgba": {
+          "floor": [
+            0.62,
+            0.6,
+            0.55,
+            1.0
+          ],
+          "wall": [
+            0.92,
+            0.92,
+            0.9,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "flag_red",
+        "type": "flag",
+        "definition": "flag_red",
+        "pos": [
+          0.6,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "pole_height_m": 0.28,
+          "pole_radius_m": 0.006,
+          "mat_size_m": [
+            0.4,
+            0.4
+          ],
+          "pole_offset_m": [
+            0.17,
+            0.0
+          ],
+          "flag_size_m": [
+            0.1,
+            0.06
+          ]
+        },
+        "rgba": {
+          "flag": [
+            0.85,
+            0.1,
+            0.1,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_flag_red_centre": [
+            0.6,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    ],
+    "images": [
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/flat_single_flag_top.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/flat_single_flag_head_start.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/flat_single_flag_head_after_stand.png"
+    ]
+  },
+  {
+    "layout": "kick_test",
+    "overrides": {},
+    "ok": true,
+    "nan": false,
+    "max_penetration_m": 0.001721583594038855,
+    "max_dof_speed": 1.3701854483577491,
+    "fell": false,
+    "object_drift_m": {
+      "ball": 0.00036718184069885196
+    },
+    "robot_start": {
+      "pos": [
+        -0.8,
+        0.0,
+        0.12
+      ],
+      "yaw_deg": 0.0,
+      "ground_z": 0.0
+    },
+    "modules": [
+      {
+        "id": "arena",
+        "type": "arena",
+        "definition": "arena_default",
+        "pos": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            3.6,
+            2.4
+          ],
+          "wall_height_m": 0.05,
+          "wall_thickness_m": 0.02,
+          "checker_m": 0.3
+        },
+        "rgba": {
+          "floor": [
+            0.62,
+            0.6,
+            0.55,
+            1.0
+          ],
+          "wall": [
+            0.92,
+            0.92,
+            0.9,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "ball",
+        "type": "ball",
+        "definition": "ball_kick",
+        "pos": [
+          1.2,
+          0.8,
+          0.035
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "radius_m": 0.035
+        },
+        "rgba": {
+          "ball": [
+            1.0,
+            0.55,
+            0.0,
+            1.0
+          ]
+        },
+        "sites": {}
+      }
+    ],
+    "images": [
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/kick_test_top.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/kick_test_head_start.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/kick_test_head_after_stand.png"
+    ]
+  },
+  {
+    "layout": "ramp_test",
+    "overrides": {},
+    "ok": true,
+    "nan": false,
+    "max_penetration_m": 0.0017215835940388698,
+    "max_dof_speed": 1.3701854483577551,
+    "fell": false,
+    "object_drift_m": {},
+    "robot_start": {
+      "pos": [
+        -1.3,
+        0.0,
+        0.12
+      ],
+      "yaw_deg": 0.0,
+      "ground_z": 0.0
+    },
+    "modules": [
+      {
+        "id": "arena",
+        "type": "arena",
+        "definition": "arena_default",
+        "pos": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            3.6,
+            2.4
+          ],
+          "wall_height_m": 0.05,
+          "wall_thickness_m": 0.02,
+          "checker_m": 0.3
+        },
+        "rgba": {
+          "floor": [
+            0.62,
+            0.6,
+            0.55,
+            1.0
+          ],
+          "wall": [
+            0.92,
+            0.92,
+            0.9,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "ramp",
+        "type": "ramp",
+        "definition": "ramp_up",
+        "pos": [
+          -0.8,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "angle_deg": 5.0,
+          "slope_length_m": 0.8,
+          "top_length_m": 0.6,
+          "width_m": 0.4,
+          "rail_height_m": 0.04,
+          "rail_thickness_m": 0.015,
+          "thickness_m": 0.02,
+          "height_m": 0.0699909308207392,
+          "total_length_m": 1.4
+        },
+        "rgba": {
+          "ramp": [
+            0.72,
+            0.72,
+            0.74,
+            1.0
+          ],
+          "rail": [
+            0.95,
+            0.55,
+            0.1,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_ramp_top_centre": [
+            0.3,
+            0.0,
+            0.07
+          ]
+        }
+      }
+    ],
+    "images": [
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/ramp_test_top.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/ramp_test_head_start.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/ramp_test_head_after_stand.png"
+    ]
+  },
+  {
+    "layout": "ramp_test_down",
+    "overrides": {},
+    "ok": true,
+    "nan": false,
+    "max_penetration_m": 0.0017215387833854068,
+    "max_dof_speed": 1.369712383185046,
+    "fell": false,
+    "object_drift_m": {},
+    "robot_start": {
+      "pos": [
+        -0.25,
+        0.0,
+        0.12
+      ],
+      "yaw_deg": 0.0,
+      "ground_z": 0.06999093082073937
+    },
+    "modules": [
+      {
+        "id": "arena",
+        "type": "arena",
+        "definition": "arena_default",
+        "pos": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 0.0,
+        "size": {
+          "size_m": [
+            3.6,
+            2.4
+          ],
+          "wall_height_m": 0.05,
+          "wall_thickness_m": 0.02,
+          "checker_m": 0.3
+        },
+        "rgba": {
+          "floor": [
+            0.62,
+            0.6,
+            0.55,
+            1.0
+          ],
+          "wall": [
+            0.92,
+            0.92,
+            0.9,
+            1.0
+          ]
+        },
+        "sites": {}
+      },
+      {
+        "id": "ramp",
+        "type": "ramp",
+        "definition": "ramp_up",
+        "pos": [
+          0.8,
+          0.0,
+          0.0
+        ],
+        "yaw_deg": 180.0,
+        "size": {
+          "angle_deg": 5.0,
+          "slope_length_m": 0.8,
+          "top_length_m": 0.6,
+          "width_m": 0.4,
+          "rail_height_m": 0.04,
+          "rail_thickness_m": 0.015,
+          "thickness_m": 0.02,
+          "height_m": 0.0699909308207392,
+          "total_length_m": 1.4
+        },
+        "rgba": {
+          "ramp": [
+            0.72,
+            0.72,
+            0.74,
+            1.0
+          ],
+          "rail": [
+            0.95,
+            0.55,
+            0.1,
+            1.0
+          ]
+        },
+        "sites": {
+          "mod_ramp_top_centre": [
+            -0.3,
+            0.0,
+            0.07
+          ]
+        }
+      }
+    ],
+    "images": [
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/ramp_test_down_top.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/ramp_test_down_head_start.png",
+      "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/scenes/ramp_test_down_head_after_stand.png"
+    ]
+  }
+]

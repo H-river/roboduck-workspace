@@ -1,0 +1,126 @@
+From 70d605f0d2fcf67b8724ddce8ddde1df1048a768 Mon Sep 17 00:00:00 2001
+From: H-river <hujiamomomo@gmail.com>
+Date: Fri, 20 Nov 2026 00:45:04 +0800
+Subject: [PATCH 2/2] Fix curriculum not reaching the command sampler;
+ tensorboard by default; pin BAM
+
+- microduck_velocity_env_cfg.py: the twist command was built with
+  `command.build = lambda env, _cmd=command: ...`, which binds the cfg object
+  registered with the task. mjlab builds the env from a deep copy of it
+  (load_env_cfg / tyro), and the staged curriculum edits that copy through
+  command_manager.get_term_cfg("twist"), so the widened ranges at iteration
+  3000 never reached the sampler. Use UniformVelocityCommandWithRotationCfg,
+  whose build() uses self. Checked with rl_train/tests/check_curriculum.py:
+  after the stage the sampled rotation |wz| goes 0.75 -> 1.50 (old lambda:
+  stays 0.75).
+- MicroduckVelocityRlCfg: logger tensorboard (wandb stalls without
+  WANDB_API_KEY); pass --agent.logger wandb to opt in.
+- pyproject.toml: pin better-actuator-models to rev 0007411 (the doc-branch tip
+  already in uv.lock) so a re-lock cannot drift; uv.lock re-generated, no
+  version changes.
+- .python-version: 3.13 (the version every policy here was trained with).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+---
+ .python-version                                      |  1 +
+ pyproject.toml                                       |  2 +-
+ .../tasks/microduck_velocity_env_cfg.py              | 12 ++++++++++--
+ uv.lock                                              |  5 +++--
+ 4 files changed, 15 insertions(+), 5 deletions(-)
+ create mode 100644 .python-version
+
+diff --git a/.python-version b/.python-version
+new file mode 100644
+index 0000000..24ee5b1
+--- /dev/null
++++ b/.python-version
+@@ -0,0 +1 @@
++3.13
+diff --git a/pyproject.toml b/pyproject.toml
+index a1e6eff..be59bb9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,5 +34,5 @@ override-dependencies = [
+ ]
+ 
+ [tool.uv.sources]
+-better-actuator-models = { git = "https://github.com/rhoban/bam.git", branch = "doc" }
++better-actuator-models = { git = "https://github.com/rhoban/bam.git", rev = "0007411bd82c48f1bc12ae8382f98e4d8b879c95" }  # tip of the doc branch when locked (2026-10-16); pinned so `uv lock` cannot drift
+ 
+diff --git a/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py b/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
+index 8068ca8..b97e579 100644
+--- a/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
++++ b/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
+@@ -8,6 +8,7 @@
+ 
+ """Microduck velocity environment"""
+ 
++import dataclasses
+ import numpy as np
+ from copy import deepcopy
+ 
+@@ -70,6 +71,7 @@ from mjlab_microduck.tasks.mdp import (
+     penalize_stepping_while_standing,
+     stepping_curriculum,
+     UniformVelocityCommandWithRotation,
++    UniformVelocityCommandWithRotationCfg,
+     action_target_limits_l2,
+     mounted_body_ang_vel,
+     mounted_body_projected_gravity,
+@@ -326,8 +328,13 @@ def make_microduck_velocity_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
+     )
+ 
+     #---------------------------- Commands --------------------------
+-    command = cfg.commands["twist"]
+-    command.build = lambda env, _cmd=command: UniformVelocityCommandWithRotation(_cmd, env)
++    # RoboDuck fix (was `command.build = lambda env, _cmd=command: ...`): the lambda bound the cfg
++    # object from before the command manager deep-copies it, so the staged curriculum's
++    # set_command_velocity(), which edits the manager's copy via get_term_cfg("twist"), never
++    # reached the sampler. UniformVelocityCommandWithRotationCfg.build() uses `self` instead.
++    _old = cfg.commands["twist"]
++    command = UniformVelocityCommandWithRotationCfg(**{f.name: getattr(_old, f.name) for f in dataclasses.fields(_old)})
++    cfg.commands["twist"] = command
+     command.viz.z_offset = 0.5
+ 
+     command.rel_standing_envs = 0.1
+@@ -513,6 +520,7 @@ MicroduckVelocityRlCfg = RslRlOnPolicyRunnerCfg(
+         max_grad_norm=1.0,
+     ),
+     wandb_project="mjlab_microduck_velocity",
++    logger="tensorboard",  # RoboDuck: was wandb (mjlab default), which blocks without WANDB_API_KEY; use --agent.logger wandb to opt in
+     experiment_name="mjlab_microduck_velocity",
+     save_interval=500,
+     num_steps_per_env=24,
+diff --git a/uv.lock b/uv.lock
+index cea420a..8c0217f 100644
+--- a/uv.lock
++++ b/uv.lock
+@@ -110,7 +110,7 @@ wheels = [
+ [[package]]
+ name = "better-actuator-models"
+ version = "1.0.0"
+-source = { git = "https://github.com/rhoban/bam.git?branch=doc#0007411bd82c48f1bc12ae8382f98e4d8b879c95" }
++source = { git = "https://github.com/rhoban/bam.git?rev=0007411bd82c48f1bc12ae8382f98e4d8b879c95#0007411bd82c48f1bc12ae8382f98e4d8b879c95" }
+ dependencies = [
+     { name = "cmaes" },
+     { name = "colorama" },
+@@ -832,6 +832,7 @@ wheels = [
+ name = "glfw"
+ version = "2.11.0"
+ source = { registry = "https://pypi.org/simple" }
++sdist = { url = "https://files.pythonhosted.org/packages/b2/89/fa9cb2611314b84ffa68d76f154e1e508971d6e402b14bd2152684e35e5d/glfw-2.11.0.tar.gz", hash = "sha256:4bd3a462ed02ae25455dceaeb76d154faf08b48962c0cb2cf685419a34a71305", size = 36404, upload-time = "2026-10-16T20:18:53.75Z" }
+ wheels = [
+     { url = "https://files.pythonhosted.org/packages/0c/65/c728be098d0a2fb1c81070386384640e577ec2db096e885d14ba8c3a0ffd/glfw-2.11.0-py2.py3-none-macosx_10_6_intel.whl", hash = "sha256:4f40b141657b014148893f3b8950906389f9d4d3b2bced41fbefcdcda776e9ad", size = 110341, upload-time = "2026-10-16T08:46:24.538Z" },
+     { url = "https://files.pythonhosted.org/packages/ac/2c/dc36e841a6a0db69c19db71a8fb4bbb211924bcf587735caea8afdd230ed/glfw-2.11.0-py2.py3-none-macosx_11_0_arm64.whl", hash = "sha256:7405d3e3041add442e40a15ef5a880178ff90f486d576a82e112240c66f59555", size = 107194, upload-time = "2026-10-16T08:46:25.797Z" },
+@@ -1284,7 +1285,7 @@ dependencies = [
+ 
+ [package.metadata]
+ requires-dist = [
+-    { name = "better-actuator-models", git = "https://github.com/rhoban/bam.git?branch=doc" },
++    { name = "better-actuator-models", git = "https://github.com/rhoban/bam.git?rev=0007411bd82c48f1bc12ae8382f98e4d8b879c95" },
+     { name = "mjlab", specifier = "==1.3.0" },
+     { name = "placo", specifier = ">=0.9.20" },
+     { name = "warp-lang", specifier = "==1.12.0" },
+-- 
+2.43.0
+

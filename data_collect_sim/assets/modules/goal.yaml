@@ -1,0 +1,2 @@
+# Goals: posts + crossbar + back board; goal-line site mod_<id>_goal_line.
+goal_small: {type: goal, width_m: 0.50, height_m: 0.20, depth_m: 0.20}

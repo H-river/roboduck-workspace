@@ -1,0 +1,20 @@
+# RoboDuck workspace (main repo). mjlab_microduck/ and microduck/ are submodules (.gitmodules).
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+wandb/
+.vscode/
+
+# Files of the upstream AI-FanGe tutorial at the workspace root: not ours, not needed for training.
+# Upstream: https://github.com/AI-FanGe/Microduck-build-tutorial @ 4967821 (HANDOFF.md, 目录结构).
+/README.upstream.md
+/LICENSE
+/bno08x_calibrate_ui.py
+/microduck3D打印.3mf
+/docs/
+/scripts/imu_mujoco_orientation_viewer.py
+/Repo_Structure.md
+
+# Training runs (checkpoints, tensorboard, logs): big. Checkpoints in use are listed in HANDOFF.md.
+/rl_train/runs/

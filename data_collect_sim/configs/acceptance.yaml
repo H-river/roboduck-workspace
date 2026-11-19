@@ -1,0 +1,130 @@
+# Skill acceptance (phase 2). Gates from the task; definitions the task left open are fixed
+# here BEFORE evaluating any v2 checkpoint (rl_train/NOTES.md §1.1). Do not loosen afterwards.
+
+common:
+  fall_trunk_height_m: 0.07     # fallen = IMU fall_flag, NaN, or trunk height above the ground below it < this
+
+walk:
+  random:                       # gate: 20/20 without a fall
+    seeds: 20
+    duration_s: 60.0
+    segment_s: [2.0, 5.0]
+    fall_trunk_height_m: 0.07   # trunk height above the ground below it (plus the IMU fall_flag)
+  stop:                         # gate: every trial stops within max_stop_s and then drifts < max_drift_m in drift_window_s
+    walk_s: 3.0
+    seeds: 3
+    commands:                   # [vx, vy, wz] before switching to zero (switcher clips to the card's range)
+      - [0.1, 0.0, 0.0]
+      - [0.2, 0.0, 0.0]
+      - [0.25, 0.0, 0.0]
+      - [0.0, 0.0, 0.5]
+      - [0.0, 0.0, -0.5]
+      - [0.0, 0.0, 1.0]
+      - [0.0, 0.0, -1.0]
+      - [0.2, 0.0, 0.3]
+      - [0.2, 0.0, -0.3]
+      - [0.15, 0.1, 0.0]
+      - [0.15, -0.1, 0.0]
+      - [0.25, 0.0, 0.3]
+      - [0.25, 0.0, -0.3]
+    stopped: {speed_max_m_s: 0.02, yaw_rate_max_rad_s: 0.1, hold_s: 0.5}   # "stopped" = both below for hold_s
+    max_stop_s: 0.6             # time from the zero command to the start of the stopped interval
+    drift_window_s: 2.0
+    max_drift_m: 0.03           # base xy displacement over drift_window_s after the stop time
+    timeout_s: 4.0
+  symmetry:
+    warmup_s: 2.0
+    straight: {cmd: [0.2, 0.0, 0.0], duration_s: 10.0, seeds: 5, max_abs_yaw_rate: 0.03}   # gate on every seed's mean
+    # gate: |w+| / |w-| in ratio_range for BOTH conditions (turn in place and walking turn)
+    turn: {cmds: [[0.0, 0.0, 0.5], [0.15, 0.0, 0.3]], duration_s: 8.0, seeds: 3, ratio_range: [0.8, 1.25]}
+    lateral: {cmd: [0.0, 0.15, 0.0], duration_s: 8.0, seeds: 3}                            # recorded, no gate
+  ramp:                         # heading hold (executor-like, scripts/ramp_test.py variant B)
+    gate_angles_deg: [5]        # up and down 10/10 each
+    record_angles_deg: [0, 3, 6]
+    runs: 10
+    speed_fraction: 0.6
+  head_override:                # gate: 20/20 stable during the takeover, normal start afterwards
+    trials: 20
+    settle_s: 1.5
+    pitch_down_deg: 25.0
+    hold_s: 3.0
+    after_restore_s: 1.0
+    stable: {max_tilt_deg: 10.0, max_displacement_m: 0.05}   # trunk tilt and base xy displacement, takeover + 1 s
+    walk_after: {cmd: [0.2, 0.0, 0.0], duration_s: 3.0, measure_last_s: 2.0, min_ratio: 0.7, max_ratio: 1.3, baseline_seeds: 5}
+    # "normal start" = no fall and mean vx within [min_ratio, max_ratio] x the same policy's mean vx
+    # for the same command from a plain standing start (baseline measured in the same run)
+  tracking:                     # recorded, no gate: mean actual (vx, vy, wz) over the last measure_last_s
+    hold_s: 8.0
+    measure_last_s: 5.0
+    seeds: 3
+    commands:                   # [vx, vy, wz]; the switcher clips to the card's range (clipped value reported)
+      - [0.10, 0.0, 0.0]
+      - [0.20, 0.0, 0.0]
+      - [0.25, 0.0, 0.0]
+      - [-0.15, 0.0, 0.0]
+      - [0.0, 0.15, 0.0]
+      - [0.0, -0.15, 0.0]
+      - [0.0, 0.0, 0.375]
+      - [0.0, 0.0, -0.375]
+      - [0.0, 0.0, 0.6]
+      - [0.0, 0.0, -0.6]
+      - [0.2, 0.0, 0.3]
+      - [0.2, 0.0, -0.3]
+  switch:                       # walk <-> stand hot switch (2026-11-20). gate: every trial without a fall
+    trials: 25
+    stand_first_s: 1.0
+    walk_s: [1.0, 3.0]          # WALK_FLAT for U(...) s -> the switch to STAND lands at a random gait phase
+    stand_s: [1.0, 2.0]
+    walk_again_s: 1.5           # STAND -> WALK_FLAT with a second random command
+    cmd_fraction: 0.8           # commands uniform in this fraction of the walk card's command_range
+  camera:
+    flag_distances_m: [1.0, 1.5, 2.0, 2.5]
+    gate_flag_m: 2.0            # gate: 40 x 40 cm mat at this distance fully visible while standing
+    jitter_speeds: [0.1, 0.2, 0.25]
+    jitter_s: 10.0
+
+kick:
+  window: {x: [0.07, 0.11], y_offset: [-0.03, 0.03], grid: 5, seeds: 2}   # y relative to the kicking foot line
+  success: {min_ball_speed: 0.3, max_dir_err_deg: 10.0}
+  gate_success_rate: 0.8
+  gate_mean_abs_dir_deg: 3.0
+  head_down_then_kick: {pitch_down_deg: 25.0, hold_s: 2.0, restore_s: 0.5, seeds: 2}   # gate: success rate >= direct kick
+  handoff:                      # walk -> stand -> kick -> stand -> walk, gate 20/20 without a fall
+    cycles: 20
+    walk_cmd: [0.15, 0.0, 0.0]
+    walk_s: 2.0
+    stand_s: 1.0
+    after_s: 0.5
+  stand_before_s: 1.0           # STAND before every KICK request (the executor measures the ball meanwhile)
+  card_defaults: {foot_line_y: -0.042, obs_noise_m: 0.015}   # only if the kick card defines neither (stage-1 card)
+
+# scripts/accept.py process pool: workers = min(workers, jobs, (MemAvailable - reserve_gb) / gb_per_worker)
+runner:
+  workers: 6
+  gb_per_worker: 1.3            # measured RSS of one worker (EGL renderer + model + onnxruntime), eval_candidates.py
+  reserve_gb: 2.0               # keep free for the desktop / a training run
+
+# Failure videos (scripts/accept.py): each failed trial is re-run alone with a chase camera.
+videos:
+  max_per_test: 3
+  fps: 25
+
+# scripts/accept.py --quick: deep-merged over the sections above. Only sizes shrink; every gate
+# keeps its threshold. For picking checkpoints during training, not for sign-off.
+quick:
+  walk:
+    random: {seeds: 4, duration_s: 20.0}
+    stop: {seeds: 1}
+    symmetry:
+      straight: {seeds: 2, duration_s: 6.0}
+      turn: {seeds: 1, duration_s: 6.0}
+      lateral: {seeds: 1, duration_s: 6.0}
+    ramp: {runs: 3, record_angles_deg: []}
+    head_override: {trials: 5}
+    camera: {flag_distances_m: [2.0], jitter_speeds: [0.2], jitter_s: 5.0}
+    tracking: {seeds: 1}
+    switch: {trials: 8}
+  kick:
+    window: {grid: 3, seeds: 1}
+    head_down_then_kick: {seeds: 1}
+    handoff: {cycles: 5}

@@ -1,0 +1,11 @@
+# walk v2, round 2: round 1's stop changes (they worked) + a working yaw-tracking fix.
+# Round 1 tightened track_angular_velocity's std to 0.316, but that term also penalises roll /
+# pitch rates, so gait sway drove it to ~0 and turning was never learned (NOTES §2.3).
+inherit: walk_v2_r1.yaml
+
+commands:
+  rel_rotation_envs: 0.15         # was 0.1: more turn-in-place practice
+
+rewards:
+  track_angular_velocity: {params: {std: 0.7071}}   # back to the original sqrt(0.5)
+  track_yaw_rate: {weight: 1.5, params: {std: 0.25}} # new: yaw only, tight

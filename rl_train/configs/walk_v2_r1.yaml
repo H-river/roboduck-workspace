@@ -1,0 +1,30 @@
+# walk v2, round 1: stop + heading / turn symmetry (flat ground, upstream DR unchanged).
+# Every value that differs from Mjlab-Velocity-Microduck is here; NOTES.md §2.1 has the reasons.
+train:
+  num_envs: 4096
+  max_iterations: 3000
+  save_interval: 250
+  experiment_name: walk_v2
+  episode_length_s: 20.0
+
+commands:                         # same ranges as walk_stable_5s (NOTES §0.2) -> card / executor clipping
+  lin_vel_x: [-0.25, 0.25]
+  lin_vel_y: [-0.15, 0.15]
+  ang_vel_z: [-0.375, 0.375]
+  rel_standing_envs: 0.2          # was 0.1; drawn at every resample (3-8 s), so most are mid-episode "walk -> zero" switches
+  rel_rotation_envs: 0.1
+  rotation_env_ang_vel_range: [-0.75, 0.75]
+  rotation_min_ang_vel: 0.5
+  rel_forward_envs: 0.2           # mjlab default (vx = 0.3, vy = wz = 0)
+  resampling_time_range: [3.0, 8.0]
+
+rewards:
+  no_stepping: {weight: -1.0}     # was 0 until iteration 3000 (never reached)
+  stand_still: {weight: 1.0, params: {std: 0.05, command_threshold: 0.01}}   # new
+  track_angular_velocity: {params: {std: 0.316}}   # was sqrt(0.5) = 0.707: 0.13 rad/s drift cost only 3 %
+
+symmetry: {use_data_augmentation: true, use_mirror_loss: false}
+
+terrain: {type: plane}
+head_override: null
+actuator: {}

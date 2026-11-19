@@ -1,0 +1,1321 @@
+{
+  "projection": {
+    "variants": [
+      {
+        "label": "pitch0_standing",
+        "scale": 4,
+        "resolution": [
+          1280,
+          960
+        ],
+        "n": 13,
+        "of": 15,
+        "skipped_edge_or_small": 1,
+        "max_ground_err_m": 0.00814876205933827,
+        "mean_ground_err_m": 0.003624016081203057,
+        "max_pixel_err_px": 0.6952193439667299,
+        "cam_height_m": 0.22513249071068386,
+        "cam_pitch_down_deg": 20.398715900216914,
+        "cam_roll_deg": -2.1916265300524396,
+        "markers": [
+          {
+            "marker": "m_0.70_+0.00",
+            "true_xy": [
+              0.7,
+              0.0
+            ],
+            "pixel": [
+              593.49,
+              476.18
+            ],
+            "pixels": 405,
+            "ground_err_m": 0.0011024061770270595,
+            "pixel_err_px": 0.6858606478578951,
+            "robot_frame_xy": [
+              0.698,
+              0.0111
+            ]
+          },
+          {
+            "marker": "m_1.00_-0.40",
+            "true_xy": [
+              1.0,
+              -0.4
+            ],
+            "pixel": [
+              1090.31,
+              360.48
+            ],
+            "pixels": 147,
+            "ground_err_m": 0.0021056364817514384,
+            "pixel_err_px": 0.5954787739949597,
+            "robot_frame_xy": [
+              1.0051,
+              -0.385
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.00",
+            "true_xy": [
+              1.0,
+              0.0
+            ],
+            "pixel": [
+              598.03,
+              346.08
+            ],
+            "pixels": 149,
+            "ground_err_m": 0.0022475679527701902,
+            "pixel_err_px": 0.6908470666543002,
+            "robot_frame_xy": [
+              0.9991,
+              0.016
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.40",
+            "true_xy": [
+              1.0,
+              0.4
+            ],
+            "pixel": [
+              90.72,
+              331.35
+            ],
+            "pixels": 157,
+            "ground_err_m": 0.0024545902195871163,
+            "pixel_err_px": 0.6952193439667299,
+            "robot_frame_xy": [
+              0.9928,
+              0.4168
+            ]
+          },
+          {
+            "marker": "m_1.50_-0.40",
+            "true_xy": [
+              1.5,
+              -0.4
+            ],
+            "pixel": [
+              930.41,
+              256.39
+            ],
+            "pixels": 51,
+            "ground_err_m": 0.003385259928792287,
+            "pixel_err_px": 0.43330050485439275,
+            "robot_frame_xy": [
+              1.5064,
+              -0.3771
+            ]
+          },
+          {
+            "marker": "m_1.50_+0.00",
+            "true_xy": [
+              1.5,
+              0.0
+            ],
+            "pixel": [
+              601.83,
+              245.98
+            ],
+            "pixels": 46,
+            "ground_err_m": 0.002183230052805753,
+            "pixel_err_px": 0.3084895183592546,
+            "robot_frame_xy": [
+              1.499,
+              0.0237
+            ]
+          },
+          {
+            "marker": "m_1.50_+0.40",
+            "true_xy": [
+              1.5,
+              0.4
+            ],
+            "pixel": [
+              266.35,
+              235.02
+            ],
+            "pixels": 49,
+            "ground_err_m": 0.003637243613796215,
+            "pixel_err_px": 0.47726347590745016,
+            "robot_frame_xy": [
+              1.494,
+              0.4247
+            ]
+          },
+          {
+            "marker": "m_2.00_-0.40",
+            "true_xy": [
+              2.0,
+              -0.4
+            ],
+            "pixel": [
+              850.82,
+              204.41
+            ],
+            "pixels": 22,
+            "ground_err_m": 0.002580401855524204,
+            "pixel_err_px": 0.6278792943028811,
+            "robot_frame_xy": [
+              2.0053,
+              -0.3696
+            ]
+          },
+          {
+            "marker": "m_2.00_+0.00",
+            "true_xy": [
+              2.0,
+              0.0
+            ],
+            "pixel": [
+              603.23,
+              195.82
+            ],
+            "pixels": 22,
+            "ground_err_m": 0.005593715309580511,
+            "pixel_err_px": 0.5019451393050901,
+            "robot_frame_xy": [
+              2.0023,
+              0.0323
+            ]
+          },
+          {
+            "marker": "m_2.00_+0.40",
+            "true_xy": [
+              2.0,
+              0.4
+            ],
+            "pixel": [
+              352.76,
+              187.52
+            ],
+            "pixels": 25,
+            "ground_err_m": 0.003928134931695314,
+            "pixel_err_px": 0.3559697217315114,
+            "robot_frame_xy": [
+              1.9942,
+              0.4328
+            ]
+          },
+          {
+            "marker": "m_2.50_-0.40",
+            "true_xy": [
+              2.5,
+              -0.4
+            ],
+            "pixel": [
+              802.5,
+              173.0
+            ],
+            "pixels": 10,
+            "ground_err_m": 0.0034410417352860575,
+            "pixel_err_px": 0.4736705429390451,
+            "robot_frame_xy": [
+              2.5062,
+              -0.3617
+            ]
+          },
+          {
+            "marker": "m_2.50_+0.00",
+            "true_xy": [
+              2.5,
+              0.0
+            ],
+            "pixel": [
+              604.5,
+              166.0
+            ],
+            "pixels": 10,
+            "ground_err_m": 0.006304218737685332,
+            "pixel_err_px": 0.30862028172397227,
+            "robot_frame_xy": [
+              2.503,
+              0.0399
+            ]
+          },
+          {
+            "marker": "m_2.50_+0.40",
+            "true_xy": [
+              2.5,
+              0.4
+            ],
+            "pixel": [
+              404.5,
+              159.0
+            ],
+            "pixels": 10,
+            "ground_err_m": 0.00814876205933827,
+            "pixel_err_px": 0.41060849188053816,
+            "robot_frame_xy": [
+              2.4983,
+              0.4413
+            ]
+          }
+        ],
+        "image": "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/camera_check/projection_pitch0_standing.png"
+      },
+      {
+        "label": "pitch0_standing",
+        "scale": 1,
+        "resolution": [
+          320,
+          240
+        ],
+        "n": 2,
+        "of": 15,
+        "skipped_edge_or_small": 8,
+        "max_ground_err_m": 0.002348140803439684,
+        "mean_ground_err_m": 0.0017562007009264459,
+        "max_pixel_err_px": 0.34646595910548306,
+        "cam_height_m": 0.22513249071068386,
+        "cam_pitch_down_deg": 20.398715900216914,
+        "cam_roll_deg": -2.1916265300524396,
+        "markers": [
+          {
+            "marker": "m_0.70_+0.00",
+            "true_xy": [
+              0.7,
+              0.0
+            ],
+            "pixel": [
+              148.11,
+              118.67
+            ],
+            "pixels": 27,
+            "ground_err_m": 0.0011642605984132077,
+            "pixel_err_px": 0.20505623382495514,
+            "robot_frame_xy": [
+              0.6981,
+              0.0109
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.40",
+            "true_xy": [
+              1.0,
+              0.4
+            ],
+            "pixel": [
+              22.0,
+              82.5
+            ],
+            "pixels": 12,
+            "ground_err_m": 0.002348140803439684,
+            "pixel_err_px": 0.34646595910548306,
+            "robot_frame_xy": [
+              0.9922,
+              0.4175
+            ]
+          }
+        ],
+        "image": "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/camera_check/projection_pitch0_standing.png"
+      },
+      {
+        "label": "pitch35_standing",
+        "scale": 4,
+        "resolution": [
+          1280,
+          960
+        ],
+        "n": 5,
+        "of": 15,
+        "skipped_edge_or_small": 0,
+        "max_ground_err_m": 0.0005362476535485457,
+        "mean_ground_err_m": 0.0004029679966305553,
+        "max_pixel_err_px": 1.3510827255403168,
+        "cam_height_m": 0.22513249071068386,
+        "cam_pitch_down_deg": 55.35905779331739,
+        "cam_roll_deg": -3.615300447290436,
+        "markers": [
+          {
+            "marker": "m_0.25_-0.15",
+            "true_xy": [
+              0.25,
+              -0.15
+            ],
+            "pixel": [
+              1199.1,
+              471.22
+            ],
+            "pixels": 4521,
+            "ground_err_m": 0.00036629062809448155,
+            "pixel_err_px": 1.2480476159045841,
+            "robot_frame_xy": [
+              0.2495,
+              -0.1463
+            ]
+          },
+          {
+            "marker": "m_0.25_+0.00",
+            "true_xy": [
+              0.25,
+              0.0
+            ],
+            "pixel": [
+              578.11,
+              471.09
+            ],
+            "pixels": 4783,
+            "ground_err_m": 0.0001647023171881118,
+            "pixel_err_px": 0.5711105521660449,
+            "robot_frame_xy": [
+              0.2471,
+              0.004
+            ]
+          },
+          {
+            "marker": "m_0.35_-0.15",
+            "true_xy": [
+              0.35,
+              -0.15
+            ],
+            "pixel": [
+              1096.36,
+              189.34
+            ],
+            "pixels": 2660,
+            "ground_err_m": 0.0005243961332893126,
+            "pixel_err_px": 1.1940805491456605,
+            "robot_frame_xy": [
+              0.3498,
+              -0.1447
+            ]
+          },
+          {
+            "marker": "m_0.35_+0.00",
+            "true_xy": [
+              0.35,
+              0.0
+            ],
+            "pixel": [
+              579.92,
+              183.65
+            ],
+            "pixels": 2800,
+            "ground_err_m": 0.000423203251032325,
+            "pixel_err_px": 1.0074538161175575,
+            "robot_frame_xy": [
+              0.3474,
+              0.0056
+            ]
+          },
+          {
+            "marker": "m_0.35_+0.15",
+            "true_xy": [
+              0.35,
+              0.15
+            ],
+            "pixel": [
+              42.57,
+              177.8
+            ],
+            "pixels": 2994,
+            "ground_err_m": 0.0005362476535485457,
+            "pixel_err_px": 1.3510827255403168,
+            "robot_frame_xy": [
+              0.345,
+              0.1559
+            ]
+          }
+        ],
+        "image": "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/camera_check/projection_pitch35_standing.png"
+      },
+      {
+        "label": "pitch35_standing",
+        "scale": 1,
+        "resolution": [
+          320,
+          240
+        ],
+        "n": 5,
+        "of": 15,
+        "skipped_edge_or_small": 0,
+        "max_ground_err_m": 0.0006572405627814415,
+        "mean_ground_err_m": 0.00043536958332769226,
+        "max_pixel_err_px": 0.4268533866690547,
+        "cam_height_m": 0.22513249071068386,
+        "cam_pitch_down_deg": 55.35905779331739,
+        "cam_roll_deg": -3.615300447290436,
+        "markers": [
+          {
+            "marker": "m_0.25_-0.15",
+            "true_xy": [
+              0.25,
+              -0.15
+            ],
+            "pixel": [
+              299.36,
+              117.41
+            ],
+            "pixels": 283,
+            "ground_err_m": 0.0003534734113977789,
+            "pixel_err_px": 0.29120971413579827,
+            "robot_frame_xy": [
+              0.2495,
+              -0.1463
+            ]
+          },
+          {
+            "marker": "m_0.25_+0.00",
+            "true_xy": [
+              0.25,
+              0.0
+            ],
+            "pixel": [
+              144.06,
+              117.43
+            ],
+            "pixels": 301,
+            "ground_err_m": 0.0001610569916212949,
+            "pixel_err_px": 0.15234878221541767,
+            "robot_frame_xy": [
+              0.2471,
+              0.0041
+            ]
+          },
+          {
+            "marker": "m_0.35_-0.15",
+            "true_xy": [
+              0.35,
+              -0.15
+            ],
+            "pixel": [
+              273.79,
+              46.95
+            ],
+            "pixels": 169,
+            "ground_err_m": 0.0006012352415530239,
+            "pixel_err_px": 0.35448685918294776,
+            "robot_frame_xy": [
+              0.3498,
+              -0.1448
+            ]
+          },
+          {
+            "marker": "m_0.35_+0.00",
+            "true_xy": [
+              0.35,
+              0.0
+            ],
+            "pixel": [
+              144.67,
+              45.55
+            ],
+            "pixels": 172,
+            "ground_err_m": 0.000403841709284922,
+            "pixel_err_px": 0.24210351235210817,
+            "robot_frame_xy": [
+              0.3474,
+              0.0055
+            ]
+          },
+          {
+            "marker": "m_0.35_+0.15",
+            "true_xy": [
+              0.35,
+              0.15
+            ],
+            "pixel": [
+              10.18,
+              44.04
+            ],
+            "pixels": 189,
+            "ground_err_m": 0.0006572405627814415,
+            "pixel_err_px": 0.4268533866690547,
+            "robot_frame_xy": [
+              0.345,
+              0.156
+            ]
+          }
+        ],
+        "image": "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/camera_check/projection_pitch35_standing.png"
+      },
+      {
+        "label": "pitch35_walking",
+        "scale": 4,
+        "resolution": [
+          1280,
+          960
+        ],
+        "n": 5,
+        "of": 15,
+        "skipped_edge_or_small": 0,
+        "max_ground_err_m": 0.0012224286515367874,
+        "mean_ground_err_m": 0.0008728646178297481,
+        "max_pixel_err_px": 0.9145514305925695,
+        "cam_height_m": 0.24261356243438417,
+        "cam_pitch_down_deg": 36.55371021951998,
+        "cam_roll_deg": -6.768091725650926,
+        "markers": [
+          {
+            "marker": "m_0.70_+0.00",
+            "true_xy": [
+              0.7,
+              0.0
+            ],
+            "pixel": [
+              906.47,
+              574.05
+            ],
+            "pixels": 2015,
+            "ground_err_m": 0.00043663642405096536,
+            "pixel_err_px": 0.8400878657700301,
+            "robot_frame_xy": [
+              0.3587,
+              -0.0827
+            ]
+          },
+          {
+            "marker": "m_0.70_+0.15",
+            "true_xy": [
+              0.7,
+              0.15
+            ],
+            "pixel": [
+              460.51,
+              496.03
+            ],
+            "pixels": 1855,
+            "ground_err_m": 0.0004406269064232053,
+            "pixel_err_px": 0.814060702257291,
+            "robot_frame_xy": [
+              0.3721,
+              0.067
+            ]
+          },
+          {
+            "marker": "m_1.00_-0.15",
+            "true_xy": [
+              1.0,
+              -0.15
+            ],
+            "pixel": [
+              1176.21,
+              255.94
+            ],
+            "pixels": 528,
+            "ground_err_m": 0.0012224286515367874,
+            "pixel_err_px": 0.9145514305925695,
+            "robot_frame_xy": [
+              0.6449,
+              -0.2592
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.00",
+            "true_xy": [
+              1.0,
+              0.0
+            ],
+            "pixel": [
+              890.92,
+              212.2
+            ],
+            "pixels": 493,
+            "ground_err_m": 0.0011760389901925134,
+            "pixel_err_px": 0.8495043966632126,
+            "robot_frame_xy": [
+              0.6583,
+              -0.1094
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.15",
+            "true_xy": [
+              1.0,
+              0.15
+            ],
+            "pixel": [
+              615.44,
+              170.07
+            ],
+            "pixels": 471,
+            "ground_err_m": 0.0010885921169452686,
+            "pixel_err_px": 0.771177804187101,
+            "robot_frame_xy": [
+              0.6716,
+              0.0402
+            ]
+          }
+        ],
+        "image": "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/camera_check/projection_pitch35_walking.png"
+      },
+      {
+        "label": "pitch35_walking",
+        "scale": 1,
+        "resolution": [
+          320,
+          240
+        ],
+        "n": 5,
+        "of": 15,
+        "skipped_edge_or_small": 0,
+        "max_ground_err_m": 0.0015975636859102522,
+        "mean_ground_err_m": 0.0008677014568272744,
+        "max_pixel_err_px": 0.30130705376437644,
+        "cam_height_m": 0.24261356243438417,
+        "cam_pitch_down_deg": 36.55371021951998,
+        "cam_roll_deg": -6.768091725650926,
+        "markers": [
+          {
+            "marker": "m_0.70_+0.00",
+            "true_xy": [
+              0.7,
+              0.0
+            ],
+            "pixel": [
+              226.21,
+              143.11
+            ],
+            "pixels": 127,
+            "ground_err_m": 0.0004699189519905455,
+            "pixel_err_px": 0.2227266769936004,
+            "robot_frame_xy": [
+              0.3588,
+              -0.0827
+            ]
+          },
+          {
+            "marker": "m_0.70_+0.15",
+            "true_xy": [
+              0.7,
+              0.15
+            ],
+            "pixel": [
+              114.9,
+              123.62
+            ],
+            "pixels": 118,
+            "ground_err_m": 0.0004877693616121754,
+            "pixel_err_px": 0.23784376713274477,
+            "robot_frame_xy": [
+              0.3722,
+              0.0668
+            ]
+          },
+          {
+            "marker": "m_1.00_-0.15",
+            "true_xy": [
+              1.0,
+              -0.15
+            ],
+            "pixel": [
+              293.5,
+              63.5
+            ],
+            "pixels": 32,
+            "ground_err_m": 0.0015764443207978945,
+            "pixel_err_px": 0.30130705376437644,
+            "robot_frame_xy": [
+              0.6454,
+              -0.259
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.00",
+            "true_xy": [
+              1.0,
+              0.0
+            ],
+            "pixel": [
+              222.37,
+              52.6
+            ],
+            "pixels": 30,
+            "ground_err_m": 0.0015975636859102522,
+            "pixel_err_px": 0.28817827308737987,
+            "robot_frame_xy": [
+              0.6587,
+              -0.1095
+            ]
+          },
+          {
+            "marker": "m_1.00_+0.15",
+            "true_xy": [
+              1.0,
+              0.15
+            ],
+            "pixel": [
+              153.36,
+              42.32
+            ],
+            "pixels": 28,
+            "ground_err_m": 0.00020681096382550374,
+            "pixel_err_px": 0.0951699362166094,
+            "robot_frame_xy": [
+              0.6705,
+              0.0404
+            ]
+          }
+        ],
+        "image": "/home/jiamo/Microduck-build-tutorial-main/data_collect_sim/outputs/camera_check/projection_pitch35_walking.png"
+      }
+    ],
+    "max_ground_err_m": 0.00814876205933827,
+    "pass": true
+  },
+  "visibility": {
+    "default": {
+      "mat_0.5": {
+        "pixels": 32590,
+        "width_px": 320,
+        "corners_in_image": 2,
+        "fully_visible": false
+      },
+      "mat_1": {
+        "pixels": 4203,
+        "width_px": 157,
+        "corners_in_image": 4,
+        "fully_visible": true
+      },
+      "mat_2": {
+        "pixels": 494,
+        "width_px": 69,
+        "corners_in_image": 4,
+        "fully_visible": true
+      },
+      "mat_3": {
+        "pixels": 149,
+        "width_px": 44,
+        "corners_in_image": 4,
+        "fully_visible": true
+      },
+      "ball_kick": {
+        "pixels": 0,
+        "width_px": 0,
+        "visible": false
+      },
+      "ball_0.15": {
+        "pixels": 0,
+        "width_px": 0,
+        "visible": false
+      },
+      "ball_0.3": {
+        "pixels": 0,
+        "width_px": 0,
+        "visible": false
+      },
+      "ball_0.5": {
+        "pixels": 0,
+        "width_px": 0,
+        "visible": false
+      },
+      "ball_1": {
+        "pixels": 421,
+        "width_px": 24,
+        "visible": true
+      },
+      "_camera": {
+        "height_m": 0.22513249071068386,
+        "pitch_down_deg": 20.398715900216914,
+        "roll_deg": -2.1916265300524396,
+        "near_ground_m": 0.3326480224087882,
+        "pos_robot": [
+          0.0897,
+          -0.0011,
+          0.2251
+        ]
+      }
+    },
+    "sweep": [
+      {
+        "fovy": 45,
+        "pitch_down": 0,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "mat_width_px": {
+          "0.5": 320,
+          "1.0": 157,
+          "2.0": 69,
+          "3.0": 44
+        },
+        "near_ground_m": 0.3326480224087882,
+        "cam_pitch_down_deg": 20.398715900216914
+      },
+      {
+        "fovy": 45,
+        "pitch_down": 20,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 320,
+          "1.0": 2,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.2052517118290181,
+        "cam_pitch_down_deg": 40.38107599812361
+      },
+      {
+        "fovy": 45,
+        "pitch_down": 30,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 320,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.1592302286223505,
+        "cam_pitch_down_deg": 50.36791310151961
+      },
+      {
+        "fovy": 45,
+        "pitch_down": 40,
+        "ball_kick_visible": true,
+        "ball_kick_px": 924,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 320,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.11796483608896079,
+        "cam_pitch_down_deg": 60.3476377249524
+      },
+      {
+        "fovy": 45,
+        "pitch_down": 50,
+        "ball_kick_visible": true,
+        "ball_kick_px": 6715,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 0,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.07849087711435629,
+        "cam_pitch_down_deg": 70.3092109891146
+      },
+      {
+        "fovy": 45,
+        "pitch_down": 60,
+        "ball_kick_visible": true,
+        "ball_kick_px": 9606,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 0,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.038323233059082466,
+        "cam_pitch_down_deg": 80.19685070453617
+      },
+      {
+        "fovy": 60,
+        "pitch_down": 0,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "mat_width_px": {
+          "0.5": 297,
+          "1.0": 112,
+          "2.0": 49,
+          "3.0": 31
+        },
+        "near_ground_m": 0.27658043712688035,
+        "cam_pitch_down_deg": 20.398715900216914
+      },
+      {
+        "fovy": 60,
+        "pitch_down": 20,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [
+          0.5,
+          1.0
+        ],
+        "mat_width_px": {
+          "0.5": 275,
+          "1.0": 122,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.17023658133178646,
+        "cam_pitch_down_deg": 40.38107599812361
+      },
+      {
+        "fovy": 60,
+        "pitch_down": 30,
+        "ball_kick_visible": true,
+        "ball_kick_px": 31,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 274,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.12808816700437176,
+        "cam_pitch_down_deg": 50.36791310151961
+      },
+      {
+        "fovy": 60,
+        "pitch_down": 40,
+        "ball_kick_visible": true,
+        "ball_kick_px": 3158,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 282,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.0884038843746229,
+        "cam_pitch_down_deg": 60.3476377249524
+      },
+      {
+        "fovy": 60,
+        "pitch_down": 50,
+        "ball_kick_visible": true,
+        "ball_kick_px": 5676,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 293,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.04864407010222962,
+        "cam_pitch_down_deg": 70.3092109891146
+      },
+      {
+        "fovy": 60,
+        "pitch_down": 60,
+        "ball_kick_visible": true,
+        "ball_kick_px": 4951,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 0,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.006249358989257367,
+        "cam_pitch_down_deg": 80.19685070453617
+      },
+      {
+        "fovy": 75,
+        "pitch_down": 0,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [
+          0.5,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "mat_width_px": {
+          "0.5": 230,
+          "1.0": 84,
+          "2.0": 37,
+          "3.0": 24
+        },
+        "near_ground_m": 0.2314942736849306,
+        "cam_pitch_down_deg": 20.398715900216914
+      },
+      {
+        "fovy": 75,
+        "pitch_down": 20,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [
+          0.5,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "mat_width_px": {
+          "0.5": 207,
+          "1.0": 92,
+          "2.0": 43,
+          "3.0": 28
+        },
+        "near_ground_m": 0.13833582549032883,
+        "cam_pitch_down_deg": 40.38107599812361
+      },
+      {
+        "fovy": 75,
+        "pitch_down": 30,
+        "ball_kick_visible": true,
+        "ball_kick_px": 1612,
+        "mats_fully_visible": [
+          0.5
+        ],
+        "mat_width_px": {
+          "0.5": 206,
+          "1.0": 101,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.09828450705944433,
+        "cam_pitch_down_deg": 50.36791310151961
+      },
+      {
+        "fovy": 75,
+        "pitch_down": 40,
+        "ball_kick_visible": true,
+        "ball_kick_px": 3692,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 211,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.05877288247830678,
+        "cam_pitch_down_deg": 60.3476377249524
+      },
+      {
+        "fovy": 75,
+        "pitch_down": 50,
+        "ball_kick_visible": true,
+        "ball_kick_px": 3238,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 224,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.017306099258722372,
+        "cam_pitch_down_deg": 70.3092109891146
+      },
+      {
+        "fovy": 75,
+        "pitch_down": 60,
+        "ball_kick_visible": true,
+        "ball_kick_px": 2800,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 247,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": -0.029136533734159382,
+        "cam_pitch_down_deg": 80.19685070453617
+      },
+      {
+        "fovy": 90,
+        "pitch_down": 0,
+        "ball_kick_visible": false,
+        "ball_kick_px": 0,
+        "mats_fully_visible": [
+          0.5,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "mat_width_px": {
+          "0.5": 177,
+          "1.0": 64,
+          "2.0": 28,
+          "3.0": 18
+        },
+        "near_ground_m": 0.19326460366450854,
+        "cam_pitch_down_deg": 20.398715900216914
+      },
+      {
+        "fovy": 90,
+        "pitch_down": 20,
+        "ball_kick_visible": true,
+        "ball_kick_px": 802,
+        "mats_fully_visible": [
+          0.5,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "mat_width_px": {
+          "0.5": 159,
+          "1.0": 70,
+          "2.0": 33,
+          "3.0": 21
+        },
+        "near_ground_m": 0.10816743588910524,
+        "cam_pitch_down_deg": 40.38107599812361
+      },
+      {
+        "fovy": 90,
+        "pitch_down": 30,
+        "ball_kick_visible": true,
+        "ball_kick_px": 2576,
+        "mats_fully_visible": [
+          0.5,
+          1.0,
+          2.0
+        ],
+        "mat_width_px": {
+          "0.5": 159,
+          "1.0": 77,
+          "2.0": 38,
+          "3.0": 0
+        },
+        "near_ground_m": 0.06874957489343957,
+        "cam_pitch_down_deg": 50.36791310151961
+      },
+      {
+        "fovy": 90,
+        "pitch_down": 40,
+        "ball_kick_visible": true,
+        "ball_kick_px": 2472,
+        "mats_fully_visible": [
+          0.5
+        ],
+        "mat_width_px": {
+          "0.5": 162,
+          "1.0": 88,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": 0.02802254585521413,
+        "cam_pitch_down_deg": 60.3476377249524
+      },
+      {
+        "fovy": 90,
+        "pitch_down": 50,
+        "ball_kick_visible": true,
+        "ball_kick_px": 1909,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 172,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": -0.016830629436366405,
+        "cam_pitch_down_deg": 70.3092109891146
+      },
+      {
+        "fovy": 90,
+        "pitch_down": 60,
+        "ball_kick_visible": true,
+        "ball_kick_px": 1650,
+        "mats_fully_visible": [],
+        "mat_width_px": {
+          "0.5": 189,
+          "1.0": 0,
+          "2.0": 0,
+          "3.0": 0
+        },
+        "near_ground_m": -0.06983774751869887,
+        "cam_pitch_down_deg": 80.19685070453617
+      }
+    ],
+    "kick_window_centre": [
+      0.09,
+      -0.042
+    ]
+  },
+  "jitter": [
+    {
+      "cmd_vx": 0.0,
+      "fell": false,
+      "samples": 1000,
+      "rate_hz": 50.0,
+      "pitch": {
+        "mean_deg": 20.833356142013365,
+        "std_deg": 0.07129031771635468,
+        "p2p_deg": 0.3769086160426234,
+        "main_freq_hz": 0.4
+      },
+      "roll": {
+        "mean_deg": -4.562081240335094,
+        "std_deg": 0.25243250492518543,
+        "p2p_deg": 1.4474209140055545,
+        "main_freq_hz": 1.9000000000000001
+      },
+      "height": {
+        "mean_m": 0.2245396258048736,
+        "std_mm": 0.0832050751633179,
+        "p2p_mm": 0.45309303027921133
+      }
+    },
+    {
+      "cmd_vx": 0.1,
+      "fell": false,
+      "samples": 1000,
+      "rate_hz": 50.0,
+      "pitch": {
+        "mean_deg": 7.107343617875257,
+        "std_deg": 3.306977813651968,
+        "p2p_deg": 15.89149812373915,
+        "main_freq_hz": 2.3000000000000003
+      },
+      "roll": {
+        "mean_deg": -2.9010154982744365,
+        "std_deg": 1.9432618372791717,
+        "p2p_deg": 7.643133992892077,
+        "main_freq_hz": 2.3000000000000003
+      },
+      "height": {
+        "mean_m": 0.23891936410572395,
+        "std_mm": 3.5916276698073464,
+        "p2p_mm": 16.242640332680665
+      }
+    },
+    {
+      "cmd_vx": 0.2,
+      "fell": false,
+      "samples": 1000,
+      "rate_hz": 50.0,
+      "pitch": {
+        "mean_deg": 2.383427236490576,
+        "std_deg": 1.538573323038612,
+        "p2p_deg": 6.6732261470991086,
+        "main_freq_hz": 2.15
+      },
+      "roll": {
+        "mean_deg": -3.250619830996767,
+        "std_deg": 2.6130659372051364,
+        "p2p_deg": 8.007272812502386,
+        "main_freq_hz": 2.15
+      },
+      "height": {
+        "mean_m": 0.24319168062971688,
+        "std_mm": 2.64907191548115,
+        "p2p_mm": 10.818961089375161
+      }
+    },
+    {
+      "cmd_vx": 0.25,
+      "fell": false,
+      "samples": 1000,
+      "rate_hz": 50.0,
+      "pitch": {
+        "mean_deg": 2.6326890573417603,
+        "std_deg": 1.2594904160758336,
+        "p2p_deg": 6.697754218657359,
+        "main_freq_hz": 2.15
+      },
+      "roll": {
+        "mean_deg": -3.58905128662424,
+        "std_deg": 2.8180153827874284,
+        "p2p_deg": 8.660898237119499,
+        "main_freq_hz": 2.15
+      },
+      "height": {
+        "mean_m": 0.24296522893251546,
+        "std_mm": 2.6144258116986894,
+        "p2p_mm": 11.737831368467289
+      }
+    }
+  ]
+}

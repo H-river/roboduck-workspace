@@ -1,0 +1,8 @@
+# Downhill variant: robot starts on the top platform facing the descending incline.
+# The ramp is the same shape as ramp_test's, mirrored (foot at x = 0.8, rising towards -x).
+name: ramp_test_down
+grid_m: 0.6
+arena: arena_default
+robot_start: {pos: [-0.25, 0.0], yaw_deg: 0, on_modules: [ramp]}   # starts on the platform
+modules:
+  - {id: ramp, module: ramp_up, pos: [0.8, 0.0], yaw_deg: 180, params: {slope_length_m: 0.80, top_length_m: 0.60}}

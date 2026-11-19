@@ -1,0 +1,36 @@
+{
+  "task": "Mjlab-Velocity-Microduck",
+  "buggy_lambda": true,
+  "stage_step": 100,
+  "steps": 400,
+  "term_uses_managed_cfg": false,
+  "managed_cfg_after": {
+    "lin_vel_x": [
+      -0.35,
+      0.35
+    ],
+    "rotation_env_ang_vel_range": [
+      -1.5,
+      1.5
+    ]
+  },
+  "sampler_cfg_after": {
+    "lin_vel_x": [
+      -0.25,
+      0.25
+    ],
+    "rotation_env_ang_vel_range": [
+      -0.75,
+      0.75
+    ]
+  },
+  "sampled_max_abs_before": {
+    "vx": 0.30000001192092896,
+    "wz": 0.7453403472900391
+  },
+  "sampled_max_abs_after": {
+    "vx": 0.30000001192092896,
+    "wz": 0.7495578527450562
+  },
+  "curriculum_reaches_sampler": false
+}

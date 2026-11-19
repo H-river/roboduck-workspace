@@ -1,0 +1,54 @@
+{
+  "flags": {
+    "1": {
+      "fully_visible": true,
+      "corners_in_image": 4,
+      "width_px": 157
+    },
+    "1.5": {
+      "fully_visible": true,
+      "corners_in_image": 4,
+      "width_px": 97
+    },
+    "2": {
+      "fully_visible": true,
+      "corners_in_image": 4,
+      "width_px": 69
+    },
+    "2.5": {
+      "fully_visible": true,
+      "corners_in_image": 4,
+      "width_px": 54
+    }
+  },
+  "stand_pitch_deg": 21.231568457425936,
+  "walk_pitch_deg": 6.385819256641215,
+  "stand_minus_walk_pitch_deg": 14.845749200784722,
+  "jitter": {
+    "0.1": {
+      "pitch_mean_deg": 22.360218962588785,
+      "pitch_std_deg": 0.2255611583672118,
+      "pitch_p2p_deg": 1.0848137163706362,
+      "roll_std_deg": 0.4309028462120053,
+      "roll_p2p_deg": 1.9483592935499976,
+      "height_std_mm": 0.37548582447671097
+    },
+    "0.2": {
+      "pitch_mean_deg": 6.385819256641215,
+      "pitch_std_deg": 2.0917226136155387,
+      "pitch_p2p_deg": 9.351506915240545,
+      "roll_std_deg": 3.441163689716213,
+      "roll_p2p_deg": 10.638136812305312,
+      "height_std_mm": 3.1343044761785985
+    },
+    "0.25": {
+      "pitch_mean_deg": 4.292789854723258,
+      "pitch_std_deg": 2.069141106805459,
+      "pitch_p2p_deg": 8.24027627948662,
+      "roll_std_deg": 3.576483338147758,
+      "roll_p2p_deg": 11.069831969414125,
+      "height_std_mm": 3.3017190540824664
+    }
+  },
+  "pass": true
+}

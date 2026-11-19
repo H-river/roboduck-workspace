@@ -1,0 +1,37 @@
+# kick v2, round 1 (rl_train/NOTES.md §3). Stage-1 kick task + the v2 changes below.
+train:
+  num_envs: 2048                  # as stage 1
+  max_iterations: 4000
+  save_interval: 250
+  experiment_name: kick_v2
+  episode_length_s: 5.0
+
+kick:
+  foot: right
+  target_speed: 1.0               # m/s, as stage 1
+  ball_x_range: [0.06, 0.12]      # trunk yaw frame (stage 1: 0.09 +- 0.015)
+  ball_y_range: [-0.072, -0.012]  # right-foot line -0.042 +- 0.03 (stage 1: +- 0.015)
+  ball_obs_noise_m: 0.015         # executor's camera measurement error, constant for the episode
+  stand_z: 0.115
+  still_after_s: 1.5              # from here on: stand still (hand back to walk v2)
+
+start:
+  joint_offsets: {}               # walk v2 standing pose - HOME (filled after walk v2 is chosen)
+  head_takeover_prob: 0.3         # episodes starting right after a head takeover
+  pitch_down_deg_range: [15.0, 28.0]
+
+ball:                             # = data_collect_sim ball (kick card task.ball); real ball TBD
+  radius_m: 0.035
+  mass_kg: 0.015
+  friction: [0.5, 0.005, 0.0001]
+
+rewards:
+  ball_forward_velocity: 12.0     # stage 1
+  ball_speed_overshoot: -4.0      # stage 1
+  ball_lateral_speed: -8.0        # new: 8 deg off at 1 m/s -> 0.14 m/s lateral
+  support_foot_grounded: 2.0
+  pose_stand_legs: 2.0
+  pose_stand_neck: 1.0
+  upright: 2.0
+  height_stand: 1.0
+  still_after_kick: 2.0           # new

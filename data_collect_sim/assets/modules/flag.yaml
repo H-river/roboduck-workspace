@@ -1,0 +1,5 @@
+# Flag points: 40 x 40 cm mat (no collision) + 25-30 cm pole (collides) with a small cloth.
+flag_red:   {type: flag, id: red,    color: red,    pole_height_m: 0.28, mat_size_m: [0.40, 0.40]}
+flag_blue:  {type: flag, id: blue,   color: blue,   pole_height_m: 0.28, mat_size_m: [0.40, 0.40]}
+flag_green: {type: flag, id: green,  color: green,  pole_height_m: 0.28, mat_size_m: [0.40, 0.40]}
+flag_yellow: {type: flag, id: yellow, color: yellow, pole_height_m: 0.28, mat_size_m: [0.40, 0.40]}

@@ -1,0 +1,24 @@
+# Demo course, 3.6 x 2.4 m (grid 0.6 m: cells x 0..5, y 0..3; cell (0,0) is the south-west corner).
+#   start -> ramp (up, platform, down) -> flag A -> forbidden zone + obstacle in the middle
+#   -> flag B -> ball -> goal
+#
+#      y=+1.2 ┌──────────────────────────────────────┐
+#             │            [goal]                    │
+#             │  B          ball                     │
+#             │      [obs]       [forbidden]         │
+#             │ S ─ramp─up─top─down─        A  (soft)│
+#      y=-1.2 └──────────────────────────────────────┘
+#           x=-1.8                                x=+1.8
+name: demo_v1
+grid_m: 0.6
+arena: arena_default
+robot_start: {cell: [0, 0], offset_m: [-0.05, 0.0], yaw_deg: 0}
+modules:
+  - {id: ramp, module: ramp_up_down, pos: [-1.2, -0.85], yaw_deg: 0}          # x -1.2 .. 0.4
+  - {id: flag_A, module: flag_red, pos: [1.05, -0.8], yaw_deg: 0}
+  - {id: zone, module: zone_60x40, pos: [0.45, 0.0], yaw_deg: 0}
+  - {id: obstacle, module: box_20cm, pos: [-0.5, 0.05], yaw_deg: 0}
+  - {id: flag_B, module: flag_blue, pos: [-1.35, 0.55], yaw_deg: 90}
+  - {id: ball, module: ball_kick, pos: [0.3, 0.6]}
+  - {id: goal, module: goal_small, pos: [0.3, 0.95], yaw_deg: 90}             # mouth faces -y, ball shot towards +y
+  # soft mat (软垫): reserved for a later round, cell (5, 1) ~ (1.5, -0.3) -- keep free

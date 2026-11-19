@@ -1,0 +1,25 @@
+# kick v2, round 1 with the start pose filled in (kick_v2_r1.yaml left `start.joint_offsets`
+# empty "until walk v2 is chosen"). Walk v2 has no final policy yet; the offsets below are the
+# standing pose of the best walk v2 candidate so far, r2 seed 1 it2750 (passes every walk gate,
+# rl_train/NOTES.md §2.5), measured 2026-11-20 with
+#   data_collect_sim/scripts/stand_pose.py --card configs/policies/candidates/2026-10-24_23-32-51_walk_v2_r2_s1_it2750.yaml --after-walk
+# (5 seeds x stand 2 / 5 / 10 s, with and without walking first; mean of 30 samples, rad).
+# If the final walk v2 stands differently, re-measure and train a new round.
+inherit: kick_v2_r1.yaml
+
+start:
+  joint_offsets:
+    left_hip_yaw: 0.0438
+    left_hip_roll: 0.0094
+    left_hip_pitch: 0.0689
+    left_knee: 0.0267
+    left_ankle: -0.0725
+    neck_pitch: -0.1285
+    head_pitch: 0.0587
+    head_yaw: 0.0019
+    head_roll: 0.0177
+    right_hip_yaw: -0.0349
+    right_hip_roll: -0.0018
+    right_hip_pitch: -0.0481
+    right_knee: -0.0290
+    right_ankle: 0.0507

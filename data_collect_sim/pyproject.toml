@@ -1,0 +1,32 @@
+[project]
+name = "data-collect-sim"
+version = "0.1.0"
+description = "RoboDuck simulation runtime (phase 1): bare-MuJoCo + BAM walk runtime, head camera, modular scenes"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  # Same MuJoCo as mjlab_microduck/.venv (mujoco 3.16.0, checked 2026-10-24).
+  "mujoco==3.16.0",
+  "numpy==2.3.5",
+  "onnxruntime==1.23.2",
+  # Same BAM commit as mjlab_microduck/uv.lock (rhoban/bam, branch doc).
+  "better-actuator-models",
+  "pygame==2.6.1",
+  "imageio==2.37.0",
+  "imageio-ffmpeg==0.6.0",
+  "pyyaml==6.0.3",
+]
+
+[dependency-groups]
+dev = ["pytest==8.4.2"]
+
+[tool.uv]
+package = false
+override-dependencies = ["protobuf>=3.20,<7.0"]
+
+[tool.uv.sources]
+better-actuator-models = { git = "https://github.com/rhoban/bam.git", rev = "0007411bd82c48f1bc12ae8382f98e4d8b879c95" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["slow: runs scripts/accept.py end to end (about 30 s)"]

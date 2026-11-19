@@ -1,0 +1,9 @@
+# One ramp (up only: incline + top platform); robot starts 0.5 m before the foot of the ramp.
+# Angle from the command line: --set ramp.angle_deg=5 ; downhill tests start on the platform
+# (scripts/ramp_test.py uses ramp_test_down).
+name: ramp_test
+grid_m: 0.6
+arena: arena_default
+robot_start: {pos: [-1.3, 0.0], yaw_deg: 0}
+modules:
+  - {id: ramp, module: ramp_up, pos: [-0.8, 0.0], yaw_deg: 0, params: {slope_length_m: 0.80, top_length_m: 0.60}}
