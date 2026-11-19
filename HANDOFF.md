@@ -309,5 +309,14 @@ cd data_collect_sim
 ## 11. 仓库
 
 <!-- REPOS:BEGIN -->
-（推送后补）
+| 仓库 | 内容 | 可见性 |
+|---|---|---|
+| https://github.com/H-river/roboduck-workspace | 主仓库（本文、`rl_train/`、`data_collect_sim/`、`patches/`、`scripts/`），分支 `main` | 私有 |
+| https://github.com/H-river/roboduck-workspace-mjlab_microduck | 子仓库 `mjlab_microduck/`，分支 `roboduck-main`（上游历史 + 3 个我们的提交） | 私有 |
+| https://github.com/H-river/roboduck-workspace-microduck | 子仓库 `microduck/`，分支 `roboduck-main`（上游历史，没有改动） | 私有 |
+
+- 同学要三个仓库都有权限才能 `clone --recursive`：`gh repo edit` 不能加协作者，用
+  `for r in roboduck-workspace roboduck-workspace-mjlab_microduck roboduck-workspace-microduck; do gh api -X PUT repos/H-river/$r/collaborators/<同学的用户名> -f permission=push; done`
+  （或者网页上 Settings → Collaborators）。
+- 本地两个子仓库的 remote 叫 `roboduck`（不是 `origin`）；从 GitHub clone 下来的子仓库 remote 是 `origin`。都没有指向上游的 remote。
 <!-- REPOS:END -->
