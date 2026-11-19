@@ -6,7 +6,7 @@
 #   rl_train/train.sh walk_v2_r3                                  # 4096 envs x 3000 iterations, seed 1
 #   SEED=2 rl_train/train.sh walk_v2_r3
 #   NUM_ENVS=512 ITERATIONS=20 EXPORT_EVERY=10 rl_train/train.sh walk_v2_r3     # smoke test
-#   DETACH=1 rl_train/train.sh kick_v2_r1_stand2750               # keeps running after the terminal closes
+#   DETACH=1 rl_train/train.sh kick_v2_r1_stand2750               # keeps running after terminal closes
 #
 # Environment variables (default):
 #   SEED (1)            --agent.seed
@@ -19,10 +19,10 @@
 #   KICK_WALK (walk_v2_r2_s1_it2750)  walk card that walks / stands around the kick when accepting a kick run
 #   LOGGER (tensorboard) or wandb (needs WANDB_API_KEY)
 #   MEM_MAX (8G)        RAM cap of the training process (systemd user scope; skipped where systemd is missing, e.g. RunPod)
-#   POLL_S (60)         how often to look for new checkpoints
+#   POLL_S (60)         how often to look for checkpoints
 #   DETACH (0)          1 = re-run under setsid + nohup; driver log rl_train/runs/<RUN_NAME>.driver.log
 #
-# Logs: rl_train/runs/train_<RUN_NAME>.log (mjlab), rl_train/runs/<RUN_NAME>.driver.log (this script, when detached).
+# Logs: rl_train/runs/train_<RUN_NAME>.log (mjlab), rl_train/runs/<RUN_NAME>.driver.log (this script, if detached).
 set -euo pipefail
 
 HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -104,7 +104,7 @@ process() {  # export (and accept) every due checkpoint not done yet; $1 = final
   for ck in $(ls "$run"/model_*.pt 2> /dev/null | sort -V); do
     it=$(basename "$ck" .pt); it=${it#model_}
     [[ -f "$run/onnx/model_$it.onnx" ]] && continue
-    if (( it % EXPORT_EVERY == 0 )) || [[ "$1" == final && "$it" == "$last" ]]; then
+    if (( it > 0 && it % EXPORT_EVERY == 0 )) || [[ "$1" == final && "$it" == "$last" ]]; then
       log "export model_$it"
       ( cd "$HERE" && env -u PYTHONPATH MUJOCO_GL=egl "$MJLAB_PY" export_onnx.py --task "RoboDuck-$CFG" --checkpoint "$ck" \
           --out "$run/onnx/model_$it.onnx" > "$run/onnx/model_$it.log" 2>&1 ) || { log "  export failed: $run/onnx/model_$it.log"; continue; }

@@ -18,7 +18,9 @@ import yaml
 from mjlab.managers.metrics_manager import MetricsTermCfg
 from mjlab.managers.observation_manager import ObservationTermCfg
 from mjlab.managers.reward_manager import RewardTermCfg
+from mjlab.managers.termination_manager import TerminationTermCfg
 from mjlab.rl import RslRlPpoAlgorithmCfg
+from mjlab.sensor import ObjRef, RingPatternCfg, TerrainHeightSensorCfg
 from mjlab.terrains import TerrainGeneratorCfg
 from mjlab.terrains.primitive_terrains import BoxFlatTerrainCfg
 from mjlab_microduck.tasks.mdp import UniformVelocityCommandWithRotationCfg
@@ -133,6 +135,19 @@ def make_env_cfg(c: dict, play: bool = False):
                                                          platform_width=t["platform_width_m"], inverted=True),
             },
         )
+
+    # fall check relative to the terrain under the trunk (upstream's is an absolute height, which is
+    # wrong as soon as the terrain is not at z = 0; mdp_v2.trunk_clearance_below_minimum)
+    fo = (c.get("terminations") or {}).get("fell_over")
+    if fo and fo["type"] == "trunk_clearance":
+        cfg.scene.sensors = tuple(cfg.scene.sensors) + (TerrainHeightSensorCfg(
+            name="trunk_height_scan", frame=(ObjRef(type="body", name=fo["body"], entity="robot"),),
+            pattern=RingPatternCfg.single_ring(radius=fo["ray_radius_m"], num_samples=fo["rays"]), ray_alignment="yaw",
+            max_distance=fo["max_distance_m"], exclude_parent_body=True, include_geom_groups=(0,), reduction="mean",
+            debug_vis=False),)
+        cfg.terminations["fell_over"] = TerminationTermCfg(
+            func=mdp_v2.trunk_clearance_below_minimum,
+            params={"minimum_height": fo["minimum_height"], "sensor_name": "trunk_height_scan"})
 
     # head takeover while standing
     h = c.get("head_override")

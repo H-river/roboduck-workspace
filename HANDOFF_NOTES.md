@@ -133,3 +133,16 @@ prompt 里"策略和验收"那几条和 `data_collect_sim/NOTES.md`、`rl_train/
 - 密钥扫描（没有 gitleaks，用 `git grep` 扫暂存区和两个子仓库的 HEAD：api key / token / ghp_ / gho_ / github_pat_ / sk- / hf_ / AKIA / 私钥头 / password=）：没有命中。
 - kick stage 1 的训练配置从 `~/microduck_ws` 复制到 `rl_train/reference/ai_fange_kick_stage1/`，`policy_sources.yaml` 指向副本；`.pt` 不进仓库（没有 git-lfs），HANDOFF 里列了路径、大小、sha256。
 - 同学的 GitHub 用户名 prompt 里没填 → 没加协作者。
+
+### 第 1 步补记：r3 的摔倒判据（01:54–02:00）
+- 01:54 看 r3 s1 的训练日志（第 1500 次迭代）：平均回合长度 1.0 步，每步约 1230 次 `fell_over` 终止，从第 0 次迭代起就是这样（回合长度 4–5 步）。
+- 原因（`rl_train/tests/check_terrain_termination.py` 实测，512 env，零动作 25 步）：坡道地形里倒金字塔的出生点 z 最低 −0.37 m，上游 `fell_over` = 躯干**绝对**高度 < 0.10 m，所以出生在倒金字塔里的 103 个环境**全部**在 25 步内终止，平地和正金字塔上的 409 个一个都没有。r2（平地）同样的检查：0 个。也就是说 20% 的环境每一步都在重置，策略也永远学不到走进凹坑。第二阶段的 r3 从来没真正跑起来过（显存溢出），所以这个问题一直没暴露。
+- 修法：躯干上加一个向下的地形测高传感器（`TerrainHeightSensorCfg`，4 条射线、3 cm 半径、取平均，和脚上那个同样的设置），`fell_over` 改成"离正下方地面 < 0.10 m"（`mdp_v2.trunk_clearance_below_minimum`，`walk_v2_r3.yaml` 的 `terminations:`）。修好后：三类出生点 25 步内终止数都是 0；平地上测到的离地高度和躯干绝对高度差 ≤ 0.6 mm（射线打到地面，不是自己的腿），即和原判据等价。奖励里的 `foot_clearance` / `foot_swing_height` 本来就用的地形测高传感器，不受影响。
+- 处理：停掉队列，r3 s1 的 run 移到 `rl_train/runs/discarded/`（附说明）；01:58 用 `train.sh` 重新排队 `rl_train/runs/queue_20261120b.sh`：r3 s1 → kick v2 s1 → r3 s2。这次直接用 `train.sh`（每 500 次迭代导出 ONNX + quick 验收，结束时完整验收）。
+- `walk_v2_r3.yaml` 是原地改的（它在今晚之前从没训成过，算修 bug）。
+- 小插曲：队列在跑时我改了 `train.sh`（不导出第 0 次迭代）。bash 边读边执行，插入 10 个字节会让正在跑的实例在循环结束后读错位置。当场在循环之前的注释里删掉 10 个字节补偿：循环起点（5874）和之后的内容逐字节不变。已写进 HANDOFF 的已知坑。
+
+## 第 5 步补记：从 GitHub 重新 clone 验证（01:54–01:58）
+- 第一次：`setup_workspace.sh` exit 126，文件在 git 里没有执行权限（用编辑工具新建的文件没 `chmod +x`）。修好推送。
+- 第二次（commit `5f…` 之前的 HEAD，shell 里带 ROS 的 `PYTHONPATH`，严格照 HANDOFF §2）：clone 5 s；setup 14 s（uv 缓存热）；quick 验收 10 s，表格和 `baseline_quick/report.md` 逐行相同；冒烟训练 2 次迭代 + 导出 + quick 验收 105 s。全部通过。
+- r3 的修复是在这之后推的，最后会再完整验证一次。

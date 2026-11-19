@@ -82,6 +82,16 @@ def yaw_symmetry_metrics(env, command_name: str = "twist", asset_cfg: SceneEntit
     return torch.zeros(env.num_envs, device=env.device)
 
 
+# -- terminations -----------------------------------------------------------------------------
+def trunk_clearance_below_minimum(env, minimum_height: float, sensor_name: str) -> torch.Tensor:
+    """fell_over on uneven terrain: trunk height above the terrain right below it < minimum_height.
+
+    Upstream uses mjlab's root_height_below_minimum, an ABSOLUTE z. On the r3 slopes the inverted
+    pyramids put the spawn point below z = 0, so those envs terminated on their first steps
+    (HANDOFF_NOTES step 1). On flat ground (terrain at z = 0) the two checks are the same."""
+    return env.scene[sensor_name].data.heights[:, 0] < minimum_height
+
+
 # -- terrain: planar pyramid ------------------------------------------------------------------
 @dataclass(kw_only=True)
 class HfPlanarPyramidCfg(SubTerrainCfg):
