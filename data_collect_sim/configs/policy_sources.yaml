@@ -65,3 +65,17 @@ kick_v2_r1_stand2750_s1_it3999:
   agent_yaml: ../rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/params/agent.yaml
   env_yaml: ../rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/params/env.yaml
   kick_config_yaml: ../rl_train/configs/kick_v2_r1_stand2750.yaml
+
+walk_v2_r3warm_s1_it3000_candidate:
+  kind: walk
+  # CANDIDATE, NOT ACCEPTED: walk v2 r3 config (slopes, head takeover, 6-7.5 V, 10-40 ms) warm-started from
+  # walk_v2_r2_s1_it2750, iteration 3000 (250 after the warm start). Passes every gate except stop
+  # (31/39, worst 1.18 s; outputs/acceptance/scan_r3_warm/it3000/). For comparison on hardware only.
+  onnx: outputs/policies/walk_v2_r3warm_s1_it3000_candidate.onnx
+  checkpoint: ../rl_train/runs/logs/rsl_rl/walk_v2/2026-11-20_04-23-23_walk_v2_r3_from_r2s1it2750_b/model_3000.pt
+  agent_yaml: ../rl_train/runs/logs/rsl_rl/walk_v2/2026-11-20_04-23-23_walk_v2_r3_from_r2s1it2750_b/params/agent.yaml
+  env_yaml: ../rl_train/runs/logs/rsl_rl/walk_v2/2026-11-20_04-23-23_walk_v2_r3_from_r2s1it2750_b/params/env.yaml
+  train_cfg_py: ../mjlab_microduck/src/mjlab_microduck/tasks/microduck_velocity_env_cfg.py
+  robot_constants_py: ../mjlab_microduck/src/mjlab_microduck/robot/microduck_constants.py
+  mjcf: ../mjlab_microduck/src/mjlab_microduck/robot/microduck/robot_walk.xml
+  mjlab_velocity_command_py: ../mjlab_microduck/.venv/lib/python3.13/site-packages/mjlab/tasks/velocity/mdp/velocity_command.py

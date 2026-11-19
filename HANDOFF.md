@@ -13,6 +13,7 @@
 | **walk v2 r2 s1 it2750**（推荐，第二阶段） | `walk_v2_r2_s1_it2750` | **walk 门槛全过**：停住 39/39（最长 0.50 s）、直走偏航 0.018 rad/s、±ωz 比 0.98 / 0.96、5° 坡 10/10 × 2、头部接管 20/20、热切换 25/25 | 平地训练，没见过坡道 / 头部接管 / 6–7.5 V / 40 ms（但验收环境里 6 V + 40 ms 照样能走）；6° 上坡 0/10（只记录，旧 walk 是 10/10） |
 | **kick v2 r1 s1 it3999**（推荐，今晚） | `kick_v2_r1_stand2750_s1_it3999` | **kick 门槛全过**（配 r2 it2750）：窗口 50/50、平均偏差 −1.0°、低头测球后 100%、walk→stand→kick→stand→walk 20/20（20 次都踢中）；it3000–3750 也全过 | **观测 53 维**（多了球的位置），部署端还不支持（见"已知的坑"）；球的参数（15 g、半径 3.5 cm、摩擦）是假设值 |
 | walk v1（第一阶段在用） | `walk_flat`（1300 走）+ `walk_flat_2600`（站） | 不合格：停住 0/39、直走偏航 0.129 rad/s | 1300 停不下来；直走向左偏；右转弱 |
+| walk v2 r3 热启动 it3000（候选，今晚） | `walk_v2_r3warm_s1_it3000_candidate` | 不合格：只有停住不过（31/39，最长 1.18 s），其余 13 项全过 | 鲁棒性训练让"走着归零时停住"变差（所有热启动 checkpoint 都这样）；站姿头更低 |
 | kick stage 1（AI-FanGe，第一阶段在用） | `kick` | 和 2600 站：窗口 0/50；和 r2 it2750 站：52%、偏差 +0.6° | 盲踢（51 维，观测里没有球）；只有站姿接近 HOME 才出脚 |
 
 下一步：
@@ -30,7 +31,7 @@
 |---|---|
 | **kick v2 r1 s1**（`kick_v2_r1_stand2750`，2048 env × 4000 次迭代，69 min） | **成功**。it3000 / 3250 / 3500 / 3750 / 3999 的完整 kick 验收全部合格（窗口 96–100%、偏差 −0.4° 到 −1.3°、交接 20/20），中间 it1000–2000 只有偏差不过（−4° 到 −5°）。导出 `kick_v2_r1_stand2750_s1_it3999.onnx`。报告 `outputs/acceptance/scan_kick_v2_s1/`、`recommended/` |
 | walk v2 r3 s1，从零（4096 env） | 第一次（00:46）摔倒判据 bug，作废；第二次（01:58）到第 1250 次迭代**还不会走**（mjlab 里和验收环境里都 ≈ 0 m/s），停在 `model_1250`，排在最后续训 |
-| walk v2 r3，从 r2 s1 it2750 热启动 | 第一次第 ~3032 次迭代 NaN 中断（已加 NaN 终止项）；第 3000 次迭代比起点差（停住、5° 坡、头部接管不过）。重跑中 |
+| walk v2 r3，从 r2 s1 it2750 热启动 | 第一次第 ~3032 次迭代 NaN 中断（已加 NaN 终止项）。重跑（04:23–05:32，1500 次迭代）：**没有一个 checkpoint 过"停住"**——it3000 停住 31/39（最长 1.18 s），其他 13 项全过（含 5° 坡、头部接管、配 kick v2 的全部 kick 门槛）；it3250 停住 7/39；it3500 还掉了头部接管和 2 m 旗垫（站着时头低到 30°）；it4000 停住 13/39；it4249 停住 28/39 + 头部接管 18/20。it3000 放进仓库当**候选**（`walk_v2_r3warm_s1_it3000_candidate`，不合格，只给真机对比用）。报告 `outputs/acceptance/scan_r3_warm/` |
 
 <!-- WALKRESULT:BEGIN -->
 （walk r3 的最终结果待补）
@@ -77,17 +78,16 @@ NUM_ENVS=256 ITERATIONS=2 RUN_NAME=smoke ACCEPT_FINAL=quick rl_train/train.sh wa
 ONNX 在 `rl_train/runs/logs/rsl_rl/walk_v2/<日期>_smoke/onnx/model_1.onnx`。
 
 <!-- VERIFY:BEGIN -->
-**实测（2026-11-20 01:55，这台机器，从 GitHub 重新 clone 到 `/tmp/roboduck_verify`，shell 里带着 ROS 的 `PYTHONPATH`）**：
-完全按上面四步执行（脚本只是把命令逐条跑一遍并计时）：
+从 GitHub 重新 clone 到 `/tmp/roboduck_verify`，完全按上面四步执行（只是把命令逐条跑一遍并计时；shell 里带着 ROS 的 `PYTHONPATH`）。最近一次是 **2026-11-20 04:27，commit `b952075`**：
 
 | 步骤 | 结果 | 耗时 |
 |---|---|---|
 | `git clone --recursive …` | 主仓库 + 两个子仓库 | 5 s |
-| `scripts/setup_workspace.sh` | 两个 venv 装好，自检通过（CUDA available: True，6 个任务，walk 站 2 s + 走 2 s 不倒） | 14 s（uv 缓存是热的；新机器第一次要下载约 5 GB，几分钟到十几分钟） |
-| `accept.py … --quick` | 第一行 `不合格（14 项门槛中 5 项不通过…）`，表格和仓库里的 `baseline_quick/report.md` **逐行相同** | 10 s |
-| 冒烟训练 2 次迭代 + 导出 + 验收 | `training exited with code 0`，导出 `model_1.onnx`，快速验收出报告（不合格，属于预期） | 105 s |
+| `scripts/setup_workspace.sh` | 两个 venv 装好，自检通过（CUDA available: True，6 个任务，walk 站 2 s + 走 2 s 到 x = +0.140 m 不倒） | 13 s（uv 缓存是热的；新机器第一次要下载约 5 GB，几分钟到十几分钟） |
+| `accept.py … --quick` | 第一行 `不合格（14 项门槛中 5 项不通过…）`，表格和仓库里的 `baseline_quick/report.md` **逐行相同** | 9 s |
+| 冒烟训练 2 次迭代 + 导出 + 验收 | `training exited with code 0`，导出 `model_1.onnx`，快速验收出报告（不合格，属于预期） | 83 s |
 
-第一次验证失败过一次：`setup_workspace.sh` 在 git 里没有执行权限（exit 126），修好、推送后重新验证通过。
+一共验证了三次：第一次 `setup_workspace.sh` 在 git 里没有执行权限（exit 126），修好后第二次（`88e5d71`）通过；r3 配置改过之后又在 `b952075` 上验证了第三次，也通过。
 <!-- VERIFY:END -->
 
 ## 3. 怎么训练
@@ -291,6 +291,7 @@ cd data_collect_sim
 - `configs/acceptance.yaml`：只**增加**了上面这些参数、`quick:` 段、`videos:`、`runner:`；**已有门槛一个没改**。
 - `configs/policy_sources.yaml`：kick 的配置路径指向仓库里的副本；登记 `walk_v2_r2_s1_it2750`。
 - `outputs/policies/walk_v2_r2_s1_it2750.onnx` + `configs/policies/walk_v2_r2_s1_it2750.yaml`（从候选里提出来，作为 kick 验收和自检用的 walk）。
+- `outputs/policies/walk_v2_r3warm_s1_it3000_candidate.onnx` + card（r3 热启动的候选，停住不过）。
 - `outputs/policies/kick_v2_r1_stand2750_s1_it3999.onnx` + card（今晚训的 kick v2）；验收报告 `outputs/acceptance/recommended/`（推荐组合）、`baseline/`、`baseline_quick/`、`r2_s1_it*/`、`scan_r2_s2/`、`scan_kick_v2_s1/`，对比表 `compare_*.md`。
 - 加 `.python-version`；`.gitignore` 改成只提交报告和命名的 ONNX。
 
@@ -319,6 +320,7 @@ cd data_collect_sim
 | `rl_train/runs/logs/rsl_rl/walk_v2/2026-10-24_23-32-51_walk_v2_r2_s1/model_1500.pt` | 4 695 797 | `e80b643a3a4925f25a3ccaef1e5713d1101f2e0deb41c3dda7403ee1a472dc2d` | walk v2 候选 |
 | `~/microduck_ws/runs/ai_fange_kick/models/2026-10-06_13-14-13_af_kick_stage1/model_3999.pt` | 4 745 141 | `4c43bcc5b32d0c23a1fda3f7401052d85e1e555cbb1475eae173782b611422a4` | kick stage 1 |
 | `rl_train/runs/logs/rsl_rl/kick_v2/2026-11-20_03-12-56_kick_v2_r1_stand2750_s1/model_3999.pt` | 4 769 717 | `39d28d74c80802db5f5b39bf9384b8f97bdf012422e7e9250e4bbd943492ce56` | kick v2（推荐） |
+| `rl_train/runs/logs/rsl_rl/walk_v2/2026-11-20_04-23-23_walk_v2_r3_from_r2s1it2750_b/model_3000.pt` | 4 695 797 | `532eb8995b0ee85d32f6a3b1c584b9ae80eda43a70bab6b73ceab1f694200f95` | walk v2 r3 热启动候选（不合格） |
 <!-- FILES:END -->
 
 最省事的传法：把整个 run 目录（含 `params/`）打包：`rl_train/runs/logs/rsl_rl/`（约 300 MB，所有 v2 run）、`mjlab_microduck/logs/rsl_rl/mjlab_microduck_velocity/2026-10-16_17-43-09/`、`mjlab_microduck/checkpoints/walk_stable_5s/model_1300.pt`、`~/microduck_ws/runs/ai_fange_kick/models/2026-10-06_13-14-13_af_kick_stage1/`，放回同样的相对路径。

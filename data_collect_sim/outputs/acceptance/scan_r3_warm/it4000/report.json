@@ -1,0 +1,3068 @@
+{
+  "name": "r3warm_it4000",
+  "created": "2026-11-20T05:35:45+08:00",
+  "quick": false,
+  "verdict": {
+    "pass": false,
+    "n_gated": 14,
+    "n_failed": 1,
+    "failed": [
+      "stop"
+    ]
+  },
+  "items": [
+    {
+      "skill": "walk",
+      "id": "random",
+      "name": "20 个 seed × 60 s 随机命令",
+      "value": "20/20 不摔",
+      "threshold": "20/20 不摔",
+      "pass": true,
+      "test": "random"
+    },
+    {
+      "skill": "walk",
+      "id": "stop",
+      "name": "切零命令后停住（13 个命令 × 3 seed）",
+      "value": "13/39 通过；最长 2.10 s，最大漂移 0.6 cm",
+      "threshold": "每次 ≤ 0.6 s 停住，之后 2 s 内漂移 < 3 cm",
+      "pass": false,
+      "test": "stop"
+    },
+    {
+      "skill": "walk",
+      "id": "straight_yaw",
+      "name": "直走偏航（vx = 0.2，ωz = 0，5 个 seed）",
+      "value": "max |ωz| = 0.021 rad/s",
+      "threshold": "每个 seed |ωz| < 0.03 rad/s",
+      "pass": true,
+      "test": "symmetry"
+    },
+    {
+      "skill": "walk",
+      "id": "turn_ratio_inplace",
+      "name": "±ωz 转速比（原地转，命令 [0.0, 0.0, 0.5]）",
+      "value": "0.99（+0.534 / -0.539 rad/s）",
+      "threshold": "0.8–1.25",
+      "pass": true,
+      "test": "symmetry"
+    },
+    {
+      "skill": "walk",
+      "id": "turn_ratio_walking",
+      "name": "±ωz 转速比（边走边转，命令 [0.15, 0.0, 0.3]）",
+      "value": "0.97（+0.296 / -0.305 rad/s）",
+      "threshold": "0.8–1.25",
+      "pass": true,
+      "test": "symmetry"
+    },
+    {
+      "skill": "walk",
+      "id": "lateral_ratio",
+      "name": "±vy 速度比（命令 [0.0, 0.15, 0.0]）",
+      "value": "1.01（+0.049 / -0.048 m/s）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "symmetry"
+    },
+    {
+      "skill": "walk",
+      "id": "tracking",
+      "name": "命令跟踪误差（12 档，明细见下表）",
+      "value": "max |Δvx| 0.150，|Δvy| 0.102，|Δωz| 0.072",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "tracking"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_5_up",
+      "name": "5° 坡上坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "10/10",
+      "pass": true,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_5_down",
+      "name": "5° 坡下坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "10/10",
+      "pass": true,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_0_up",
+      "name": "0° 坡上坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_0_down",
+      "name": "0° 坡下坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_3_up",
+      "name": "3° 坡上坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_3_down",
+      "name": "3° 坡下坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_6_up",
+      "name": "6° 坡上坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_6_down",
+      "name": "6° 坡下坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "head_override",
+      "name": "站立时头部接管低头 25°、保持 3 s",
+      "value": "20/20；最大倾斜 2.3°，起步速度比 0.98–1.04",
+      "threshold": "20/20（倾斜 < 10°、位移 < 5 cm、起步速度比 0.7–1.3）",
+      "pass": true,
+      "test": "head_override"
+    },
+    {
+      "skill": "walk",
+      "id": "flag_visible",
+      "name": "站立时 2 m 处旗垫在画面内",
+      "value": "完全可见",
+      "threshold": "完全可见",
+      "pass": true,
+      "test": "camera"
+    },
+    {
+      "skill": "walk",
+      "id": "cam_pitch_diff",
+      "name": "站立与行走（vx 0.2）的相机俯角差",
+      "value": "+0.3°（站 12.7°，走 12.4°）",
+      "threshold": "只记录",
+      "pass": null,
+      "test": "camera"
+    },
+    {
+      "skill": "walk↔stand",
+      "id": "switch",
+      "name": "walk ↔ stand 热切换（25 次 站→走→站→走）",
+      "value": "25/25 不摔；最大倾斜 4.7°",
+      "threshold": "25/25 不摔",
+      "pass": true,
+      "test": "switch"
+    },
+    {
+      "skill": "kick",
+      "id": "kick_rate",
+      "name": "球在 x ∈ [0.07, 0.11] m、y 在踢球脚 ±0.03 m 内",
+      "value": "100%（50/50，摔 0）",
+      "threshold": "≥ 80%（成功 = 球速 ≥ 0.3 m/s 且方向偏差 ≤ 10°）",
+      "pass": true,
+      "test": "kick_window"
+    },
+    {
+      "skill": "kick",
+      "id": "kick_bias",
+      "name": "踢出方向平均偏差（成功的那些）",
+      "value": "-1.6°",
+      "threshold": "|平均偏差| < 3°",
+      "pass": true,
+      "test": "kick_window"
+    },
+    {
+      "skill": "kick",
+      "id": "kick_head_down",
+      "name": "头部接管低头 25° 后再踢",
+      "value": "低头后 100% vs 直接踢 100%",
+      "threshold": "低头后成功率 ≥ 直接踢",
+      "pass": true,
+      "test": "kick_head_down"
+    },
+    {
+      "skill": "kick",
+      "id": "kick_handoff",
+      "name": "walk → stand → kick → stand → walk",
+      "value": "20/20 不摔（踢中 20）",
+      "threshold": "20/20 不摔",
+      "pass": true,
+      "test": "kick_handoff"
+    }
+  ],
+  "inputs": {
+    "walk": {
+      "card": "outputs/acceptance/scan_r3_warm/it4000/cards/2026-11-20_04-23-23_walk_v2_r3_from_r2s1it2750_b_it4000.yaml",
+      "onnx": "outputs/acceptance/scan_r3_warm/it4000/policies/2026-11-20_04-23-23_walk_v2_r3_from_r2s1it2750_b_it4000.onnx",
+      "onnx_sha256": "55e19c04517fd5a08e25aed68b8019a34458561ff2a02523c5a3dc8c27ea8b67"
+    },
+    "kick": {
+      "card": "configs/policies/kick_v2_r1_stand2750_s1_it3999.yaml",
+      "onnx": "outputs/policies/kick_v2_r1_stand2750_s1_it3999.onnx",
+      "onnx_sha256": "5ffbc7993295be6c30ed70032d53dc3ab13666d2f101bf901709adb29e94fb8f"
+    }
+  },
+  "acceptance_sha256": "b64beff45b6507675599921f4bb926e70be92a78969790c59324b0090294ac31",
+  "elapsed_s": 42.155556201934814,
+  "workers": 5,
+  "job_seconds": {
+    "symmetry": 6.0,
+    "stop": 6.2,
+    "tracking": 7.3,
+    "ramp@5": 9.0,
+    "ramp@0": 7.5,
+    "ramp@3": 7.8,
+    "head_override": 5.0,
+    "camera": 1.6,
+    "switch": 4.0,
+    "kick_head_down": 2.9,
+    "ramp@6": 10.9,
+    "kick_window": 5.1,
+    "kick_handoff": 3.1,
+    "random": 26.5
+  },
+  "videos": [
+    {
+      "test": "stop",
+      "key": [
+        11,
+        1
+      ],
+      "file": "videos/stop_11_1.mp4",
+      "reproduced": true
+    },
+    {
+      "test": "stop",
+      "key": [
+        12,
+        1
+      ],
+      "file": "videos/stop_12_1.mp4",
+      "reproduced": true
+    },
+    {
+      "test": "stop",
+      "key": [
+        7,
+        0
+      ],
+      "file": "videos/stop_7_0.mp4",
+      "reproduced": true
+    }
+  ],
+  "notes": [],
+  "results": {
+    "symmetry": {
+      "straight_yaw_rates": [
+        -0.008809770762899531,
+        -0.01339097814854952,
+        -0.011253334123330965,
+        0.0014141376398666692,
+        -0.0206081207454633
+      ],
+      "straight_pass": true,
+      "turns": [
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "w_pos": 0.5336676310884516,
+          "w_neg": -0.5393972768104226,
+          "ratio": 0.9893776888236224,
+          "pass": true
+        },
+        {
+          "cmd": [
+            0.15,
+            0.0,
+            0.3
+          ],
+          "w_pos": 0.29554191009449543,
+          "w_neg": -0.3051567129595609,
+          "ratio": 0.9684922452735305,
+          "pass": true
+        }
+      ],
+      "lateral": {
+        "v_pos": 0.04884615727790379,
+        "v_neg": -0.048195421697795914,
+        "ratio": 1.0135020206730059
+      },
+      "pass": true
+    },
+    "stop": {
+      "trials": [
+        {
+          "ci": 0,
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": 0.3199999999999932,
+          "drift_m": 0.004880293057907052,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 0,
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": 0.3799999999999919,
+          "drift_m": 0.004535110663571959,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 0,
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": 0.3999999999999915,
+          "drift_m": 0.004210784525998725,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 1,
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": 0.3199999999999932,
+          "drift_m": 0.004824352853316761,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 1,
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": 1.359999999999971,
+          "drift_m": 0.0008172436617878592,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 1,
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": 1.3399999999999714,
+          "drift_m": 0.0008312555569849354,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 2,
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": 1.6199999999999655,
+          "drift_m": 0.0005517453187268086,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 2,
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": 1.599999999999966,
+          "drift_m": 0.0009586548787814935,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 2,
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": 1.639999999999965,
+          "drift_m": 0.00033516272912206894,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 3,
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "seed": 0,
+          "stop_s": 0.41999999999999105,
+          "drift_m": 0.0033560384888543246,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 3,
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "seed": 1,
+          "stop_s": 0.3799999999999919,
+          "drift_m": 0.004186121001954366,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 3,
+          "cmd": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "seed": 2,
+          "stop_s": 0.3599999999999923,
+          "drift_m": 0.004683205172454321,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 4,
+          "cmd": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "seed": 0,
+          "stop_s": 1.6199999999999655,
+          "drift_m": 0.0005506038044904336,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 4,
+          "cmd": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "seed": 1,
+          "stop_s": 0.3799999999999919,
+          "drift_m": 0.00411127052464216,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 4,
+          "cmd": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "seed": 2,
+          "stop_s": 0.93999999999998,
+          "drift_m": 0.0014931051747570396,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 5,
+          "cmd": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "seed": 0,
+          "stop_s": 0.2999999999999936,
+          "drift_m": 0.0038120950752458856,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 5,
+          "cmd": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "seed": 1,
+          "stop_s": 1.2999999999999723,
+          "drift_m": 0.0010426015935879494,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 5,
+          "cmd": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "seed": 2,
+          "stop_s": 1.359999999999971,
+          "drift_m": 0.0007246719268647574,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 6,
+          "cmd": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "seed": 0,
+          "stop_s": 0.3599999999999923,
+          "drift_m": 0.004966756213375569,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 6,
+          "cmd": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "seed": 1,
+          "stop_s": 1.2399999999999736,
+          "drift_m": 0.0004872714221827011,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 6,
+          "cmd": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "seed": 2,
+          "stop_s": 1.079999999999977,
+          "drift_m": 0.0007584685284549719,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 7,
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "seed": 0,
+          "stop_s": 1.8999999999999595,
+          "drift_m": 0.00040954363194934643,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 7,
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "seed": 1,
+          "stop_s": 1.3399999999999714,
+          "drift_m": 0.0006022162506378986,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 7,
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "seed": 2,
+          "stop_s": 1.4199999999999697,
+          "drift_m": 0.000751734032830926,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 8,
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "seed": 0,
+          "stop_s": 1.87999999999996,
+          "drift_m": 0.00047798346632354794,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 8,
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "seed": 1,
+          "stop_s": 1.5599999999999667,
+          "drift_m": 0.000575663953066575,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 8,
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "seed": 2,
+          "stop_s": 1.4799999999999685,
+          "drift_m": 0.0003203426848179244,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 9,
+          "cmd": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": 0.9799999999999791,
+          "drift_m": 0.001534954150536582,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 9,
+          "cmd": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": 0.4399999999999906,
+          "drift_m": 0.0037517114611263884,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 9,
+          "cmd": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            0.1,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": 0.799999999999983,
+          "drift_m": 0.0016842822971800489,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 10,
+          "cmd": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "seed": 0,
+          "stop_s": 0.3199999999999932,
+          "drift_m": 0.004383056574117606,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 10,
+          "cmd": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "seed": 1,
+          "stop_s": 0.9999999999999787,
+          "drift_m": 0.0008229989934838166,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 10,
+          "cmd": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "clipped": [
+            0.15,
+            -0.1,
+            0.0
+          ],
+          "seed": 2,
+          "stop_s": 0.3799999999999919,
+          "drift_m": 0.006033776545116519,
+          "fell": false,
+          "pass": true
+        },
+        {
+          "ci": 11,
+          "cmd": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "seed": 0,
+          "stop_s": 1.4199999999999697,
+          "drift_m": 0.0007245756637742805,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 11,
+          "cmd": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "seed": 1,
+          "stop_s": 2.019999999999957,
+          "drift_m": 0.0004396882995135263,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 11,
+          "cmd": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.3
+          ],
+          "seed": 2,
+          "stop_s": 0.93999999999998,
+          "drift_m": 0.0012853537953195471,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 12,
+          "cmd": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "seed": 0,
+          "stop_s": 1.7199999999999633,
+          "drift_m": 0.00043322644154319154,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 12,
+          "cmd": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "seed": 1,
+          "stop_s": 2.0999999999999552,
+          "drift_m": 0.00045817775909947164,
+          "fell": false,
+          "pass": false
+        },
+        {
+          "ci": 12,
+          "cmd": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            -0.3
+          ],
+          "seed": 2,
+          "stop_s": 1.5399999999999672,
+          "drift_m": 0.0010567678980607882,
+          "fell": false,
+          "pass": false
+        }
+      ],
+      "max_stop_s": 2.0999999999999552,
+      "max_drift_m": 0.006033776545116519,
+      "n_pass": 13,
+      "n": 39,
+      "pass": false
+    },
+    "tracking": {
+      "rows": [
+        {
+          "cmd": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "mean": [
+            0.084,
+            -0.0001,
+            -0.0024
+          ],
+          "err": [
+            -0.016,
+            -0.0001,
+            -0.0024
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "mean": [
+            0.1339,
+            0.0039,
+            -0.005
+          ],
+          "err": [
+            -0.0661,
+            0.0039,
+            -0.005
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "mean": [
+            0.1686,
+            0.0013,
+            -0.0225
+          ],
+          "err": [
+            -0.0814,
+            0.0013,
+            -0.0225
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            -0.15,
+            0.0,
+            0.0
+          ],
+          "clipped": [
+            -0.15,
+            0.0,
+            0.0
+          ],
+          "mean": [
+            -0.0,
+            -0.0,
+            0.006
+          ],
+          "err": [
+            0.15,
+            -0.0,
+            0.006
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.15,
+            0.0
+          ],
+          "clipped": [
+            0.0,
+            0.15,
+            0.0
+          ],
+          "mean": [
+            0.012,
+            0.0488,
+            -0.0634
+          ],
+          "err": [
+            0.012,
+            -0.1012,
+            -0.0634
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.0,
+            -0.15,
+            0.0
+          ],
+          "clipped": [
+            0.0,
+            -0.15,
+            0.0
+          ],
+          "mean": [
+            0.0131,
+            -0.0482,
+            0.0723
+          ],
+          "err": [
+            0.0131,
+            0.1018,
+            0.0723
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            0.375
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.375
+          ],
+          "mean": [
+            0.025,
+            -0.0048,
+            0.4107
+          ],
+          "err": [
+            0.025,
+            -0.0048,
+            0.0357
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -0.375
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.375
+          ],
+          "mean": [
+            0.0228,
+            -0.004,
+            -0.415
+          ],
+          "err": [
+            0.0228,
+            -0.004,
+            -0.04
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            0.6
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            0.6
+          ],
+          "mean": [
+            0.0215,
+            -0.0051,
+            0.6424
+          ],
+          "err": [
+            0.0215,
+            -0.0051,
+            0.0424
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.0,
+            0.0,
+            -0.6
+          ],
+          "clipped": [
+            0.0,
+            0.0,
+            -0.6
+          ],
+          "mean": [
+            0.0213,
+            0.0035,
+            -0.6361
+          ],
+          "err": [
+            0.0213,
+            0.0035,
+            -0.0361
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            0.3
+          ],
+          "mean": [
+            0.1344,
+            -0.0142,
+            0.3095
+          ],
+          "err": [
+            -0.0656,
+            -0.0142,
+            0.0095
+          ],
+          "fell": false
+        },
+        {
+          "cmd": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "clipped": [
+            0.2,
+            0.0,
+            -0.3
+          ],
+          "mean": [
+            0.1348,
+            0.0157,
+            -0.3315
+          ],
+          "err": [
+            -0.0652,
+            0.0157,
+            -0.0315
+          ],
+          "fell": false
+        }
+      ],
+      "pass": null
+    },
+    "ramp": {
+      "results": {
+        "5_up": {
+          "angle": 5,
+          "direction": "up",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 22.78999999999975,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "5_down": {
+          "angle": 5,
+          "direction": "down",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 9.552000000000096,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "0_up": {
+          "angle": 0,
+          "direction": "up",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 14.90800000000093,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "0_down": {
+          "angle": 0,
+          "direction": "down",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 12.040000000000482,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "3_up": {
+          "angle": 3,
+          "direction": "up",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 18.33400000000064,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "3_down": {
+          "angle": 3,
+          "direction": "down",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 10.162000000000187,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "6_up": {
+          "angle": 6,
+          "direction": "up",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 31.551999999998124,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "6_down": {
+          "angle": 6,
+          "direction": "down",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 9.316000000000056,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        }
+      },
+      "pass": true
+    },
+    "head_override": {
+      "baseline_vx": 0.1331112132045151,
+      "trials": [
+        {
+          "seed": 0,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.320834673526512,
+          "max_disp_m": 0.0034232190153390967,
+          "cam_pitch_during_deg": 28.116551619203133,
+          "walk_after_vx": 0.13379508630077264,
+          "ratio": 1.0051376069663402,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 1,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.325316784429883,
+          "max_disp_m": 0.0033863712405605953,
+          "cam_pitch_during_deg": 28.114412963953068,
+          "walk_after_vx": 0.1355882775834537,
+          "ratio": 1.0186089835657406,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 2,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3248744272143465,
+          "max_disp_m": 0.0033569486829090577,
+          "cam_pitch_during_deg": 28.11391887555781,
+          "walk_after_vx": 0.13440960918907194,
+          "ratio": 1.0097542194477782,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 3,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.310917195154108,
+          "max_disp_m": 0.0034224790993692624,
+          "cam_pitch_during_deg": 28.120244614087113,
+          "walk_after_vx": 0.13552372657682585,
+          "ratio": 1.01812404315333,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 4,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3064037135997824,
+          "max_disp_m": 0.0033556101051939557,
+          "cam_pitch_during_deg": 28.11613579009571,
+          "walk_after_vx": 0.13490289562832844,
+          "ratio": 1.0134600412743633,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 5,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3063085385495685,
+          "max_disp_m": 0.0034442094080657185,
+          "cam_pitch_during_deg": 28.118562622006547,
+          "walk_after_vx": 0.13466136332769085,
+          "ratio": 1.0116455262171944,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 6,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3094555412980817,
+          "max_disp_m": 0.003386882926935767,
+          "cam_pitch_during_deg": 28.117572721167736,
+          "walk_after_vx": 0.13832894999639261,
+          "ratio": 1.039198326469017,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 7,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.2890245627262478,
+          "max_disp_m": 0.0033962697285431394,
+          "cam_pitch_during_deg": 28.11936850238189,
+          "walk_after_vx": 0.13675052508298774,
+          "ratio": 1.0273403854631022,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 8,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.302400947702575,
+          "max_disp_m": 0.003301183083454142,
+          "cam_pitch_during_deg": 28.11906825257333,
+          "walk_after_vx": 0.1345593918597776,
+          "ratio": 1.0108794640240977,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 9,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3155880822046733,
+          "max_disp_m": 0.0033355150915871856,
+          "cam_pitch_during_deg": 28.117701567389002,
+          "walk_after_vx": 0.13012209148563178,
+          "ratio": 0.9775441779326978,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 10,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3144733263557904,
+          "max_disp_m": 0.003336606503519857,
+          "cam_pitch_during_deg": 28.118305894327737,
+          "walk_after_vx": 0.13255805322708647,
+          "ratio": 0.9958443773134368,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 11,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.290937781004746,
+          "max_disp_m": 0.0033710486521833245,
+          "cam_pitch_during_deg": 28.123824772330977,
+          "walk_after_vx": 0.13356796720644498,
+          "ratio": 1.0034313713393035,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 12,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.2330666723426393,
+          "max_disp_m": 0.003548379561473338,
+          "cam_pitch_during_deg": 28.128238732364945,
+          "walk_after_vx": 0.13392492715371626,
+          "ratio": 1.0061130383354777,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 13,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.313795502758977,
+          "max_disp_m": 0.00331419625622234,
+          "cam_pitch_during_deg": 28.117688113710475,
+          "walk_after_vx": 0.13901549541531125,
+          "ratio": 1.0443560092997175,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 14,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3003383790181893,
+          "max_disp_m": 0.003359282342362055,
+          "cam_pitch_during_deg": 28.116484595071483,
+          "walk_after_vx": 0.13531220334677252,
+          "ratio": 1.0165349716922478,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 15,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.2984239004908043,
+          "max_disp_m": 0.003400213332017539,
+          "cam_pitch_during_deg": 28.115721666642045,
+          "walk_after_vx": 0.13658961915757264,
+          "ratio": 1.0261315772677486,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 16,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.270321551570123,
+          "max_disp_m": 0.003348945940881665,
+          "cam_pitch_during_deg": 28.12044307132195,
+          "walk_after_vx": 0.13467022600939044,
+          "ratio": 1.0117121072473438,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 17,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.272383505058056,
+          "max_disp_m": 0.0033682587229353776,
+          "cam_pitch_during_deg": 28.123894297053926,
+          "walk_after_vx": 0.13544113124683585,
+          "ratio": 1.0175035444890808,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 18,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3210674450887083,
+          "max_disp_m": 0.0034127102027956516,
+          "cam_pitch_during_deg": 28.120873046530058,
+          "walk_after_vx": 0.1318713182009561,
+          "ratio": 0.990685270055694,
+          "start_ok": true,
+          "pass": true
+        },
+        {
+          "seed": 19,
+          "stable": true,
+          "fell": false,
+          "max_tilt_deg": 2.3105964906944534,
+          "max_disp_m": 0.0033576250262832997,
+          "cam_pitch_during_deg": 28.119747650444218,
+          "walk_after_vx": 0.13259882173898585,
+          "ratio": 0.9961506513749371,
+          "start_ok": true,
+          "pass": true
+        }
+      ],
+      "n_pass": 20,
+      "n": 20,
+      "pass": true
+    },
+    "camera": {
+      "flags": {
+        "1": {
+          "fully_visible": true,
+          "corners_in_image": 4,
+          "width_px": 156
+        },
+        "1.5": {
+          "fully_visible": true,
+          "corners_in_image": 4,
+          "width_px": 94
+        },
+        "2": {
+          "fully_visible": true,
+          "corners_in_image": 4,
+          "width_px": 68
+        },
+        "2.5": {
+          "fully_visible": true,
+          "corners_in_image": 4,
+          "width_px": 52
+        }
+      },
+      "stand_pitch_deg": 12.714684215608942,
+      "walk_pitch_deg": 12.446485207322628,
+      "stand_minus_walk_pitch_deg": 0.2681990082863148,
+      "jitter": {
+        "0.1": {
+          "pitch_mean_deg": 13.926108557434876,
+          "pitch_std_deg": 0.7656416705502014,
+          "pitch_p2p_deg": 3.378355952548473,
+          "roll_std_deg": 2.197551861727963,
+          "roll_p2p_deg": 6.912607681646325,
+          "height_std_mm": 1.9244048213514628
+        },
+        "0.2": {
+          "pitch_mean_deg": 12.446485207322628,
+          "pitch_std_deg": 0.8523055963114446,
+          "pitch_p2p_deg": 5.423602004591787,
+          "roll_std_deg": 2.3266027860423812,
+          "roll_p2p_deg": 7.918887676493078,
+          "height_std_mm": 2.34665963272192
+        },
+        "0.25": {
+          "pitch_mean_deg": 10.929712202658411,
+          "pitch_std_deg": 0.8011852470586073,
+          "pitch_p2p_deg": 3.849061039190776,
+          "roll_std_deg": 2.5875654420014653,
+          "roll_p2p_deg": 8.685170965196866,
+          "height_std_mm": 2.2358304794585844
+        }
+      },
+      "pass": true
+    },
+    "switch": {
+      "trials": [
+        {
+          "trial": 0,
+          "cmd1": [
+            0.03,
+            0.038,
+            -0.284
+          ],
+          "cmd2": [
+            0.003,
+            0.035,
+            -0.139
+          ],
+          "walk_s": 2.9229162654219545,
+          "stand_s": 1.4101144359216442,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.2743992470157486,
+          "pass": true
+        },
+        {
+          "trial": 1,
+          "cmd1": [
+            -0.031,
+            -0.071,
+            -0.015
+          ],
+          "cmd2": [
+            0.185,
+            -0.016,
+            -0.098
+          ],
+          "walk_s": 2.996966675243439,
+          "stand_s": 1.7829689786581882,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 4.709203996830639,
+          "pass": true
+        },
+        {
+          "trial": 2,
+          "cmd1": [
+            0.156,
+            0.111,
+            0.095
+          ],
+          "cmd2": [
+            -0.139,
+            0.046,
+            -0.209
+          ],
+          "walk_s": 1.6505649621776692,
+          "stand_s": 1.1716274624947696,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.4054167127556174,
+          "pass": true
+        },
+        {
+          "trial": 3,
+          "cmd1": [
+            -0.082,
+            0.091,
+            0.091
+          ],
+          "cmd2": [
+            0.199,
+            0.116,
+            -0.215
+          ],
+          "walk_s": 1.4074757524951385,
+          "stand_s": 1.238256845361685,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.8846732613422836,
+          "pass": true
+        },
+        {
+          "trial": 4,
+          "cmd1": [
+            0.056,
+            -0.05,
+            0.25
+          ],
+          "cmd2": [
+            0.065,
+            0.012,
+            -0.268
+          ],
+          "walk_s": 2.1606298615860435,
+          "stand_s": 1.5477608947123191,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.585455733011254,
+          "pass": true
+        },
+        {
+          "trial": 5,
+          "cmd1": [
+            0.087,
+            -0.004,
+            0.183
+          ],
+          "cmd2": [
+            0.159,
+            -0.116,
+            0.055
+          ],
+          "walk_s": 2.0142654194636167,
+          "stand_s": 1.6829695185335756,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.6627955180422203,
+          "pass": true
+        },
+        {
+          "trial": 6,
+          "cmd1": [
+            0.149,
+            0.014,
+            -0.118
+          ],
+          "cmd2": [
+            -0.057,
+            -0.049,
+            0.276
+          ],
+          "walk_s": 1.1503008660027276,
+          "stand_s": 1.4094924274335492,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.397349806370013,
+          "pass": true
+        },
+        {
+          "trial": 7,
+          "cmd1": [
+            0.104,
+            -0.004,
+            -0.17
+          ],
+          "cmd2": [
+            0.064,
+            -0.05,
+            0.065
+          ],
+          "walk_s": 2.4366522681553695,
+          "stand_s": 1.1009556398432276,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.2720943076269013,
+          "pass": true
+        },
+        {
+          "trial": 8,
+          "cmd1": [
+            0.158,
+            0.045,
+            0.208
+          ],
+          "cmd2": [
+            -0.194,
+            -0.059,
+            0.162
+          ],
+          "walk_s": 2.2350582390735743,
+          "stand_s": 1.937368161352627,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.54414153037434,
+          "pass": true
+        },
+        {
+          "trial": 9,
+          "cmd1": [
+            -0.115,
+            0.024,
+            0.291
+          ],
+          "cmd2": [
+            -0.029,
+            -0.04,
+            -0.19
+          ],
+          "walk_s": 2.356667879847474,
+          "stand_s": 1.2951713990253155,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.657695075502082,
+          "pass": true
+        },
+        {
+          "trial": 10,
+          "cmd1": [
+            -0.103,
+            0.02,
+            -0.107
+          ],
+          "cmd2": [
+            -0.104,
+            0.086,
+            -0.001
+          ],
+          "walk_s": 2.5028197517148407,
+          "stand_s": 1.8673059512276051,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.9119661375028003,
+          "pass": true
+        },
+        {
+          "trial": 11,
+          "cmd1": [
+            0.099,
+            -0.06,
+            0.11
+          ],
+          "cmd2": [
+            -0.105,
+            0.037,
+            -0.068
+          ],
+          "walk_s": 2.388460467322216,
+          "stand_s": 1.9003746640521177,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.0863957259829693,
+          "pass": true
+        },
+        {
+          "trial": 12,
+          "cmd1": [
+            -0.105,
+            -0.102,
+            -0.086
+          ],
+          "cmd2": [
+            -0.086,
+            0.082,
+            0.176
+          ],
+          "walk_s": 1.7757734441115451,
+          "stand_s": 1.4320359781480922,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 4.300582448587305,
+          "pass": true
+        },
+        {
+          "trial": 13,
+          "cmd1": [
+            -0.092,
+            -0.057,
+            -0.182
+          ],
+          "cmd2": [
+            0.176,
+            0.081,
+            0.031
+          ],
+          "walk_s": 2.095376243615224,
+          "stand_s": 1.9549477114231313,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 4.141699110222621,
+          "pass": true
+        },
+        {
+          "trial": 14,
+          "cmd1": [
+            0.167,
+            0.051,
+            -0.141
+          ],
+          "cmd2": [
+            0.011,
+            0.07,
+            0.295
+          ],
+          "walk_s": 2.3277309538052906,
+          "stand_s": 1.765882890453668,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.8313462784962837,
+          "pass": true
+        },
+        {
+          "trial": 15,
+          "cmd1": [
+            0.002,
+            -0.067,
+            0.163
+          ],
+          "cmd2": [
+            0.187,
+            -0.081,
+            -0.222
+          ],
+          "walk_s": 2.28287783455471,
+          "stand_s": 1.864891296647825,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.7643024225534973,
+          "pass": true
+        },
+        {
+          "trial": 16,
+          "cmd1": [
+            0.187,
+            -0.038,
+            -0.147
+          ],
+          "cmd2": [
+            -0.039,
+            0.048,
+            0.269
+          ],
+          "walk_s": 2.8311815521552233,
+          "stand_s": 1.5064567615195221,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.8305994548524778,
+          "pass": true
+        },
+        {
+          "trial": 17,
+          "cmd1": [
+            0.177,
+            0.008,
+            0.189
+          ],
+          "cmd2": [
+            -0.018,
+            -0.109,
+            0.154
+          ],
+          "walk_s": 1.92511878169913,
+          "stand_s": 1.3280051227175638,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.7061631205299665,
+          "pass": true
+        },
+        {
+          "trial": 18,
+          "cmd1": [
+            -0.005,
+            -0.077,
+            0.246
+          ],
+          "cmd2": [
+            0.197,
+            -0.087,
+            -0.19
+          ],
+          "walk_s": 2.9100600608188634,
+          "stand_s": 1.6157505767143332,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 4.270546991670257,
+          "pass": true
+        },
+        {
+          "trial": 19,
+          "cmd1": [
+            -0.142,
+            -0.014,
+            -0.096
+          ],
+          "cmd2": [
+            0.187,
+            -0.072,
+            -0.042
+          ],
+          "walk_s": 1.9130041106196607,
+          "stand_s": 1.651790579535872,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.678633708699791,
+          "pass": true
+        },
+        {
+          "trial": 20,
+          "cmd1": [
+            -0.013,
+            0.003,
+            0.218
+          ],
+          "cmd2": [
+            0.088,
+            -0.04,
+            0.229
+          ],
+          "walk_s": 2.037329728976788,
+          "stand_s": 1.523219417246932,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.461219339265538,
+          "pass": true
+        },
+        {
+          "trial": 21,
+          "cmd1": [
+            0.103,
+            0.106,
+            0.055
+          ],
+          "cmd2": [
+            -0.072,
+            0.03,
+            -0.279
+          ],
+          "walk_s": 1.5042539188957222,
+          "stand_s": 1.485013659986649,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.4687369453055683,
+          "pass": true
+        },
+        {
+          "trial": 22,
+          "cmd1": [
+            -0.101,
+            -0.098,
+            0.067
+          ],
+          "cmd2": [
+            -0.176,
+            0.039,
+            0.153
+          ],
+          "walk_s": 1.2217378019452778,
+          "stand_s": 1.043055844392521,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.3425555799299245,
+          "pass": true
+        },
+        {
+          "trial": 23,
+          "cmd1": [
+            -0.165,
+            -0.067,
+            -0.232
+          ],
+          "cmd2": [
+            -0.023,
+            0.047,
+            0.028
+          ],
+          "walk_s": 2.523721003559498,
+          "stand_s": 1.5849012830844253,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 4.139322516785102,
+          "pass": true
+        },
+        {
+          "trial": 24,
+          "cmd1": [
+            0.07,
+            -0.069,
+            -0.114
+          ],
+          "cmd2": [
+            0.12,
+            0.119,
+            -0.215
+          ],
+          "walk_s": 1.157451067523998,
+          "stand_s": 1.1808238136968545,
+          "fell": false,
+          "fall_t": null,
+          "max_tilt_deg": 3.662155345673321,
+          "pass": true
+        }
+      ],
+      "n_pass": 25,
+      "n": 25,
+      "pass": true
+    },
+    "kick_head_down": {
+      "direct_rate": 1.0,
+      "head_down_rate": 1.0,
+      "n": 10,
+      "pass": true
+    },
+    "kick_window": {
+      "n": 50,
+      "success_rate": 1.0,
+      "bias_deg": -1.6014330614315762,
+      "mean_abs_err_deg": 2.855108881518382,
+      "falls": 0,
+      "grid": [
+        {
+          "ball_xy": [
+            0.07,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0741,
+            -0.0789
+          ],
+          "peak_speed": 1.358797620721227,
+          "dir_err_deg": -3.4643019281516927,
+          "fell": false,
+          "success": true,
+          "cell": 0
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0734,
+            -0.0865
+          ],
+          "peak_speed": 1.3380959609504914,
+          "dir_err_deg": -4.226331495211272,
+          "fell": false,
+          "success": true,
+          "cell": 1
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.0628,
+            -0.063
+          ],
+          "peak_speed": 1.3034298661887245,
+          "dir_err_deg": -1.5048606734496974,
+          "fell": false,
+          "success": true,
+          "cell": 2
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.0606,
+            -0.0643
+          ],
+          "peak_speed": 1.3190042101496788,
+          "dir_err_deg": -2.5910963545466177,
+          "fell": false,
+          "success": true,
+          "cell": 3
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0833,
+            -0.0417
+          ],
+          "peak_speed": 1.3329838132051997,
+          "dir_err_deg": -4.009291932237602,
+          "fell": false,
+          "success": true,
+          "cell": 4
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0575,
+            -0.0291
+          ],
+          "peak_speed": 1.339914409592848,
+          "dir_err_deg": -2.3531040916253705,
+          "fell": false,
+          "success": true,
+          "cell": 5
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0711,
+            -0.0317
+          ],
+          "peak_speed": 1.3569234319380996,
+          "dir_err_deg": -3.627989816386326,
+          "fell": false,
+          "success": true,
+          "cell": 6
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0571,
+            -0.0175
+          ],
+          "peak_speed": 1.4660552833571232,
+          "dir_err_deg": -3.0686473755447374,
+          "fell": false,
+          "success": true,
+          "cell": 7
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.0648,
+            0.0026
+          ],
+          "peak_speed": 1.4453949742829428,
+          "dir_err_deg": -1.1307188492265834,
+          "fell": false,
+          "success": true,
+          "cell": 8
+        },
+        {
+          "ball_xy": [
+            0.07,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.0567,
+            -0.0172
+          ],
+          "peak_speed": 1.4711598052224149,
+          "dir_err_deg": 1.9037724900089776,
+          "fell": false,
+          "success": true,
+          "cell": 9
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0937,
+            -0.0808
+          ],
+          "peak_speed": 1.3701147894908485,
+          "dir_err_deg": -0.8634778385265192,
+          "fell": false,
+          "success": true,
+          "cell": 10
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0735,
+            -0.0701
+          ],
+          "peak_speed": 1.2501813009264329,
+          "dir_err_deg": -3.489879634120341,
+          "fell": false,
+          "success": true,
+          "cell": 11
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.0725,
+            -0.0436
+          ],
+          "peak_speed": 1.2700468547602515,
+          "dir_err_deg": 0.09196484660489547,
+          "fell": false,
+          "success": true,
+          "cell": 12
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.0888,
+            -0.0696
+          ],
+          "peak_speed": 1.335294775347273,
+          "dir_err_deg": -2.335132461158365,
+          "fell": false,
+          "success": true,
+          "cell": 13
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0899,
+            -0.0462
+          ],
+          "peak_speed": 1.3521532808877155,
+          "dir_err_deg": -3.3880620784098343,
+          "fell": false,
+          "success": true,
+          "cell": 14
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0758,
+            -0.0388
+          ],
+          "peak_speed": 1.3519794151818363,
+          "dir_err_deg": -2.397142427953528,
+          "fell": false,
+          "success": true,
+          "cell": 15
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.082,
+            -0.0291
+          ],
+          "peak_speed": 1.3892289409647895,
+          "dir_err_deg": -5.015992386600399,
+          "fell": false,
+          "success": true,
+          "cell": 16
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0926,
+            -0.0174
+          ],
+          "peak_speed": 1.4385689267227169,
+          "dir_err_deg": -3.34308803969676,
+          "fell": false,
+          "success": true,
+          "cell": 17
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.077,
+            -0.0055
+          ],
+          "peak_speed": 1.420768829404511,
+          "dir_err_deg": 0.02592335786809208,
+          "fell": false,
+          "success": true,
+          "cell": 18
+        },
+        {
+          "ball_xy": [
+            0.08,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.0715,
+            -0.0151
+          ],
+          "peak_speed": 1.3932895518220905,
+          "dir_err_deg": 4.123869252186264,
+          "fell": false,
+          "success": true,
+          "cell": 19
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0834,
+            -0.0732
+          ],
+          "peak_speed": 1.1747649347539886,
+          "dir_err_deg": -1.233385508795475,
+          "fell": false,
+          "success": true,
+          "cell": 20
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0862,
+            -0.0846
+          ],
+          "peak_speed": 1.228001791499389,
+          "dir_err_deg": -1.997543892651183,
+          "fell": false,
+          "success": true,
+          "cell": 21
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.086,
+            -0.066
+          ],
+          "peak_speed": 1.2288876050975555,
+          "dir_err_deg": -0.544982170838115,
+          "fell": false,
+          "success": true,
+          "cell": 22
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.0852,
+            -0.0448
+          ],
+          "peak_speed": 1.3141156962935288,
+          "dir_err_deg": -3.0517802419566147,
+          "fell": false,
+          "success": true,
+          "cell": 23
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0849,
+            -0.0448
+          ],
+          "peak_speed": 1.296789678085017,
+          "dir_err_deg": -0.9368993056446094,
+          "fell": false,
+          "success": true,
+          "cell": 24
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0996,
+            -0.0381
+          ],
+          "peak_speed": 1.4460056081506936,
+          "dir_err_deg": -4.608568090834123,
+          "fell": false,
+          "success": true,
+          "cell": 25
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0897,
+            -0.035
+          ],
+          "peak_speed": 1.3582298301681535,
+          "dir_err_deg": -3.332742408888626,
+          "fell": false,
+          "success": true,
+          "cell": 26
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0758,
+            -0.0251
+          ],
+          "peak_speed": 1.3913010403151183,
+          "dir_err_deg": -2.4945106421565724,
+          "fell": false,
+          "success": true,
+          "cell": 27
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.1006,
+            -0.0005
+          ],
+          "peak_speed": 1.4261570377229396,
+          "dir_err_deg": -0.5089603270596345,
+          "fell": false,
+          "success": true,
+          "cell": 28
+        },
+        {
+          "ball_xy": [
+            0.09,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.1001,
+            -0.0023
+          ],
+          "peak_speed": 1.472344133797791,
+          "dir_err_deg": 4.230325488951735,
+          "fell": false,
+          "success": true,
+          "cell": 29
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.072
+          ],
+          "measured_xy": [
+            0.0921,
+            -0.0741
+          ],
+          "peak_speed": 1.0858624086293902,
+          "dir_err_deg": -0.839812826686756,
+          "fell": false,
+          "success": true,
+          "cell": 30
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.072
+          ],
+          "measured_xy": [
+            0.1058,
+            -0.0585
+          ],
+          "peak_speed": 1.303873935357371,
+          "dir_err_deg": -8.3855877822933,
+          "fell": false,
+          "success": true,
+          "cell": 31
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.0898,
+            -0.0548
+          ],
+          "peak_speed": 1.1550799436378398,
+          "dir_err_deg": -0.7573610409800278,
+          "fell": false,
+          "success": true,
+          "cell": 32
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.1098,
+            -0.0458
+          ],
+          "peak_speed": 1.4473263374051875,
+          "dir_err_deg": -4.071616483267984,
+          "fell": false,
+          "success": true,
+          "cell": 33
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0851,
+            -0.0308
+          ],
+          "peak_speed": 1.2483821750366846,
+          "dir_err_deg": -3.0717861358884004,
+          "fell": false,
+          "success": true,
+          "cell": 34
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0946,
+            -0.0456
+          ],
+          "peak_speed": 1.2849979592909975,
+          "dir_err_deg": -3.761570627311353,
+          "fell": false,
+          "success": true,
+          "cell": 35
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0904,
+            -0.0301
+          ],
+          "peak_speed": 1.279681925416388,
+          "dir_err_deg": -3.0471076857932586,
+          "fell": false,
+          "success": true,
+          "cell": 36
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.0947,
+            -0.0327
+          ],
+          "peak_speed": 1.3679987239413574,
+          "dir_err_deg": -2.4473652575816094,
+          "fell": false,
+          "success": true,
+          "cell": 37
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.0996,
+            -0.0195
+          ],
+          "peak_speed": 1.276537911779381,
+          "dir_err_deg": 5.447597487766603,
+          "fell": false,
+          "success": true,
+          "cell": 38
+        },
+        {
+          "ball_xy": [
+            0.1,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.1111,
+            -0.0126
+          ],
+          "peak_speed": 1.4137631804706623,
+          "dir_err_deg": 9.275872745930885,
+          "fell": false,
+          "success": true,
+          "cell": 39
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.072
+          ],
+          "measured_xy": [
+            0.1169,
+            -0.0662
+          ],
+          "peak_speed": 1.2898885706722736,
+          "dir_err_deg": -6.6922401155337985,
+          "fell": false,
+          "success": true,
+          "cell": 40
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.072
+          ],
+          "measured_xy": [
+            0.122,
+            -0.075
+          ],
+          "peak_speed": 1.3183535168901106,
+          "dir_err_deg": -2.7260697719040357,
+          "fell": false,
+          "success": true,
+          "cell": 41
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.1182,
+            -0.0588
+          ],
+          "peak_speed": 1.303791634791206,
+          "dir_err_deg": -4.302182073211437,
+          "fell": false,
+          "success": true,
+          "cell": 42
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.056999999999999995
+          ],
+          "measured_xy": [
+            0.1,
+            -0.0689
+          ],
+          "peak_speed": 1.0102104456197072,
+          "dir_err_deg": -1.5905626784511262,
+          "fell": false,
+          "success": true,
+          "cell": 43
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.0987,
+            -0.0493
+          ],
+          "peak_speed": 1.1114326680890254,
+          "dir_err_deg": -1.9154601591285545,
+          "fell": false,
+          "success": true,
+          "cell": 44
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.041999999999999996
+          ],
+          "measured_xy": [
+            0.1205,
+            -0.0479
+          ],
+          "peak_speed": 1.4167193221263459,
+          "dir_err_deg": -1.9817864550150113,
+          "fell": false,
+          "success": true,
+          "cell": 45
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.1222,
+            -0.0397
+          ],
+          "peak_speed": 1.367493431563081,
+          "dir_err_deg": 1.965113136291715,
+          "fell": false,
+          "success": true,
+          "cell": 46
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.026999999999999996
+          ],
+          "measured_xy": [
+            0.1116,
+            -0.0292
+          ],
+          "peak_speed": 1.3441260944133409,
+          "dir_err_deg": -0.30454950903169553,
+          "fell": false,
+          "success": true,
+          "cell": 47
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.1066,
+            -0.0091
+          ],
+          "peak_speed": 1.2156884975647992,
+          "dir_err_deg": 0.9276240218872062,
+          "fell": false,
+          "success": true,
+          "cell": 48
+        },
+        {
+          "ball_xy": [
+            0.11,
+            -0.011999999999999997
+          ],
+          "measured_xy": [
+            0.1027,
+            -0.0106
+          ],
+          "peak_speed": 1.2537674751619874,
+          "dir_err_deg": 3.3498326746737574,
+          "fell": false,
+          "success": true,
+          "cell": 49
+        }
+      ],
+      "pass_rate": true,
+      "pass_dir": true,
+      "pass": true
+    },
+    "kick_handoff": {
+      "cycles": 20,
+      "falls": 0,
+      "kick_success": 20,
+      "log": [
+        {
+          "cycle": 0,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 1,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 2,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 3,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 4,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 5,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 6,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 7,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 8,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 9,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 10,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 11,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 12,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 13,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 14,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 15,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 16,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 17,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 18,
+          "kick_success": true,
+          "fell": false
+        },
+        {
+          "cycle": 19,
+          "kick_success": true,
+          "fell": false
+        }
+      ],
+      "pass": true
+    },
+    "random": {
+      "no_fall": 20,
+      "n": 20,
+      "falls": [],
+      "pass": true
+    }
+  }
+}
