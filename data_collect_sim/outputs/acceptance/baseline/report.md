@@ -1,10 +1,10 @@
 # 验收结论：**不合格**（14 项门槛中 4 项不通过：stop, straight_yaw, kick_rate, kick_bias）
 
-- 名称：`baseline`；时间：2026-11-20T01:37:48+08:00；总耗时 31 s（4 个进程）
+- 名称：`baseline`；时间：2026-11-20T01:52:43+08:00；总耗时 30 s（5 个进程）
 - walk：card `configs/policies/walk_flat.yaml`，ONNX `outputs/policies/walk_flat_model1300.onnx`（sha256 e2677036b9b99c8e…）
 - stand：card `configs/policies/walk_flat_2600.yaml`，ONNX `outputs/policies/walk_flat_model2600.onnx`（sha256 81e6a4793f1fbea8…）
 - kick：card `configs/policies/kick.yaml`，ONNX `outputs/policies/kick_af_stage1_model3999.onnx`（sha256 e4838c9100cd7b57…）
-- 门槛：`configs/acceptance.yaml`（sha256 446f0f49cdec9f9d…）
+- 门槛：`configs/acceptance.yaml`（sha256 b64beff45b650767…）
 
 | 技能 | 项目 | 数值 | 门槛 | 结果 |
 |---|---|---|---|---|

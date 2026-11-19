@@ -1,6 +1,6 @@
 {
   "name": "r2_s1_it1500",
-  "created": "2026-11-20T01:39:53+08:00",
+  "created": "2026-11-20T01:53:51+08:00",
   "quick": false,
   "verdict": {
     "pass": false,
@@ -77,6 +77,24 @@
     },
     {
       "skill": "walk",
+      "id": "ramp_5_up",
+      "name": "5° 坡上坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "10/10",
+      "pass": true,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
+      "id": "ramp_5_down",
+      "name": "5° 坡下坡（航向保持）",
+      "value": "10/10（摔 0）",
+      "threshold": "10/10",
+      "pass": true,
+      "test": "ramp"
+    },
+    {
+      "skill": "walk",
       "id": "ramp_0_up",
       "name": "0° 坡上坡（航向保持）",
       "value": "10/10（摔 0）",
@@ -109,24 +127,6 @@
       "value": "10/10（摔 0）",
       "threshold": "只记录",
       "pass": null,
-      "test": "ramp"
-    },
-    {
-      "skill": "walk",
-      "id": "ramp_5_up",
-      "name": "5° 坡上坡（航向保持）",
-      "value": "10/10（摔 0）",
-      "threshold": "10/10",
-      "pass": true,
-      "test": "ramp"
-    },
-    {
-      "skill": "walk",
-      "id": "ramp_5_down",
-      "name": "5° 坡下坡（航向保持）",
-      "value": "10/10（摔 0）",
-      "threshold": "10/10",
-      "pass": true,
       "test": "ramp"
     },
     {
@@ -233,23 +233,23 @@
     }
   },
   "acceptance_sha256": "b64beff45b6507675599921f4bb926e70be92a78969790c59324b0090294ac31",
-  "elapsed_s": 30.583982706069946,
-  "workers": 4,
+  "elapsed_s": 28.846094131469727,
+  "workers": 5,
   "job_seconds": {
-    "stop": 5.4,
-    "symmetry": 6.1,
-    "tracking": 7.2,
+    "stop": 5.6,
+    "symmetry": 6.2,
+    "tracking": 7.4,
+    "ramp@5": 12.0,
     "ramp@0": 9.5,
-    "ramp@3": 9.4,
-    "ramp@5": 11.5,
+    "ramp@3": 9.5,
     "camera": 1.6,
-    "head_override": 5.0,
-    "switch": 3.9,
+    "head_override": 5.1,
     "kick_head_down": 2.5,
-    "kick_window": 4.2,
-    "kick_handoff": 3.0,
-    "random": 28.1,
-    "ramp@6": 12.8
+    "switch": 4.0,
+    "ramp@6": 13.1,
+    "kick_window": 4.3,
+    "kick_handoff": 2.9,
+    "random": 26.6
   },
   "videos": [
     {
@@ -1307,6 +1307,26 @@
     },
     "ramp": {
       "results": {
+        "5_up": {
+          "angle": 5,
+          "direction": "up",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 32.043999999998036,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
+        "5_down": {
+          "angle": 5,
+          "direction": "down",
+          "success": 10,
+          "n": 10,
+          "falls": 0,
+          "time_mean_s": 11.382000000000378,
+          "current_limited_max_pct": 0.0,
+          "failed_runs": []
+        },
         "0_up": {
           "angle": 0,
           "direction": "up",
@@ -1344,26 +1364,6 @@
           "n": 10,
           "falls": 0,
           "time_mean_s": 12.270000000000518,
-          "current_limited_max_pct": 0.0,
-          "failed_runs": []
-        },
-        "5_up": {
-          "angle": 5,
-          "direction": "up",
-          "success": 10,
-          "n": 10,
-          "falls": 0,
-          "time_mean_s": 32.043999999998036,
-          "current_limited_max_pct": 0.0,
-          "failed_runs": []
-        },
-        "5_down": {
-          "angle": 5,
-          "direction": "down",
-          "success": 10,
-          "n": 10,
-          "falls": 0,
-          "time_mean_s": 11.382000000000378,
           "current_limited_max_pct": 0.0,
           "failed_runs": []
         },
@@ -1701,6 +1701,12 @@
       ],
       "n_pass": 20,
       "n": 20,
+      "pass": true
+    },
+    "kick_head_down": {
+      "direct_rate": 0.0,
+      "head_down_rate": 0.0,
+      "n": 10,
       "pass": true
     },
     "switch": {
@@ -2183,12 +2189,6 @@
       ],
       "n_pass": 25,
       "n": 25,
-      "pass": true
-    },
-    "kick_head_down": {
-      "direct_rate": 0.0,
-      "head_down_rate": 0.0,
-      "n": 10,
       "pass": true
     },
     "kick_window": {

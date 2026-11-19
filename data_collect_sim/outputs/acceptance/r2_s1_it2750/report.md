@@ -1,6 +1,6 @@
 # 验收结论：**不合格**（14 项门槛中 1 项不通过：kick_rate）
 
-- 名称：`r2_s1_it2750`；时间：2026-11-20T01:39:22+08:00；总耗时 30 s（4 个进程）
+- 名称：`r2_s1_it2750`；时间：2026-11-20T01:53:22+08:00；总耗时 30 s（4 个进程）
 - walk：card `configs/policies/candidates/2026-10-24_23-32-51_walk_v2_r2_s1_it2750.yaml`，ONNX `outputs/policies/candidates/2026-10-24_23-32-51_walk_v2_r2_s1_it2750.onnx`（sha256 91212aef159dfe16…）
 - kick：card `configs/policies/kick.yaml`，ONNX `outputs/policies/kick_af_stage1_model3999.onnx`（sha256 e4838c9100cd7b57…）
 - 门槛：`configs/acceptance.yaml`（sha256 b64beff45b650767…）

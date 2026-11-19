@@ -1,6 +1,6 @@
 {
   "name": "r2_s1_it2750",
-  "created": "2026-11-20T01:39:22+08:00",
+  "created": "2026-11-20T01:53:22+08:00",
   "quick": false,
   "verdict": {
     "pass": false,
@@ -232,23 +232,23 @@
     }
   },
   "acceptance_sha256": "b64beff45b6507675599921f4bb926e70be92a78969790c59324b0090294ac31",
-  "elapsed_s": 29.843087911605835,
+  "elapsed_s": 30.081330060958862,
   "workers": 4,
   "job_seconds": {
     "stop": 5.4,
-    "symmetry": 6.0,
+    "symmetry": 6.1,
     "tracking": 7.2,
-    "ramp@0": 8.5,
-    "ramp@3": 8.7,
+    "ramp@0": 8.3,
+    "ramp@3": 8.6,
     "ramp@5": 11.0,
     "camera": 1.6,
     "head_override": 5.0,
     "switch": 3.9,
     "kick_head_down": 2.5,
-    "kick_window": 4.3,
-    "random": 27.5,
-    "kick_handoff": 3.1,
-    "ramp@6": 13.1
+    "kick_window": 4.2,
+    "kick_handoff": 3.0,
+    "ramp@6": 13.2,
+    "random": 27.9
   },
   "videos": [
     {
@@ -2952,12 +2952,6 @@
       "pass_dir": true,
       "pass": false
     },
-    "random": {
-      "no_fall": 20,
-      "n": 20,
-      "falls": [],
-      "pass": true
-    },
     "kick_handoff": {
       "cycles": 20,
       "falls": 0,
@@ -3064,6 +3058,12 @@
           "fell": false
         }
       ],
+      "pass": true
+    },
+    "random": {
+      "no_fall": 20,
+      "n": 20,
+      "falls": [],
       "pass": true
     }
   }
