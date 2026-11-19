@@ -9,13 +9,14 @@ MJCF 在加载时用 MjSpec 修改。
 
 ## 安装
 ```bash
-cd data_collect_sim
-uv sync --python /home/jiamo/miniconda3/bin/python3.13      # 按 uv.lock 装：mujoco 3.16.0、onnxruntime 1.23.2、bam@0007411…
+scripts/setup_workspace.sh          # 在 workspace 根目录：子仓库 + 两个 venv + 自检（见 ../HANDOFF.md）
+# 或者只装这一个：
+cd data_collect_sim && uv sync --locked --group dev      # Python 3.13（.python-version），按 uv.lock 装：mujoco 3.16.0、onnxruntime 1.23.2、bam@0007411…
 ```
 这台机器的 shell 里有 `PYTHONPATH=/opt/ros/jazzy/...`，会把 ROS 的包带进来（pytest 会直接崩）。**所有命令前加 `env -u PYTHONPATH`**，例如
 `env -u PYTHONPATH uv run python scripts/walk_test.py`。无窗口渲染默认用 `MUJOCO_GL=egl`（脚本里已设）。
 
-walk 策略的 ONNX 不在仓库里（`outputs/` 被 git 忽略），第一次需要导出（见 NOTES §0.3）：
+在用和候选策略的 ONNX 在 `outputs/policies/`（仓库里只有这些和验收报告；`outputs/` 其余内容不进 git）。从 checkpoint 重新导出的做法（见 NOTES §0.3）：
 ```bash
 cd outputs/policies   # 先 mkdir -p
 ../../../mjlab_microduck/.venv/bin/python ../../../mjlab_microduck/src/mjlab_microduck/scripts/export_onnx.py \
@@ -28,6 +29,8 @@ kick 的 ONNX 由 `make_policy_cards.py` 从 `~/microduck_ws/runs/ai_fange_kick/
 ## 脚本（都在 `data_collect_sim/` 下运行，`uv run python scripts/<name>.py`）
 | 脚本 | 做什么 | 输出 |
 |---|---|---|
+| **`accept.py --walk <onnx/pt/card> [--stand] [--kick] [--quick]`** | **一键验收**：跑完 `configs/acceptance.yaml` 的全部测试，输出合格 / 不合格（用法见 ../HANDOFF.md §4） | `outputs/acceptance/<name>/` |
+| `compare.py <报告...>` | 多个验收报告并排对比，第一个当基线 | stdout / `--out` |
 | `make_policy_cards.py` | 从训练配置（`params/env.yaml`、训练源码、ONNX metadata）生成 `configs/policies/*.yaml`，每个值带出处注释 | `configs/policies/` |
 | `check_parity.py` | 和 mjlab 训练环境逐步比较观测 / 单步动力学 / 闭环（自动调用 mjlab venv 跑 `parity_mjlab_rollout.py`） | `outputs/parity/report.json` |
 | `walk_test.py [--card walk_flat_2600] [--quick]` | 20 seed × 60 s 随机命令、命令跟踪表、零命令、停稳时间、视频、单核实时倍率；更新 card 的 `validated_on` | `outputs/walk_test/<card>/` |
@@ -36,7 +39,7 @@ kick 的 ONNX 由 `make_policy_cards.py` 从 `~/microduck_ws/runs/ai_fange_kick/
 | `build_scene.py --layout demo_v1 [--set ramp.angle_deg=7] [--all]` | 构建 + 校验布局，站立 5 s 检查，俯视图 + 起点头部相机图 | `outputs/scenes/` |
 | `ramp_test.py [--angles 0 3 5 7] [--runs 10]` | 坡道上下坡（固定命令 / 航向保持两个变体），力矩、俯仰曲线、视频 | `outputs/ramp_test/` |
 | `teleop.py --layout demo_v1` | 键盘遥控查看器（见下）；`--autopilot` / `--smoke N` 是无窗口自测 | 窗口 |
-| 测试 | `env -u PYTHONPATH uv run --group dev pytest -q`（19 个） | |
+| 测试 | `env -u PYTHONPATH uv run --group dev pytest -q`（25 个，约 10 s） | |
 
 ### teleop 按键
 W/S 前后，A/D 左右平移，Q/E 左右转（按住生效、松开归零、0.3 s 到满速）；Shift 低 / 高档（50 % / 100 %）；

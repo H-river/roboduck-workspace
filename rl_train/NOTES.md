@@ -211,3 +211,14 @@ RTX 4080 Laptop 12 GB，空闲时占用 0.9 GB。
 - **5° 上坡是全有或全无**（0/10 或 10/10）：平地训练的策略到了坡上会稳定地卡住，属于确定性行为，不是噪声。第 3 轮的坡道训练就是针对它的。
 - **扩展停住测试（10 个 seed × 13 个命令 = 130 次，只作稳健性参考，门槛仍然按 acceptance.yaml 的 3 个 seed）**：it2750 **130/130，最长 0.50 s**；it1500 128/130（最长 0.98 s）；it2000 125/130（0.84 s）。所以 it1500 的 39/39 有运气成分，it2750 才是有余量的。定版时同样会对候选做 10-seed 扩展测试，在报告里写明。
 - 第 2 轮目前最好的是 **s1 it2750**：全部门槛通过，停住有余量。
+
+## 交接夜（2026-11-20）：第二阶段之后发生了什么
+
+细节在 `HANDOFF_NOTES.md`，结论在 `HANDOFF.md`。和这份记录直接相关的：
+- **第 2 轮 seed 2** 训完后一直没验收。今晚做了 quick 扫描（`data_collect_sim/outputs/acceptance/scan_r2_s2/`，it1000–2999 共 6 个）：没有一个全过，问题在停住和 5° 上坡。所以第 2 轮最好的仍然是 **s1 it2750**（完整验收 walk 门槛全过，`outputs/acceptance/r2_s1_it2750/`），已提成命名策略 `walk_v2_r2_s1_it2750`。
+- **第 3 轮从来没训成过**，有两个 bug，今晚都修了：
+  1. 4096 env 显存溢出（10-25 那次启动就是这样失败的）：hfield 让 mujoco_warp 的接触 / 约束缓冲变成 128 / 1024，改成 `sim: {nconmax: 48, njmax: 128}`（实测上限 8 / 34）。
+  2. 倒金字塔出生点在 z < 0，上游的绝对高度摔倒判据让 20% 的环境一出生就终止（今晚第一次 r3 训练在第 1600 次迭代时发现，作废，见 `runs/discarded/README.md`）。改成离正下方地面的高度（`terminations.fell_over.type: trunk_clearance`）。
+- **kick v2**：`configs/kick_v2_r1_stand2750.yaml` 把起始站姿填成 r2 s1 it2750 的实测站姿（`data_collect_sim/scripts/stand_pose.py --after-walk`）。另外发现：stage-1 kick 换成 r2 it2750 来站，踢球窗口从 0/50 变成 26/50（偏差 +0.6°），印证了 §2.x"站姿离 HOME 太远就不出脚"。
+- 今晚的训练（用户要求留可直接用的 ONNX）：`runs/queue_20261120b.sh` = r3 s1 → kick v2 s1 → r3 s2，结果写在 HANDOFF.md "今晚的训练"。
+- 验收工具：`data_collect_sim/scripts/accept.py`（取代逐个跑 `*_test.py` 和 `eval_candidates.py`），门槛仍然是 §1.1 定的 `configs/acceptance.yaml`，另外加了 walk↔stand 热切换（25/25）。

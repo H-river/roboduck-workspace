@@ -144,5 +144,5 @@ prompt 里"策略和验收"那几条和 `data_collect_sim/NOTES.md`、`rl_train/
 
 ## 第 5 步补记：从 GitHub 重新 clone 验证（01:54–01:58）
 - 第一次：`setup_workspace.sh` exit 126，文件在 git 里没有执行权限（用编辑工具新建的文件没 `chmod +x`）。修好推送。
-- 第二次（commit `5f…` 之前的 HEAD，shell 里带 ROS 的 `PYTHONPATH`，严格照 HANDOFF §2）：clone 5 s；setup 14 s（uv 缓存热）；quick 验收 10 s，表格和 `baseline_quick/report.md` 逐行相同；冒烟训练 2 次迭代 + 导出 + quick 验收 105 s。全部通过。
+- 第二次（commit `88e5d71`，shell 里带 ROS 的 `PYTHONPATH`，严格照 HANDOFF §2）：clone 5 s；setup 14 s（uv 缓存热）；quick 验收 10 s，表格和 `baseline_quick/report.md` 逐行相同；冒烟训练 2 次迭代 + 导出 + quick 验收 105 s。全部通过。
 - r3 的修复是在这之后推的，最后会再完整验证一次。
