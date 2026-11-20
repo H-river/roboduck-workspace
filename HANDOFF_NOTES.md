@@ -183,3 +183,9 @@ prompt 里"策略和验收"那几条和 `data_collect_sim/NOTES.md`、`rl_train/
 - mjlab 里复查（`mjlab_walkcheck.py`，固定 vx = 0.2，16 env，平面 / 坡道）：it2999 都是 0.000 m/s → 不是 sim2sim，是训练本身陷进了"站着不动"。
 - 训练曲线：`Episode_Reward/track_linear_velocity` 最后 1.12，会走的热启动 run 是 1.10，r2 s1 是 1.34；平均 episode 长度 786 / 798 / 916。只看这条曲线分不出"会走"和"站着"。
 - 结论写进 HANDOFF（WALKRESULT），这个 run 的 ONNX 不放进 `outputs/policies/`。
+
+### 第 1 步补记：kick v2 seed 2（06:57–08:30）
+- GPU 空出来后用同一配置跑 seed 2（`SEED=2 DETACH=1 rl_train/train.sh kick_v2_r1_stand2750`），69 min。`train.sh` 的快速验收：it500–1500 命中率不够，it2000 / 3500 合格，it2500 / 3000 / 3999 偏差不过。
+- 完整 kick 验收扫 it2000–3999（`accept.py --tests kick_window kick_head_down kick_handoff`，配 r2 it2750）：命中率 92–100%，交接 20/20，偏差 −1.7° 到 −4.5°，只有 it2000 / it2750 合格。s1 同区间是 −0.4° 到 −1.3°。
+- 结论：命中率可复现，方向偏差和 seed 有关（不改门槛）。s1 it3999 仍是推荐；s2 it2750 的 .pt 记在 HANDOFF 第 10 节当备选。
+- 同时在 `44c66f5` 上做了第四次 fresh clone 验证，结果同前（HANDOFF 第 2 节）。
