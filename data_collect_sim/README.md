@@ -31,6 +31,7 @@ kick 的 ONNX 由 `make_policy_cards.py` 从 `~/microduck_ws/runs/ai_fange_kick/
 |---|---|---|
 | **`accept.py --walk <onnx/pt/card> [--stand] [--kick] [--quick]`** | **一键验收**：跑完 `configs/acceptance.yaml` 的全部测试，输出合格 / 不合格（用法见 ../HANDOFF.md §4） | `outputs/acceptance/<name>/` |
 | `compare.py <报告...>` | 多个验收报告并排对比，第一个当基线 | stdout / `--out` |
+| `demo_videos.py [--walk <card>] [--kick <card / none>]` | 演示录像（验收只录失败用例）：一段连续走路（站、前进、原地左右转、边走边转、侧移、后退、停）、walk→stand→kick→stand→walk × 3、5° 坡上下各一次；指令序列在 `configs/demo_videos.yaml`。默认是推荐组合，CPU 上约 10 s | `outputs/demo_videos/<walk>/*.mp4`（不进 git） |
 | `make_policy_cards.py` | 从训练配置（`params/env.yaml`、训练源码、ONNX metadata）生成 `configs/policies/*.yaml`，每个值带出处注释 | `configs/policies/` |
 | `check_parity.py` | 和 mjlab 训练环境逐步比较观测 / 单步动力学 / 闭环（自动调用 mjlab venv 跑 `parity_mjlab_rollout.py`） | `outputs/parity/report.json` |
 | `walk_test.py [--card walk_flat_2600] [--quick]` | 20 seed × 60 s 随机命令、命令跟踪表、零命令、停稳时间、视频、单核实时倍率；更新 card 的 `validated_on` | `outputs/walk_test/<card>/` |

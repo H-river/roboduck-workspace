@@ -1,0 +1,15 @@
+# scripts/demo_videos.py (not a test, no gates): one continuous walk clip, a few kick handoffs, one ramp run.
+# Kept out of acceptance.yaml so its sha256 (printed in every report) only changes with the tests.
+walk_sequence:                # cmd = [vx, vy, wz] or "stand"; s = seconds
+  - {cmd: stand, s: 2}
+  - {cmd: [0.2, 0.0, 0.0], s: 5}
+  - {cmd: [0.0, 0.0, 0.0], s: 2}
+  - {cmd: [0.0, 0.0, 0.5], s: 4}
+  - {cmd: [0.0, 0.0, -0.5], s: 4}
+  - {cmd: [0.15, 0.0, 0.3], s: 4}
+  - {cmd: [0.0, 0.15, 0.0], s: 3}
+  - {cmd: [-0.15, 0.0, 0.0], s: 3}
+  - {cmd: [0.0, 0.0, 0.0], s: 2}
+  - {cmd: stand, s: 2}
+kick_cycles: 3
+ramp_deg: 5
