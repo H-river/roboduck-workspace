@@ -29,7 +29,7 @@ kick 的 ONNX 由 `make_policy_cards.py` 从 `~/microduck_ws/runs/ai_fange_kick/
 ## 脚本（都在 `data_collect_sim/` 下运行，`uv run python scripts/<name>.py`）
 | 脚本 | 做什么 | 输出 |
 |---|---|---|
-| **`accept.py --walk <onnx/pt/card> [--stand] [--kick] [--quick]`** | **一键验收**：跑完 `configs/acceptance.yaml` 的全部测试，输出合格 / 不合格（用法见 ../HANDOFF.md §4） | `outputs/acceptance/<name>/` |
+| **`accept.py --walk <onnx/pt/card> [--stand] [--kick] [--quick]`** | **一键验收**：跑完 `configs/acceptance.yaml` 的全部测试，输出合格 / 不合格（用法见 ../README.md 第 7 节、../HANDOFF.md 第 3 节） | `outputs/acceptance/<name>/` |
 | `compare.py <报告...>` | 多个验收报告并排对比，第一个当基线 | stdout / `--out` |
 | `make_policy_cards.py` | 从训练配置（`params/env.yaml`、训练源码、ONNX metadata）生成 `configs/policies/*.yaml`，每个值带出处注释 | `configs/policies/` |
 | `check_parity.py` | 和 mjlab 训练环境逐步比较观测 / 单步动力学 / 闭环（自动调用 mjlab venv 跑 `parity_mjlab_rollout.py`） | `outputs/parity/report.json` |

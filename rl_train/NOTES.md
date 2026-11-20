@@ -220,5 +220,5 @@ RTX 4080 Laptop 12 GB，空闲时占用 0.9 GB。
   1. 4096 env 显存溢出（10-25 那次启动就是这样失败的）：hfield 让 mujoco_warp 的接触 / 约束缓冲变成 128 / 1024，改成 `sim: {nconmax: 48, njmax: 128}`（实测上限 8 / 34）。
   2. 倒金字塔出生点在 z < 0，上游的绝对高度摔倒判据让 20% 的环境一出生就终止（今晚第一次 r3 训练在第 1600 次迭代时发现，作废，见 `runs/discarded/README.md`）。改成离正下方地面的高度（`terminations.fell_over.type: trunk_clearance`）。
 - **kick v2**：`configs/kick_v2_r1_stand2750.yaml` 把起始站姿填成 r2 s1 it2750 的实测站姿（`data_collect_sim/scripts/stand_pose.py --after-walk`）。另外发现：stage-1 kick 换成 r2 it2750 来站，踢球窗口从 0/50 变成 26/50（偏差 +0.6°），印证了 §2.x"站姿离 HOME 太远就不出脚"。
-- 今晚的训练（用户要求留可直接用的 ONNX）：`runs/queue_20261120b.sh` = r3 s1 → kick v2 s1 → r3 s2，结果写在 HANDOFF.md "今晚的训练"。
+- 今晚的训练（用户要求留可直接用的 ONNX）：`runs/queue_20261120b.sh` = r3 s1 → kick v2 s1 → r3 s2，结果写在 TRAINING_LOG.md。
 - 验收工具：`data_collect_sim/scripts/accept.py`（取代逐个跑 `*_test.py` 和 `eval_candidates.py`），门槛仍然是 §1.1 定的 `configs/acceptance.yaml`，另外加了 walk↔stand 热切换（25/25）。
