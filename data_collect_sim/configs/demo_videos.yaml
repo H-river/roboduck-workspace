@@ -13,3 +13,40 @@ walk_sequence:                # cmd = [vx, vy, wz] or "stand"; s = seconds
   - {cmd: stand, s: 2}
 kick_cycles: 3
 ramp_deg: 5
+
+# scripts/course_video.py: drive the walk policy through a layout with a waypoint follower, then
+# line up behind the ball and kick it towards the goal. Waypoints are for assets/layouts/demo_v1.yaml.
+course:
+  layout: demo_v1
+  waypoints:                    # world x, y (m); `name` is shown in the video
+    - {name: ramp up, xy: [-1.15, -0.85]}
+    - {name: ramp top, xy: [-0.40, -0.85]}
+    - {name: ramp down, xy: [0.55, -0.85]}
+    - {name: flag A, xy: [1.05, -0.80]}
+    - {name: around the zone, xy: [1.05, 0.35]}
+    - {name: north of the zone, xy: [0.00, 0.35]}
+    - {name: past the obstacle, xy: [-0.85, 0.35]}
+    - {name: flag B, xy: [-1.35, 0.55]}
+  follow:
+    vx_max: 0.20                # m/s
+    wz_max: 0.6                 # rad/s
+    k_yaw: 1.5                  # wz = k_yaw * bearing
+    slow_bearing_deg: 60        # vx scales with cos(bearing) and is 0 beyond this
+    arrive_m: 0.12
+    timeout_s: 40               # per waypoint
+  kick:
+    ball: ball
+    goal: goal
+    approach_back_m: 0.30       # first waypoint: this far behind the kick pose along the shot line
+    align_gain: [1.0, 1.0, 1.5] # vx, vy, wz per m / m / rad of error
+    align_max: [0.08, 0.08, 0.4]
+    align_min_speed: 0.04       # m/s; the walk policy stands still for smaller commands
+    align_tol_m: [0.012, 0.015] # x, y around the window centre (the window is +-0.02 x, +-0.03 y)
+    align_tol_deg: 4
+    align_timeout_s: 25
+    watch_after_s: 3
+  view:
+    chase: {distance: 1.1, azimuth: 135.0, elevation: -25.0, width: 640, height: 560}
+    top: {width: 480, height: 320}
+    head: {width: 320, height: 240}
+    fps: 25
