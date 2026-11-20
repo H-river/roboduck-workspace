@@ -55,4 +55,4 @@ assert not evaluation.fallen(rt), "robot fell during the self-check"
 print(f"   runtime: stood 2 s and walked 2 s at 0.15 m/s -> x = {x[0]:+.3f} m, upright")
 EOF
 )
-echo "== done in $(( $(date +%s) - t0 )) s. Next: HANDOFF.md, section 2 (accept.py --quick on the baseline)."
+echo "== done in $(( $(date +%s) - t0 )) s. Next: README.md, section 5, step 3 (accept.py --quick on the baseline)."

@@ -29,7 +29,7 @@ kick 的 ONNX 由 `make_policy_cards.py` 从 `~/microduck_ws/runs/ai_fange_kick/
 ## 脚本（都在 `data_collect_sim/` 下运行，`uv run python scripts/<name>.py`）
 | 脚本 | 做什么 | 输出 |
 |---|---|---|
-| **`accept.py --walk <onnx/pt/card> [--stand] [--kick] [--quick]`** | **一键验收**：跑完 `configs/acceptance.yaml` 的全部测试，输出合格 / 不合格（用法见 ../HANDOFF.md §4） | `outputs/acceptance/<name>/` |
+| **`accept.py --walk <onnx/pt/card> [--stand] [--kick] [--quick]`** | **一键验收**：跑完 `configs/acceptance.yaml` 的全部测试，输出合格 / 不合格（用法见 ../README.md 第 7 节、../HANDOFF.md 第 3 节） | `outputs/acceptance/<name>/` |
 | `compare.py <报告...>` | 多个验收报告并排对比，第一个当基线 | stdout / `--out` |
 | `demo_videos.py [--walk <card>] [--kick <card / none>]` | 演示录像（验收只录失败用例）：一段连续走路（站、前进、原地左右转、边走边转、侧移、后退、停）、walk→stand→kick→stand→walk × 3、5° 坡上下各一次；指令序列在 `configs/demo_videos.yaml`。默认是推荐组合，CPU 上约 10 s | `outputs/demo_videos/<walk>/*.mp4`（不进 git） |
 | `course_video.py [--walk <card>] [--kick <card / none>]` | 场地录像：在 `demo_v1` 场地上用路点跟随驱动 walk（上坡下坡 → 红旗 → 绕禁区 / 障碍 → 蓝旗），再走到球后对准、射门；三个视角拼在一起（跟拍 / 俯视 + 轨迹 / 头部相机）。路线和增益在 `configs/demo_videos.yaml` 的 `course:`，驱动用的是特权位姿（不是测试，没有门槛）。CPU 上约 20 s | `outputs/demo_videos/<walk>/course_demo_v1.mp4`（不进 git） |
